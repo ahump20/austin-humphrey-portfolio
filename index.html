@@ -1007,6 +1007,22 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Biometric Sports Analyzer Section -->
+                <div class="mt-20 max-w-7xl mx-auto" id="biometric-sports-section">
+                    <div class="text-center mb-16 reveal" style="transition-delay: 600ms;">
+                        <h3 class="text-4xl md:text-5xl font-bold text-gradient mb-6">
+                            <span class="text-burnt-orange-400">🏆</span> Biometric Sports Analysis
+                        </h3>
+                        <p class="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+                            Upload your sports performance videos for championship-level AI analysis. Get personalized feedback from our multi-AI system with web-verified coaching insights powered by the Four Pillars Sports DNA framework.
+                        </p>
+                    </div>
+                    
+                    <div id="biometric-analyzer-container" class="reveal" style="transition-delay: 700ms;">
+                        <!-- Biometric Sports Analyzer will be inserted here -->
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1181,6 +1197,49 @@
         });
 
         console.log('Austin Humphrey Portfolio - Initialized with authentic content');
+        
+        // Initialize Biometric Sports Analyzer
+        setTimeout(() => {
+            const analyzerContainer = document.getElementById('biometric-analyzer-container');
+            if (analyzerContainer) {
+                // Load the biometric analyzer
+                const script = document.createElement('script');
+                script.src = 'js/biometric-sports-analyzer.js';
+                script.onload = () => {
+                    // Initialize the analyzer once the script loads
+                    if (typeof BiometricSportsAnalyzer !== 'undefined') {
+                        const analyzer = new BiometricSportsAnalyzer();
+                        analyzerContainer.innerHTML = analyzer.createAnalyzerInterface();
+                        analyzer.bindEvents();
+                        console.log('Biometric Sports Analyzer initialized');
+                    }
+                };
+                document.head.appendChild(script);
+            }
+        }, 1000);
+    </script>
+    
+    <!-- Biometric Sports Analyzer Scripts -->
+    <script src="js/biometric-sports-analyzer.js"></script>
+    <script src="api/sports-analysis.js"></script>
+    
+    <!-- Initialize Biometric Sports Analyzer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for all content to load
+            setTimeout(() => {
+                const analyzerContainer = document.getElementById('biometric-analyzer-container');
+                if (analyzerContainer && typeof BiometricSportsAnalyzer !== 'undefined') {
+                    const analyzer = new BiometricSportsAnalyzer();
+                    analyzerContainer.innerHTML = analyzer.createAnalyzerInterface();
+                    
+                    // Re-initialize Lucide icons for the new content
+                    lucide.createIcons();
+                    
+                    console.log('🏆 Biometric Sports Analyzer ready for championship-level analysis!');
+                }
+            }, 2000);
+        });
     </script>
 </body>
 </html>
