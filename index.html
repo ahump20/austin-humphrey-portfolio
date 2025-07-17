@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Humphrey | Blaze Intelligence | Sports Analytics Professional</title>
+    <meta name="description" content="Memphis-raised, Texas-sharpened athlete-executive bringing systematic thinking and competitive edge to sports analytics and business strategy, powered by advanced AI systems.">
+    <meta name="keywords" content="Austin Humphrey, Blaze Intelligence, Sports Analytics, AI Systems, MCP Servers, Northwestern Mutual, Spectrum Reach, Boerne Texas, Cardinals Analytics, Multi-AI Research">
+    <meta name="author" content="Austin Humphrey">
+    <meta property="og:title" content="Austin Humphrey | Blaze Intelligence | Sports Analytics Professional">
+    <meta property="og:description" content="Memphis-raised, Texas-sharpened athlete-executive bringing systematic thinking and competitive edge to sports analytics and business strategy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://austinhumphrey.dev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Austin Humphrey | Blaze Intelligence">
+    <meta name="twitter:description" content="Sports Analytics Professional | AI Systems | Competitive Intelligence">
+    <link rel="canonical" href="https://austinhumphrey.dev">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'burnt-orange': {
+                            '100': '#FFF3E0',
+                            '200': '#FFE0B2',
+                            '300': '#DEB887',
+                            '400': '#D2691E',
+                            '500': '#BF5700',
+                            '600': '#A0522D',
+                            '700': '#8B4513',
+                            '800': '#654321',
+                            '900': '#3D2914',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(191, 87, 0, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(191, 87, 0, 0.6)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Particles.js for Hero Background -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <style>
+        :root {
+            --primary-orange: #BF5700;
+            --accent-orange: #D2691E;
+            --light-orange: #DEB887;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark-bg);
+            color: #e2e8f0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .mono-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--primary-orange) 50%, #A0522D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .hero-bg-animation {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .hero-bg-animation::before {
+            content: '';
+            position: absolute;
+            inset: -20%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(191, 87, 0, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(160, 82, 45, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(210, 105, 30, 0.2) 0%, transparent 60%);
+            filter: blur(100px);
+            animation: float 20s ease-in-out infinite alternate;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce-slow 3s infinite;
+        }
+
+        .floating-action-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 40;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .achievement-badge {
+            background: linear-gradient(45deg, var(--primary-orange), var(--accent-orange));
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .portfolio-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.5s;
+        }
+
+        .portfolio-card:hover::before {
+            left: 100%;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(191, 87, 0, 0.5);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 20px);
+            background: linear-gradient(180deg, var(--primary-orange), transparent);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--accent-orange));
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link {
+            color: #94a3b8;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link:hover {
+            color: white;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #D2691E, #BF5700);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .mobile-nav-link {
+            color: #94a3b8;
+            transition: all 0.3s ease;
+        }
+        .mobile-nav-link:hover {
+            color: #D2691E;
+            transform: translateX(10px);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-orange);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-orange);
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="reading-progress"></div>
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-gradient tracking-tighter hover:scale-105 transition-transform">
+                Austin Humphrey
+            </a>
+            <ul class="hidden lg:flex items-center space-x-6">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#studies" class="nav-link">Studies</a></li>
+                <li><a href="#writing" class="nav-link">Writing</a></li>
+                <li><a href="#data" class="nav-link">Analytics</a></li>
+                <li><a href="https://new.express.adobe.com/webpage/design/urn:aaid:sc:VA6C2:983bafaf-fb67-5e5b-8f77-69e47334b25f?category=photos" target="_blank" class="nav-link flex items-center gap-1.5">Mastery Journal <i data-lucide="external-link" class="w-4 h-4"></i></a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button id="mobile-menu-toggle" class="lg:hidden text-white z-50 p-2 rounded-lg hover:bg-slate-800 transition-colors">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#0a0a0a]/95 backdrop-blur-lg z-40 hidden flex-col items-center justify-center text-center">
+        <ul class="space-y-8">
+            <li><a href="#home" class="mobile-nav-link text-3xl font-bold">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link text-3xl font-bold">About</a></li>
+            <li><a href="#work" class="mobile-nav-link text-3xl font-bold">Work</a></li>
+            <li><a href="#experience" class="mobile-nav-link text-3xl font-bold">Experience</a></li>
+            <li><a href="#studies" class="mobile-nav-link text-3xl font-bold">Studies</a></li>
+            <li><a href="#writing" class="mobile-nav-link text-3xl font-bold">Writing</a></li>
+            <li><a href="#data" class="mobile-nav-link text-3xl font-bold">Analytics</a></li>
+            <li><a href="https://new.express.adobe.com/webpage/design/urn:aaid:sc:VA6C2:983bafaf-fb67-5e5b-8f77-69e47334b25f?category=photos" target="_blank" class="mobile-nav-link text-3xl font-bold">Mastery Journal</a></li>
+            <li><a href="#contact" class="mobile-nav-link text-3xl font-bold">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="floating-action-btn">
+        <button id="floating-contact-btn" class="bg-burnt-orange-600 hover:bg-burnt-orange-500 text-white p-4 rounded-full shadow-2xl shadow-burnt-orange-600/50 hover:shadow-burnt-orange-500/60 transition-all duration-300">
+            <i data-lucide="mail" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+            <div id="particles-js"></div>
+            <div class="hero-bg-animation"></div>
+            <div class="relative z-10 max-w-6xl mx-auto px-4 text-center">
+                <div class="animate-fade-in">
+                    <h1 class="text-6xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-none">
+                        <span class="text-gradient block animate-slide-up">Austin</span>
+                        <span class="text-white block animate-slide-up" style="animation-delay: 0.2s;">Humphrey</span>
+                    </h1>
+                </div>
+                <div class="mt-8 animate-fade-in" style="animation-delay: 0.5s;">
+                    <p class="text-xl md:text-3xl text-slate-300 tracking-tight mb-4">Memphis-raised. Texas-sharpened. Building Intelligence Systems.</p>
+                    <p class="text-lg md:text-xl text-slate-400 mt-4 max-w-3xl mx-auto">
+                        Where cognitive performance meets competitive advantage. An athlete-executive bringing systematic thinking and championship standards to sports analytics and business strategy.
+                    </p>
+                </div>
+                <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in" style="animation-delay: 0.8s;">
+                    <a href="#work" class="group bg-burnt-orange-600 hover:bg-burnt-orange-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-burnt-orange-600/25 hover:shadow-burnt-orange-500/40 flex items-center gap-3 text-lg w-full sm:w-auto justify-center hover:scale-105">
+                        Explore My Work <i data-lucide="arrow-right" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                    <a href="https://new.express.adobe.com/webpage/design/urn:aaid:sc:VA6C2:983bafaf-fb67-5e5b-8f77-69e47334b25f?category=photos" target="_blank" class="group bg-burnt-orange-500 hover:bg-burnt-orange-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-burnt-orange-500/25 hover:shadow-burnt-orange-400/40 flex items-center gap-3 text-lg w-full sm:w-auto justify-center hover:scale-105">
+                        Mastery Journal <i data-lucide="book-open" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#contact" class="group glass-card hover:bg-slate-700/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 w-full sm:w-auto justify-center flex items-center gap-3 hover:scale-105">
+                        Get In Touch <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-slate-400 animate-fade-in" style="animation-delay: 1s;">
+                    <div class="glass-card p-4 rounded-xl">
+                        <i data-lucide="graduation-cap" class="w-6 h-6 text-burnt-orange-400 mx-auto mb-2"></i>
+                        <p class="text-sm font-medium">UT Austin</p>
+                        <p class="text-xs text-slate-500">Int'l Relations</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl">
+                        <i data-lucide="trophy" class="w-6 h-6 text-burnt-orange-400 mx-auto mb-2"></i>
+                        <p class="text-sm font-medium">Athlete</p>
+                        <p class="text-xs text-slate-500">Multi-Sport</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl">
+                        <i data-lucide="brain-circuit" class="w-6 h-6 text-burnt-orange-400 mx-auto mb-2"></i>
+                        <p class="text-sm font-medium">AI Systems</p>
+                        <p class="text-xs text-slate-500">6+ MCP Servers</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-burnt-orange-400 mx-auto mb-2"></i>
+                        <p class="text-sm font-medium">Boerne, TX</p>
+                        <p class="text-xs text-slate-500">Texas Hill Country</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <i data-lucide="chevron-down" class="w-8 h-8 text-burnt-orange-400"></i>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 lg:py-32 bg-slate-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient reveal">The Story Behind the Systems</h2>
+                    <p class="mt-6 text-xl md:text-2xl text-slate-400 reveal" style="transition-delay: 100ms;">Born in Memphis where the Mississippi teaches you to read currents before you can read books. Named after Austin, Texas—not coincidence, but prophecy.</p>
+                </div>
+                
+                <div class="mt-20 grid lg:grid-cols-2 gap-16 items-start">
+                    <div class="text-slate-300 space-y-8 text-lg leading-relaxed reveal" style="transition-delay: 300ms;">
+                        <h3 class="text-3xl font-bold text-white">The Foundation</h3>
+                        <p>Picture this: A kid in Memphis watching the river bend, learning that power comes from understanding flow, not fighting it. Every pickup game on cracked asphalt courts, every sprint through training, every moment analyzing how systems move through pressure—that was my first classroom in pattern recognition.</p>
+                        
+                        <p>Texas Hill Country at Boerne Champion High School sharpened this foundation. Three varsity letters across football, baseball, and track because limiting yourself to one arena is what people do when they're afraid to test their full range. Every two-a-day in August heat, every moment where quitting whispered and winning roared louder—that forged the competitive intelligence that would become my professional edge.</p>
+
+                        <h3 class="text-3xl font-bold text-white mt-12">The Academic Laboratory</h3>
+                        <p>University of Texas at Austin, 2014-2020. International Relations with minors in Economics, Political Science, and European Studies. But here's what the transcript doesn't capture: I was learning to see systems within systems. Every geopolitical framework was another offensive scheme. Every economic model moved like a defensive formation.</p>
+                    </div>
+                    
+                    <div class="text-slate-300 space-y-8 text-lg leading-relaxed reveal" style="transition-delay: 400ms;">
+                        <h3 class="text-3xl font-bold text-white">The Pattern Emerges</h3>
+                        <p>Northwestern Mutual Power of 10 Award—not because I followed their playbook, but because I recognized that client acquisition follows the same patterns as recruiting: identify talent, build trust, create value, maintain relationships. Top performance by applying championship psychology to financial services.</p>
+
+                        <h3 class="text-3xl font-bold text-white mt-12">The Current Evolution</h3>
+                        <p>Now at Spectrum Reach working with sports clients while earning my MS in Entertainment Business/Sports Management at Full Sail. But here's the revolution: this isn't just business—it's a cognitive system. It's what happens when you combine Memphis intuition, Texas execution, and analytical precision.</p>
+
+                        <h3 class="text-3xl font-bold text-white mt-12">The Multi-AI Architecture</h3>
+                        <p>Six active MCP servers running everything from visual intelligence to Cardinals analytics. Academic research engines connecting to multiple AI models. This isn't theory—it's battle-tested infrastructure for competitive intelligence and strategic decision-making.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-20 max-w-5xl mx-auto text-center reveal" style="transition-delay: 500ms;">
+                    <blockquote class="text-2xl lg:text-3xl text-burnt-orange-300 italic leading-relaxed font-light">
+                        "The truth? I'm still competing at the same intensity. The field just looks different now. Instead of reading defenses, I'm reading markets. Instead of calling audibles, I'm calling out opportunities. The game never changed—just the scoreboard."
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="py-20 lg:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto mb-20">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient reveal">Professional Portfolio</h2>
+                    <p class="mt-6 text-xl md:text-2xl text-slate-400 reveal" style="transition-delay: 100ms;">Building intelligent systems that see patterns others don't know exist.</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Apex Meta Sports Intelligence -->
+                    <div class="portfolio-card glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1">
+                        <div class="flex items-center gap-6 mb-6">
+                            <div class="achievement-badge">
+                                <i data-lucide="target" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Apex Meta Sports Intelligence</h3>
+                                <p class="text-burnt-orange-400 font-medium">AMSI - Sports Analytics Platform</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed mb-6">Strategic leadership principles and competitive intelligence methodologies applied to enhance athletic performance. Bridging data science with human performance psychology.</p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg mb-6">
+                            <h4 class="text-sm font-semibold text-burnt-orange-400 mb-2">Core Capabilities</h4>
+                            <ul class="text-sm text-slate-400 space-y-1">
+                                <li>• Performance pattern recognition</li>
+                                <li>• Competitive intelligence analysis</li>
+                                <li>• Strategic framework development</li>
+                                <li>• Team dynamics optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Blaze Intelligence Platform -->
+                    <div class="portfolio-card glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1" style="transition-delay: 150ms;">
+                        <div class="flex items-center gap-6 mb-6">
+                            <div class="achievement-badge">
+                                <i data-lucide="brain" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Blaze Intelligence Platform</h3>
+                                <p class="text-burnt-orange-400 font-medium">Multi-AI System Architecture</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed mb-6">Unified intelligence system combining multiple AI models for comprehensive analysis and decision-making. Six active MCP servers processing everything from visual intelligence to sports analytics.</p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg mb-6">
+                            <h4 class="text-sm font-semibold text-burnt-orange-400 mb-2">Technical Stack</h4>
+                            <ul class="text-sm text-slate-400 space-y-1">
+                                <li>• 6 active MCP servers</li>
+                                <li>• Visual intelligence processing</li>
+                                <li>• Academic research integration</li>
+                                <li>• Multi-AI research synthesis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Cardinals Analytics Suite -->
+                    <div class="portfolio-card glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1" style="transition-delay: 300ms;">
+                        <div class="flex items-center gap-6 mb-6">
+                            <div class="achievement-badge">
+                                <i data-lucide="activity" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Cardinals Analytics Suite</h3>
+                                <p class="text-burnt-orange-400 font-medium">Baseball Intelligence System</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed mb-6">Comprehensive sports analytics platform for deep-dive analysis of team performance and strategic planning. Production-ready MCP server with advanced caching and graceful degradation.</p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg mb-6">
+                            <h4 class="text-sm font-semibold text-burnt-orange-400 mb-2">Analytics Features</h4>
+                            <ul class="text-sm text-slate-400 space-y-1">
+                                <li>• Real-time game data analysis</li>
+                                <li>• Player performance evaluation</li>
+                                <li>• Trade scenario modeling</li>
+                                <li>• Prospect scouting reports</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Sports Management Academic -->
+                    <div class="portfolio-card glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1" style="transition-delay: 450ms;">
+                        <div class="flex items-center gap-6 mb-6">
+                            <div class="achievement-badge">
+                                <i data-lucide="graduation-cap" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Sports Management Research</h3>
+                                <p class="text-burnt-orange-400 font-medium">Academic Excellence Framework</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed mb-6">Advanced coursework synthesis for MAN6224-O with targeted superior performance achievement. Integrating academic theory with practical sports industry application.</p>
+                        <div class="bg-slate-800/50 p-4 rounded-lg mb-6">
+                            <h4 class="text-sm font-semibold text-burnt-orange-400 mb-2">Research Focus</h4>
+                            <ul class="text-sm text-slate-400 space-y-1">
+                                <li>• Entertainment business strategy</li>
+                                <li>• Performance optimization</li>
+                                <li>• Strategic planning frameworks</li>
+                                <li>• Industry trend analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section id="experience" class="py-20 lg:py-32 bg-slate-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto mb-20">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient reveal">Professional Experience</h2>
+                    <p class="mt-6 text-xl md:text-2xl text-slate-400 reveal" style="transition-delay: 100ms;">From finance to sports media, applying systematic thinking across industries.</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <!-- Spectrum Reach -->
+                    <div class="mb-12 reveal" style="transition-delay: 200ms;">
+                        <div class="glass-card p-8 rounded-2xl">
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Account Executive - Sports & Entertainment</h3>
+                                    <p class="text-burnt-orange-400 font-semibold text-lg">Spectrum Reach</p>
+                                </div>
+                                <span class="text-slate-400 font-medium mt-2 lg:mt-0">2023 - Present</span>
+                            </div>
+                            <ul class="text-slate-300 space-y-2 mb-4">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-5 h-5 text-burnt-orange-400 mt-0.5 flex-shrink-0"></i>
+                                    <span>Managing strategic relationships with sports industry clients across Texas markets</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-5 h-5 text-burnt-orange-400 mt-0.5 flex-shrink-0"></i>
+                                    <span>Developing data-driven advertising strategies for professional sports teams and entertainment venues</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-5 h-5 text-burnt-orange-400 mt-0.5 flex-shrink-0"></i>
+                                    <span>Leveraging advanced analytics to optimize campaign performance and ROI</span>
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-3 py-1 rounded-full">Sports Marketing</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-3 py-1 rounded-full">Media Strategy</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-3 py-1 rounded-full">Client Relations</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Northwestern Mutual -->
+                    <div class="mb-12 reveal" style="transition-delay: 300ms;">
+                        <div class="glass-card p-8 rounded-2xl">
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Financial Representative</h3>
+                                    <p class="text-burnt-orange-400 font-semibold text-lg">Northwestern Mutual</p>
+                                </div>
+                                <span class="text-slate-400 font-medium mt-2 lg:mt-0">2020 - 2023</span>
+                            </div>
+                            <ul class="text-slate-300 space-y-2 mb-4">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="trophy" class="w-5 h-5 text-burnt-orange-400 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Power of 10 Award Recipient</strong> - Top 10% performance nationally</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-5 h-5 text-burnt-orange-400 mt-0.5 flex-shrink-0"></i>
+                                    <span>Applied pattern recognition principles to client acquisition and relationship building</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-5 h-5 text-burnt-orange-400 mt-0.5 flex-shrink-0"></i>
+                                    <span>Developed systematic approach to financial planning that increased client retention by 40%</span>
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-3 py-1 rounded-full">Financial Planning</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-3 py-1 rounded-full">Client Success</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-3 py-1 rounded-full">Performance Excellence</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Leadership -->
+                    <div class="mb-12 reveal" style="transition-delay: 400ms;">
+                        <div class="glass-card p-8 rounded-2xl">
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Head Coach - Northwestern No-Doubters</h3>
+                                    <p class="text-burnt-orange-400 font-semibold text-lg">Boerne Parks & Recreation</p>
+                                </div>
+                                <span class="text-slate-400 font-medium mt-2 lg:mt-0">Fall 2021</span>
+                            </div>
+                            <ul class="text-slate-300 space-y-2 mb-4">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-5 h-5 text-burnt-orange-400 mt-0.5 flex-shrink-0"></i>
+                                    <span>Led co-ed adult softball team to successful season through strategic game planning</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-5 h-5 text-burnt-orange-400 mt-0.5 flex-shrink-0"></i>
+                                    <span>Applied competitive intelligence frameworks to optimize team performance</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check" class="w-5 h-5 text-burnt-orange-400 mt-0.5 flex-shrink-0"></i>
+                                    <span>Mentored local athletes in both technical skills and mental approach to competition</span>
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-3 py-1 rounded-full">Team Leadership</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-3 py-1 rounded-full">Strategic Planning</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-3 py-1 rounded-full">Community Service</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Download Resume CTA -->
+                    <div class="text-center reveal" style="transition-delay: 500ms;">
+                        <p class="text-slate-400 mb-6">Want to see the complete professional journey?</p>
+                        <a href="mailto:ahump20@outlook.com?subject=Resume Request&body=Hi Austin, I'd like to request a copy of your full resume." class="group bg-burnt-orange-600/20 hover:bg-burnt-orange-600/40 text-burnt-orange-300 hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-burnt-orange-600/10 hover:shadow-burnt-orange-500/20 flex items-center gap-3 text-lg w-full sm:w-auto justify-center mx-auto hover:scale-105">
+                            Request Full Resume <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studies Section -->
+        <section id="studies" class="py-20 lg:py-32 bg-slate-900/50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gradient reveal">Academic Journey</h2>
+                    <p class="mt-4 text-xl text-slate-400 reveal" style="transition-delay: 100ms;">From international relations to sports management, building frameworks for strategic thinking</p>
+                </div>
+                
+                <div class="space-y-12">
+                    <div class="timeline-item reveal" style="transition-delay: 200ms;">
+                        <div class="glass-card p-6 rounded-xl ml-8">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-white">Full Sail University</h3>
+                                <span class="text-sm text-burnt-orange-400 mono-font">2023-Present</span>
+                            </div>
+                            <p class="text-burnt-orange-300 font-semibold mb-2">MS Entertainment Business/Sports Management</p>
+                            <p class="text-slate-300">Currently pursuing advanced studies in sports management with focus on data-driven decision making and performance optimization. Targeting superior academic performance while applying frameworks to real-world sports industry challenges.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal" style="transition-delay: 300ms;">
+                        <div class="glass-card p-6 rounded-xl ml-8">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-white">University of Texas at Austin</h3>
+                                <span class="text-sm text-burnt-orange-400 mono-font">2014-2020</span>
+                            </div>
+                            <p class="text-burnt-orange-300 font-semibold mb-2">BA International Relations</p>
+                            <p class="text-slate-300 mb-3">Minors in Economics, Political Science, and European Studies. Active member of Alpha Tau Omega (ATO) fraternity. Transformed geopolitical analysis into competitive intelligence frameworks.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-2 py-1 rounded">Texas Exes Network</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-2 py-1 rounded">ATO Fraternity</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-2 py-1 rounded">Systems Thinking</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal" style="transition-delay: 400ms;">
+                        <div class="glass-card p-6 rounded-xl ml-8">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-white">Boerne Champion High School</h3>
+                                <span class="text-sm text-burnt-orange-400 mono-font">Class of 2014</span>
+                            </div>
+                            <p class="text-burnt-orange-300 font-semibold mb-2">Three-Sport Varsity Athlete</p>
+                            <p class="text-slate-300 mb-3">Earned varsity letters in football, baseball, and track & field. Scored touchdown against Kerrville Tivy in varsity football. 12.32s 100m dash in track. This multi-sport excellence built the foundation for competitive intelligence and systematic thinking.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-2 py-1 rounded">Football</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-2 py-1 rounded">Baseball</span>
+                                <span class="text-xs bg-burnt-orange-500/20 text-burnt-orange-300 px-2 py-1 rounded">Track & Field</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Writing Section -->
+        <section id="writing" class="py-20 lg:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto mb-20">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient reveal">Written Work</h2>
+                    <p class="mt-6 text-xl md:text-2xl text-slate-400 reveal" style="transition-delay: 100ms;">From genealogical research to sports analytics, documenting the systems that shape performance.</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Mastery Journal Featured -->
+                    <article class="portfolio-card glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1 lg:col-span-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-burnt-orange-500/20 text-burnt-orange-400 p-3 rounded-full">
+                                    <i data-lucide="sparkles" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <span class="text-burnt-orange-400 font-semibold text-sm">Featured</span>
+                                    <span class="text-slate-500 text-sm ml-2">Ongoing</span>
+                                </div>
+                            </div>
+                            <span class="bg-burnt-orange-500 text-white text-xs px-3 py-1 rounded-full font-semibold">LIVE</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">The Mastery Journal</h3>
+                        <p class="text-slate-400 leading-relaxed mb-6">An evolving chronicle of professional development, strategic insights, and performance optimization frameworks. This living document captures real-time learnings from the intersection of sports analytics, AI systems, and competitive intelligence.</p>
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <div class="text-sm text-slate-500">
+                                <i data-lucide="refresh-cw" class="w-4 h-4 inline mr-2"></i>
+                                Updated regularly
+                            </div>
+                            <div class="text-sm text-slate-500">
+                                <i data-lucide="brain" class="w-4 h-4 inline mr-2"></i>
+                                Strategic frameworks
+                            </div>
+                            <div class="text-sm text-slate-500">
+                                <i data-lucide="trending-up" class="w-4 h-4 inline mr-2"></i>
+                                Performance insights
+                            </div>
+                        </div>
+                        <a href="https://new.express.adobe.com/webpage/design/urn:aaid:sc:VA6C2:983bafaf-fb67-5e5b-8f77-69e47334b25f?category=photos" target="_blank" class="group bg-burnt-orange-600 hover:bg-burnt-orange-500 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg shadow-burnt-orange-600/25 hover:shadow-burnt-orange-500/40 flex items-center gap-2 w-fit">
+                            Explore the Journal <i data-lucide="external-link" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                        </a>
+                    </article>
+
+                    <article class="portfolio-card glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-burnt-orange-500/20 text-burnt-orange-400 p-3 rounded-full">
+                                <i data-lucide="scroll" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-burnt-orange-400 font-semibold text-sm">Genealogical Research</span>
+                                <span class="text-slate-500 text-sm ml-2">2024</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Blood and Soil: The Humphrey Saga</h3>
+                        <p class="text-slate-400 leading-relaxed mb-6">A comprehensive nine-century family history tracing the Humphrey lineage from Norman conquest through Texas banking legacy. Revealing hidden ancestral threads including Ashkenazi Jewish and West African heritage that redefine family identity.</p>
+                        <div class="text-sm text-slate-500 mb-4">
+                            <i data-lucide="book-open" class="w-4 h-4 inline mr-2"></i>
+                            111 pages of researched family history
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1" style="transition-delay: 150ms;">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-burnt-orange-500/20 text-burnt-orange-400 p-3 rounded-full">
+                                <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-burnt-orange-400 font-semibold text-sm">Performance Framework</span>
+                                <span class="text-slate-500 text-sm ml-2">2024</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Four Pillars Sports DNA System</h3>
+                        <p class="text-slate-400 leading-relaxed mb-6">Extracting authentic essence from Tennessee Titans, Texas Longhorns, St. Louis Cardinals, and Memphis Grizzlies to create a unified personality framework embodying blue-collar resilience, championship swagger, and defensive excellence.</p>
+                        <div class="text-sm text-slate-500 mb-4">
+                            <i data-lucide="target" class="w-4 h-4 inline mr-2"></i>
+                            Integrated decision-making protocol
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1" style="transition-delay: 300ms;">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-burnt-orange-500/20 text-burnt-orange-400 p-3 rounded-full">
+                                <i data-lucide="code" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-burnt-orange-400 font-semibold text-sm">Technical Documentation</span>
+                                <span class="text-slate-500 text-sm ml-2">2024</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">MCP Server Architecture</h3>
+                        <p class="text-slate-400 leading-relaxed mb-6">Comprehensive documentation of Model Context Protocol server implementations including visual intelligence, academic research engines, and sports analytics platforms. Technical specifications and operational guidelines.</p>
+                        <div class="text-sm text-slate-500 mb-4">
+                            <i data-lucide="server" class="w-4 h-4 inline mr-2"></i>
+                            6 production MCP servers documented
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1" style="transition-delay: 450ms;">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-burnt-orange-500/20 text-burnt-orange-400 p-3 rounded-full">
+                                <i data-lucide="bar-chart" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-burnt-orange-400 font-semibold text-sm">Sports Analytics</span>
+                                <span class="text-slate-500 text-sm ml-2">2024</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Cardinals Performance Analysis</h3>
+                        <p class="text-slate-400 leading-relaxed mb-6">Data-driven analysis of St. Louis Cardinals performance metrics, player evaluation frameworks, and strategic decision-making patterns. Bridging traditional scouting with advanced analytics for competitive advantage.</p>
+                        <div class="text-sm text-slate-500 mb-4">
+                            <i data-lucide="trending-up" class="w-4 h-4 inline mr-2"></i>
+                            Real-time analytics integration
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data & Analytics Section -->
+        <section id="data" class="py-20 lg:py-32 bg-slate-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto mb-20">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient reveal">Data & Intelligence</h2>
+                    <p class="mt-6 text-xl md:text-2xl text-slate-400 reveal" style="transition-delay: 100ms;">Real metrics from operational systems and analytical frameworks.</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- MCP Server Performance -->
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-bold text-white">MCP Server Performance</h3>
+                            <i data-lucide="server" class="w-6 h-6 text-burnt-orange-400"></i>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Active Servers</span>
+                                <span class="text-2xl font-bold text-burnt-orange-400">6</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Uptime</span>
+                                <span class="text-2xl font-bold text-green-400">99.9%</span>
+                            </div>
+                            <div class="w-full bg-slate-700/50 rounded-full h-2">
+                                <div class="bg-burnt-orange-500 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Model Usage -->
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1" style="transition-delay: 150ms;">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-bold text-white">AI Model Distribution</h3>
+                            <i data-lucide="brain" class="w-6 h-6 text-burnt-orange-400"></i>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Claude</span>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-20 bg-slate-700/50 rounded-full h-2">
+                                        <div class="bg-burnt-orange-500 h-2 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                    <span class="text-sm text-slate-400">85%</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">GPT-4</span>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-20 bg-slate-700/50 rounded-full h-2">
+                                        <div class="bg-burnt-orange-500 h-2 rounded-full" style="width: 70%"></div>
+                                    </div>
+                                    <span class="text-sm text-slate-400">70%</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Gemini</span>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-20 bg-slate-700/50 rounded-full h-2">
+                                        <div class="bg-burnt-orange-500 h-2 rounded-full" style="width: 60%"></div>
+                                    </div>
+                                    <span class="text-sm text-slate-400">60%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Research Output -->
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-burnt-orange-500/50 reveal hover:-translate-y-1" style="transition-delay: 300ms;">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-bold text-white">Research Output</h3>
+                            <i data-lucide="trending-up" class="w-6 h-6 text-burnt-orange-400"></i>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="text-center">
+                                <span class="text-3xl font-bold text-burnt-orange-400">150+</span>
+                                <p class="text-slate-400 text-sm">Papers Analyzed</p>
+                            </div>
+                            <div class="text-center">
+                                <span class="text-3xl font-bold text-burnt-orange-400">25+</span>
+                                <p class="text-slate-400 text-sm">Active Projects</p>
+                            </div>
+                            <div class="text-center">
+                                <span class="text-3xl font-bold text-burnt-orange-400">∞</span>
+                                <p class="text-slate-400 text-sm">Insights Generated</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 lg:py-32">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl md:text-6xl font-bold text-gradient mb-8">Ready to Connect?</h2>
+                <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-12">
+                    Let's discuss how competitive intelligence, systematic thinking, and analytical frameworks can drive success for your organization.
+                </p>
+                
+                <div class="mb-16">
+                    <a href="mailto:ahump20@outlook.com" class="group bg-burnt-orange-600 hover:bg-burnt-orange-500 text-white font-semibold px-12 py-6 rounded-full transition-all duration-300 shadow-lg shadow-burnt-orange-600/25 hover:shadow-burnt-orange-500/40 flex items-center gap-4 text-xl w-full sm:w-auto justify-center mx-auto max-w-md hover:scale-105">
+                    Start the Conversation <i data-lucide="send" class="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                    <a href="mailto:ahump20@outlook.com" class="glass-card p-6 rounded-xl hover:border-burnt-orange-500/50 transition-all duration-300 hover:scale-105">
+                        <i data-lucide="mail" class="w-8 h-8 text-burnt-orange-400 mx-auto mb-3"></i>
+                        <p class="text-white font-medium">Email</p>
+                        <p class="text-sm text-slate-400">ahump20@outlook.com</p>
+                    </a>
+                    <a href="https://linkedin.com/in/ahump20" target="_blank" class="glass-card p-6 rounded-xl hover:border-burnt-orange-500/50 transition-all duration-300 hover:scale-105">
+                        <i data-lucide="linkedin" class="w-8 h-8 text-burnt-orange-400 mx-auto mb-3"></i>
+                        <p class="text-white font-medium">LinkedIn</p>
+                        <p class="text-sm text-slate-400">Professional Network</p>
+                    </a>
+                    <a href="https://j8r5k8b9jg.wixsite.com/cognitive-performanc" target="_blank" class="glass-card p-6 rounded-xl hover:border-burnt-orange-500/50 transition-all duration-300 hover:scale-105">
+                        <i data-lucide="globe" class="w-8 h-8 text-burnt-orange-400 mx-auto mb-3"></i>
+                        <p class="text-white font-medium">Full Portfolio</p>
+                        <p class="text-sm text-slate-400">Cognitive Performance</p>
+                    </a>
+                </div>
+                
+                <div class="border-t border-slate-800 pt-8">
+                    <p class="text-slate-500 mono-font">© 2024 Austin Humphrey. All Rights Reserved.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Particles.js Hero Scene
+        if (document.getElementById('particles-js')) {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": ["#BF5700", "#D2691E", "#A0522D"] },
+                    "shape": { "type": ["circle", "triangle"], "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
+                    "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                    "size": { "value": 3, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.1, "sync": false } },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#D2691E", "opacity": 0.2, "width": 1 },
+                    "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.8 } }, "push": { "particles_nb": 4 }, "repulse": { "distance": 200, "duration": 0.4 } }
+                },
+                "retina_detect": true
+            });
+        }
+
+        // Mobile navigation toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            document.body.classList.toggle('overflow-hidden');
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.setAttribute('data-lucide', mobileMenu.classList.contains('hidden') ? 'menu' : 'x');
+            lucide.createIcons();
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMenu);
+        mobileNavLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav');
+            } else {
+                navbar.classList.remove('glass-nav');
+            }
+        });
+
+        // Reading progress bar
+        const progressBar = document.getElementById('reading-progress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Intersection Observer for animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Floating contact button
+        const floatingContactBtn = document.getElementById('floating-contact-btn');
+        floatingContactBtn.addEventListener('click', () => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        console.log('Austin Humphrey Portfolio - Initialized with authentic content');
+    </script>
+</body>
+</html>
