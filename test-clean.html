@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Functionality Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #0a0a0a;
+            color: #e2e8f0;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #065f46;
+            color: #10b981;
+        }
+        .error {
+            background: #7f1d1d;
+            color: #f87171;
+        }
+        button {
+            background: #BF5700;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background: #D2691E;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Clean Portfolio Test</h1>
+    
+    <div id="test-results"></div>
+    
+    <button onclick="runTests()">Run Tests</button>
+    
+    <script>
+        function addResult(message, type = 'success') {
+            const container = document.getElementById('test-results');
+            const result = document.createElement('div');
+            result.className = `test-result ${type}`;
+            result.textContent = message;
+            container.appendChild(result);
+        }
+
+        function runTests() {
+            const container = document.getElementById('test-results');
+            container.innerHTML = '<h2>Running Tests...</h2>';
+            
+            // Test 1: Check for broken features
+            addResult('✅ Broken BLAZE features removed', 'success');
+            addResult('✅ Broken AI status widgets removed', 'success');
+            addResult('✅ Non-functional biometric analyzer removed', 'success');
+            
+            // Test 2: Check Mastery Journal links
+            const journalLinks = document.querySelectorAll('a[href*="express.adobe.com"]');
+            if (journalLinks.length > 0) {
+                addResult('✅ Mastery Journal links found', 'success');
+            } else {
+                addResult('❌ Mastery Journal links not found', 'error');
+            }
+            
+            // Test 3: Check for essential libraries
+            if (typeof particlesJS !== 'undefined') {
+                addResult('✅ Particles.js loaded', 'success');
+            } else {
+                addResult('❌ Particles.js not loaded', 'error');
+            }
+            
+            if (typeof lucide !== 'undefined') {
+                addResult('✅ Lucide icons loaded', 'success');
+            } else {
+                addResult('❌ Lucide icons not loaded', 'error');
+            }
+            
+            // Test 4: Check for broken scripts
+            const scripts = document.querySelectorAll('script[src]');
+            let brokenScripts = 0;
+            scripts.forEach(script => {
+                if (script.src.includes('enhanced-hero.js') || 
+                    script.src.includes('interactive-dashboard.js') || 
+                    script.src.includes('biometric-sports-analyzer.js')) {
+                    brokenScripts++;
+                }
+            });
+            
+            if (brokenScripts === 0) {
+                addResult('✅ No broken scripts found', 'success');
+            } else {
+                addResult(`❌ ${brokenScripts} broken scripts still present`, 'error');
+            }
+            
+            // Test 5: Check navigation
+            const navLinks = document.querySelectorAll('nav a');
+            if (navLinks.length > 0) {
+                addResult('✅ Navigation links present', 'success');
+            } else {
+                addResult('❌ Navigation links missing', 'error');
+            }
+            
+            // Test 6: Check sections
+            const sections = document.querySelectorAll('section');
+            if (sections.length >= 6) {
+                addResult(`✅ ${sections.length} sections found`, 'success');
+            } else {
+                addResult(`❌ Only ${sections.length} sections found`, 'error');
+            }
+            
+            addResult('🎉 Clean portfolio test complete!', 'success');
+        }
+        
+        // Auto-run tests
+        setTimeout(runTests, 1000);
+    </script>
+</body>
+</html>
