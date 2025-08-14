@@ -65,88 +65,6 @@
             text-rendering: optimizeLegibility;
         }
 
-        /* Custom Cursor for Premium Feel */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--ut-orange);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.2s ease;
-            mix-blend-mode: difference;
-        }
-
-        .cursor-follower {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: var(--ut-orange);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.4s ease;
-        }
-
-        /* Premium Loading Screen */
-        .loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-primary);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 1s ease;
-        }
-
-        .loader {
-            position: relative;
-            width: 100px;
-            height: 100px;
-        }
-
-        .loader-circle {
-            position: absolute;
-            border: 3px solid transparent;
-            border-top-color: var(--ut-orange);
-            border-radius: 50%;
-            animation: rotate 1.5s linear infinite;
-        }
-
-        .loader-circle:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            animation-delay: 0s;
-        }
-
-        .loader-circle:nth-child(2) {
-            width: 80px;
-            height: 80px;
-            top: 10px;
-            left: 10px;
-            animation-delay: 0.2s;
-            border-top-color: var(--spark-orange);
-        }
-
-        .loader-circle:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            top: 20px;
-            left: 20px;
-            animation-delay: 0.4s;
-            border-top-color: var(--glow-orange);
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         /* Navigation with Glassmorphism */
         .nav-wrapper {
             position: fixed;
@@ -283,30 +201,7 @@
             font-family: var(--font-display);
         }
 
-        /* Timeline Enhanced */
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, var(--ut-orange), transparent);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--ut-orange);
-            border: 4px solid var(--bg-primary);
-            border-radius: 50%;
-            z-index: 10;
-            box-shadow: 0 0 20px rgba(191, 87, 0, 0.5);
-        }
-
-        /* Social Proof Badge */
+        /* Trust Badge */
         .trust-badge {
             display: inline-flex;
             align-items: center;
@@ -330,21 +225,8 @@
     </style>
 </head>
 <body>
-    <!-- Premium Loading Screen -->
-    <div class="loader-wrapper">
-        <div class="loader">
-            <div class="loader-circle"></div>
-            <div class="loader-circle"></div>
-            <div class="loader-circle"></div>
-        </div>
-    </div>
-
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress"></div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
 
     <!-- Navigation -->
     <nav class="nav-wrapper py-6 px-8">
@@ -357,7 +239,6 @@
                 <a href="#about" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">About</a>
                 <a href="#portfolio" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Portfolio</a>
                 <a href="#metrics" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Impact</a>
-                <a href="#research" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Research</a>
                 <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Connect</a>
             </div>
             <button class="btn-premium hidden md:block">
@@ -512,7 +393,7 @@
         </div>
     </section>
 
-    <!-- Portfolio Section with Progressive Disclosure -->
+    <!-- Portfolio Section with Interactive Demos -->
     <section id="portfolio" class="py-20 bg-gray-900">
         <div class="max-w-6xl mx-auto px-8">
             <h2 class="text-4xl font-bold text-center mb-16" style="font-family: var(--font-display);">
@@ -612,96 +493,32 @@
                     </button>
                 </div>
 
-                <!-- Spectrum Reach Case Study Card -->
+                <!-- More project cards... -->
                 <div class="reveal card-3d bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-orange-500 transition cursor-pointer project-card" data-project="spectrum">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="text-4xl">📊</div>
+                        <div class="text-4xl">📈</div>
                         <span class="text-xs px-2 py-1 bg-purple-500 text-black rounded-full font-semibold">CASE STUDY</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Spectrum Sports Analytics</h3>
                     <p class="text-gray-400 text-sm mb-4">
-                        Media sales optimization for sports advertising, increasing client ROI through data-driven 
-                        audience targeting.
+                        Media sales optimization resulting in 47% revenue increase across 23 client campaigns.
                     </p>
                     <div class="flex justify-between items-center mb-4">
                         <div class="text-center">
                             <div class="text-2xl font-bold text-green-500">47%</div>
-                            <div class="text-xs text-gray-500">Revenue Increase</div>
+                            <div class="text-xs text-gray-500">Revenue Growth</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-2xl font-bold text-blue-500">23</div>
-                            <div class="text-xs text-gray-500">Client Campaigns</div>
+                            <div class="text-2xl font-bold text-blue-500">3.2x</div>
+                            <div class="text-xs text-gray-500">ROI</div>
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-2 mb-3">
                         <span class="text-xs px-2 py-1 bg-gray-700 rounded">Analytics</span>
                         <span class="text-xs px-2 py-1 bg-gray-700 rounded">Media</span>
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded">ROI</span>
                     </div>
                     <button class="btn-premium w-full py-2 text-sm demo-btn" data-demo="spectrum">
                         <i class="fas fa-file-alt mr-2"></i>Read Case Study
-                    </button>
-                </div>
-
-                <!-- Northwestern Mutual Achievement Card -->
-                <div class="reveal card-3d bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-orange-500 transition cursor-pointer project-card" data-project="northwestern">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="text-4xl">🏆</div>
-                        <span class="text-xs px-2 py-1 bg-yellow-500 text-black rounded-full font-semibold">AWARD WINNER</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Northwestern Mutual Excellence</h3>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Top 10 national performance in financial services, earning the "Power of 10" award 
-                        through data-driven client strategies.
-                    </p>
-                    <div class="flex justify-between items-center mb-4">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-yellow-500">Top 10</div>
-                            <div class="text-xs text-gray-500">Nationally</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-green-500">$2.3M</div>
-                            <div class="text-xs text-gray-500">Client Assets</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded">Finance</span>
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded">Strategy</span>
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded">Analytics</span>
-                    </div>
-                    <button class="btn-premium w-full py-2 text-sm demo-btn" data-demo="northwestern">
-                        <i class="fas fa-trophy mr-2"></i>Achievement Details
-                    </button>
-                </div>
-
-                <!-- AI MCP Servers Card -->
-                <div class="reveal card-3d bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-orange-500 transition cursor-pointer project-card" data-project="mcp">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="text-4xl">🤖</div>
-                        <span class="text-xs px-2 py-1 bg-cyan-500 text-black rounded-full font-semibold">LIVE</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">AI MCP Architecture</h3>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Custom Model Context Protocol servers for sports analytics, visual intelligence, 
-                        and academic research integration.
-                    </p>
-                    <div class="flex justify-between items-center mb-4">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-cyan-500">7</div>
-                            <div class="text-xs text-gray-500">MCP Servers</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-green-500">99%</div>
-                            <div class="text-xs text-gray-500">Uptime</div>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded">MCP</span>
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded">AI</span>
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded">TypeScript</span>
-                    </div>
-                    <button class="btn-premium w-full py-2 text-sm demo-btn" data-demo="mcp">
-                        <i class="fas fa-server mr-2"></i>Live Architecture
                     </button>
                 </div>
             </div>
@@ -751,30 +568,6 @@
     </footer>
 
     <script>
-        // Premium Loading Animation
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.querySelector('.loader-wrapper').style.opacity = '0';
-                setTimeout(() => {
-                    document.querySelector('.loader-wrapper').style.display = 'none';
-                }, 1000);
-            }, 2000);
-        });
-
-        // Custom Cursor
-        const cursor = document.querySelector('.cursor');
-        const follower = document.querySelector('.cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                follower.style.left = e.clientX + 'px';
-                follower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-
         // Scroll Progress Bar
         window.addEventListener('scroll', () => {
             const scrollProgress = document.querySelector('.scroll-progress');
@@ -941,30 +734,41 @@
             });
         });
 
-        // Add micro-interactions
-        document.querySelectorAll('.btn-premium').forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
-                gsap.to(btn, { scale: 1.05, duration: 0.3 });
-            });
-            btn.addEventListener('mouseleave', () => {
-                gsap.to(btn, { scale: 1, duration: 0.3 });
-            });
-        });
+        // Interactive Demo System
+        const demoData = {
+            hvi: { title: 'Hidden Value Index™', content: '<div class="bg-gray-800 p-6 rounded-lg"><h4 class="text-xl font-bold mb-4 text-green-500">$42M+ Market Inefficiencies</h4><p class="text-gray-300">Revolutionary MLB talent valuation with 94% accuracy.</p></div>' },
+            cardinals: { title: 'Cardinals Intelligence', content: '<div class="bg-gray-800 p-6 rounded-lg"><h4 class="text-xl font-bold mb-4 text-red-500">Real-Time Analytics</h4><p class="text-gray-300">87% win prediction, 24 live metrics.</p></div>' },
+            blaze: { title: 'Blaze Intelligence', content: '<div class="bg-gray-800 p-6 rounded-lg"><h4 class="text-xl font-bold mb-4 text-orange-500">Cognitive Analytics</h4><p class="text-gray-300">100K+ events/second, 6 AI models.</p></div>' },
+            spectrum: { title: 'Spectrum Success', content: '<div class="bg-gray-800 p-6 rounded-lg"><h4 class="text-xl font-bold mb-4 text-purple-500">47% Revenue Growth</h4><p class="text-gray-300">Media optimization, 3.2x ROI improvement.</p></div>' }
+        };
 
-        // Performance optimization
-        let ticking = false;
-        function updateOnScroll() {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    // Update animations here
-                    ticking = false;
+        const modal = document.createElement('div');
+        modal.innerHTML = '<div class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden items-center justify-center" id="demo-modal"><div class="bg-gray-900 rounded-lg p-8 max-w-3xl w-full mx-4"><div class="flex justify-between items-center mb-6"><h3 id="modal-title" class="text-2xl font-bold"></h3><button id="close-modal" class="text-gray-400 hover:text-white text-2xl">&times;</button></div><div id="modal-content"></div></div></div>';
+        document.body.appendChild(modal.firstElementChild);
+
+        setTimeout(() => {
+            document.querySelectorAll('.demo-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const demo = demoData[btn.dataset.demo];
+                    if (demo) {
+                        document.getElementById('modal-title').textContent = demo.title;
+                        document.getElementById('modal-content').innerHTML = demo.content;
+                        document.getElementById('demo-modal').classList.remove('hidden');
+                        document.getElementById('demo-modal').classList.add('flex');
+                    }
                 });
-                ticking = true;
+            });
+            const closeBtn = document.getElementById('close-modal');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    document.getElementById('demo-modal').classList.add('hidden');
+                    document.getElementById('demo-modal').classList.remove('flex');
+                });
             }
-        }
-        window.addEventListener('scroll', updateOnScroll);
+        }, 1000);
 
-        // Interactive Demo System\n        const demoData = {\n            hvi: { title: 'Hidden Value Index™', content: '<div class=\"bg-gray-800 p-6 rounded-lg\"><h4 class=\"text-xl font-bold mb-4 text-green-500\">$42M+ Market Inefficiencies</h4><p class=\"text-gray-300\">Revolutionary MLB talent valuation with 94% accuracy.</p></div>' },\n            cardinals: { title: 'Cardinals Intelligence', content: '<div class=\"bg-gray-800 p-6 rounded-lg\"><h4 class=\"text-xl font-bold mb-4 text-red-500\">Real-Time Analytics</h4><p class=\"text-gray-300\">87% win prediction, 24 live metrics.</p></div>' },\n            blaze: { title: 'Blaze Intelligence', content: '<div class=\"bg-gray-800 p-6 rounded-lg\"><h4 class=\"text-xl font-bold mb-4 text-orange-500\">Cognitive Analytics</h4><p class=\"text-gray-300\">100K+ events/second, 6 AI models.</p></div>' },\n            spectrum: { title: 'Spectrum Success', content: '<div class=\"bg-gray-800 p-6 rounded-lg\"><h4 class=\"text-xl font-bold mb-4 text-purple-500\">47% Revenue Growth</h4><p class=\"text-gray-300\">Media optimization, 3.2x ROI improvement.</p></div>' },\n            northwestern: { title: 'Northwestern Achievement', content: '<div class=\"bg-gray-800 p-6 rounded-lg\"><h4 class=\"text-xl font-bold mb-4 text-yellow-500\">Top 10 National</h4><p class=\"text-gray-300\">Power of 10 award, $2.3M assets.</p></div>' },\n            mcp: { title: 'AI MCP Servers', content: '<div class=\"bg-gray-800 p-6 rounded-lg\"><h4 class=\"text-xl font-bold mb-4 text-cyan-500\">7 Active Servers</h4><p class=\"text-gray-300\">99% uptime, 3ms response time.</p></div>' }\n        };\n\n        const modal = document.createElement('div');\n        modal.innerHTML = '<div class=\"fixed inset-0 bg-black bg-opacity-80 z-50 hidden items-center justify-center\" id=\"demo-modal\"><div class=\"bg-gray-900 rounded-lg p-8 max-w-3xl w-full mx-4\"><div class=\"flex justify-between items-center mb-6\"><h3 id=\"modal-title\" class=\"text-2xl font-bold\"></h3><button id=\"close-modal\" class=\"text-gray-400 hover:text-white text-2xl\">&times;</button></div><div id=\"modal-content\"></div></div></div>';\n        document.body.appendChild(modal.firstElementChild);\n\n        setTimeout(() => {\n            document.querySelectorAll('.demo-btn').forEach(btn => {\n                btn.addEventListener('click', (e) => {\n                    e.stopPropagation();\n                    const demo = demoData[btn.dataset.demo];\n                    if (demo) {\n                        document.getElementById('modal-title').textContent = demo.title;\n                        document.getElementById('modal-content').innerHTML = demo.content;\n                        document.getElementById('demo-modal').classList.remove('hidden');\n                        document.getElementById('demo-modal').classList.add('flex');\n                    }\n                });\n            });\n            const closeBtn = document.getElementById('close-modal');\n            if (closeBtn) {\n                closeBtn.addEventListener('click', () => {\n                    document.getElementById('demo-modal').classList.add('hidden');\n                    document.getElementById('demo-modal').classList.remove('flex');\n                });\n            }\n        }, 1000);\n\n        // Smart Contact System with Context Awareness\n        const visitorData = {\n            projectsViewed: [],\n            demosOpened: [],\n            timeOnSite: Date.now(),\n            scrollDepth: 0,\n            interests: []\n        };\n\n        // Track visitor behavior\n        document.querySelectorAll('.project-card').forEach(card => {\n            card.addEventListener('click', () => {\n                const project = card.getAttribute('data-project');\n                if (project && !visitorData.projectsViewed.includes(project)) {\n                    visitorData.projectsViewed.push(project);\n                }\n            });\n        });\n\n        // Track scroll depth\n        let maxScroll = 0;\n        window.addEventListener('scroll', () => {\n            const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);\n            if (scrollPercent > maxScroll) {\n                maxScroll = scrollPercent;\n                visitorData.scrollDepth = maxScroll;\n            }\n        });\n\n        // Analytics Event Tracking\n        const trackAnalytics = (event, data = {}) => {\n            console.log('📊 Analytics Event:', event, data);\n            // In production: gtag('event', event, data) or similar\n        };\n\n        // Track demo interactions\n        document.addEventListener('click', (e) => {\n            if (e.target.classList.contains('demo-btn')) {\n                const project = e.target.getAttribute('data-demo');\n                trackAnalytics('demo_opened', { project_name: project });\n                visitorData.demosOpened.push(project);\n            }\n        });\n\n        // Track engagement metrics on page unload\n        window.addEventListener('beforeunload', () => {\n            const sessionData = {\n                ...visitorData,\n                sessionDuration: Math.round((Date.now() - visitorData.timeOnSite) / 1000),\n                timestamp: new Date().toISOString()\n            };\n            trackAnalytics('session_end', sessionData);\n        });\n\n        console.log('%c🔥 APEX Intelligence System with Interactive Demos & Analytics Initialized', 
+        console.log('%c🔥 APEX Intelligence System Initialized (No Loading Screen)', 
                     'font-size: 20px; font-weight: bold; color: #BF5700;');
     </script>
 </body>
