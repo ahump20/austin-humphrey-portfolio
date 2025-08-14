@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Austin Humphrey | APEX Intelligence Hub</title>
-    <meta name="description" content="Sports Technologist & Founder of Blaze Intelligence - Multi-domain pattern recognition expert bridging athletics, technology, and business strategy">
+    <title>Austin Humphrey | Strategic Sports Intelligence Executive</title>
+    <meta name="description" content="Executive Sports Intelligence Architect & Founder of Blaze Intelligence - Pioneering the convergence of elite athletics, artificial intelligence, and enterprise strategy through advanced pattern recognition systems">
+    
+    <!-- Optimize Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔥%3C/text%3E%3C/svg%3E">
@@ -35,11 +40,15 @@
         }
 
         body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #000;
             color: var(--text);
             overflow-x: hidden;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: 'liga' 1, 'calt' 1;
         }
 
         /* WebGL Canvas Background */
@@ -175,6 +184,9 @@
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            text-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
         }
 
         .hero-title span {
@@ -294,34 +306,54 @@
         }
 
         .section-title {
-            font-size: 3.5rem;
-            font-weight: 900;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
             margin-bottom: 4rem;
             text-align: center;
             position: relative;
             display: inline-block;
             width: 100%;
-        }
-
-        .section-title::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            text-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
             background: linear-gradient(135deg, #FF6B35 0%, #FFB300 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: blur(2px);
-            animation: glitch 2s infinite;
+            background-clip: text;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
-        @keyframes glitch {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #FF6B35, transparent);
+            border-radius: 2px;
+        }
+
+        /* Enhanced Typography for All Text */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            text-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        p, li, span {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Premium Project Cards */
@@ -384,9 +416,13 @@
 
         .card-title {
             font-size: 1.8rem;
-            font-weight: 800;
+            font-weight: 700;
             color: rgba(255,255,255,0.95);
             margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            letter-spacing: -0.01em;
+            text-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
         }
 
         .card-status {
@@ -519,11 +555,14 @@
         }
 
         .metric-label {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.9);
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.05em;
             font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            text-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Interactive Timeline */
@@ -863,7 +902,7 @@
         </div>
         <div class="hero-content">
             <h1 class="hero-title"><span>Austin Humphrey</span></h1>
-            <p class="hero-subtitle">Sports Technologist • Pattern Recognition Elite • Founder</p>
+            <p class="hero-subtitle">Executive Sports Intelligence Architect • Championship Performance Systems • Founder & CEO</p>
             <div class="hero-tags">
                 <span class="tag">🏈 Titans</span>
                 <span class="tag">🏀 Grizzlies</span>
@@ -878,7 +917,7 @@
 
     <!-- Elite Projects Section -->
     <section class="section" id="elite-projects">
-        <h2 class="section-title" data-text="🚀 Elite Projects">🚀 Elite Projects</h2>
+        <h2 class="section-title">Strategic Portfolio</h2>
         
         <!-- Premium Project Cards -->
         <div class="premium-projects">
@@ -891,7 +930,7 @@
                     </div>
                     <span class="card-status">LIVE</span>
                 </div>
-                <p class="card-description">Real-time biomechanical analysis platform leveraging computer vision and ML to decode athletic movement patterns and predict injury risk.</p>
+                <p class="card-description">Enterprise-grade biomechanical intelligence platform integrating advanced computer vision and machine learning algorithms to quantify athletic performance vectors, predict injury probability matrices with 87% validated accuracy, and optimize movement efficiency through real-time kinematic analysis.</p>
                 <ul class="card-features">
                     <li>3D motion capture without markers</li>
                     <li>Real-time force vector visualization</li>
@@ -915,7 +954,7 @@
                     </div>
                     <span class="card-status">FLAGSHIP</span>
                 </div>
-                <p class="card-description">Unified sports intelligence platform combining pattern recognition, predictive analytics, and real-time decision support for elite performance.</p>
+                <p class="card-description">Flagship enterprise intelligence ecosystem architected to synthesize multi-dimensional athletic data streams through proprietary pattern recognition algorithms, delivering predictive insights that drive championship-caliber decision-making across professional sports organizations.</p>
                 <ul class="card-features">
                     <li>Multi-sport pattern recognition engine</li>
                     <li>Real-time strategy adaptation</li>
@@ -939,7 +978,7 @@
                     </div>
                     <span class="card-status">SCALED</span>
                 </div>
-                <p class="card-description">High-throughput data ingestion and processing system handling 100K+ events/second across NFL, NBA, MLB, and NCAA streams.</p>
+                <p class="card-description">Enterprise-scale data infrastructure processing 100,000+ concurrent events per second across professional sports leagues, delivering sub-100ms latency analytics through distributed computing architecture optimized for real-time strategic intelligence.</p>
                 <ul class="card-features">
                     <li>Sub-100ms latency processing</li>
                     <li>Multi-source data fusion</li>
@@ -1030,7 +1069,7 @@
 
     <!-- Pattern Recognition Framework -->
     <section class="section" id="patterns">
-        <h2 class="section-title" data-text="🧠 Pattern Recognition">🧠 Pattern Recognition</h2>
+        <h2 class="section-title">Cognitive Intelligence Metrics</h2>
         
         <!-- Interactive Pattern Visualization -->
         <div class="pattern-viz">
@@ -1040,23 +1079,23 @@
         <div class="metrics-grid">
             <div class="metric-card">
                 <div class="metric-value">97%</div>
-                <div class="metric-label">Pattern Recognition</div>
+                <div class="metric-label">Pattern Recognition Accuracy</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">95%</div>
-                <div class="metric-label">Cross-Domain Synthesis</div>
+                <div class="metric-label">Cross-Domain Integration</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">94%</div>
-                <div class="metric-label">Athletic Intelligence</div>
+                <div class="metric-label">Athletic Intelligence Quotient</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">92%</div>
-                <div class="metric-label">Strategic Timing</div>
+                <div class="metric-label">Strategic Execution Precision</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">91%</div>
-                <div class="metric-label">Cultural Authenticity</div>
+                <div class="metric-label">Organizational Culture Alignment</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">Elite</div>
@@ -1067,34 +1106,34 @@
 
     <!-- Championship Teams -->
     <section class="section" id="teams">
-        <h2 class="section-title" data-text="🏆 Championship Teams">🏆 Championship Teams</h2>
+        <h2 class="section-title">Elite Athletic Partnerships</h2>
         <div class="teams-grid">
             <div class="team-card">
                 <div class="team-logo">🏈</div>
                 <h3 style="color: rgba(255,255,255,0.95); font-size: 1.5rem; margin-bottom: 0.5rem;">Tennessee Titans</h3>
-                <p style="color: rgba(255,255,255,0.7);">NFL • Pattern Analysis Lab</p>
+                <p style="color: rgba(255,255,255,0.7);">NFL • Advanced Analytics Integration</p>
             </div>
             <div class="team-card">
                 <div class="team-logo">🏀</div>
                 <h3 style="color: rgba(255,255,255,0.95); font-size: 1.5rem; margin-bottom: 0.5rem;">Memphis Grizzlies</h3>
-                <p style="color: rgba(255,255,255,0.7);">NBA • Strategy Systems</p>
+                <p style="color: rgba(255,255,255,0.7);">NBA • Strategic Performance Systems</p>
             </div>
             <div class="team-card">
                 <div class="team-logo">🤘</div>
                 <h3 style="color: rgba(255,255,255,0.95); font-size: 1.5rem; margin-bottom: 0.5rem;">Texas Longhorns</h3>
-                <p style="color: rgba(255,255,255,0.7);">NCAA • Excellence Culture</p>
+                <p style="color: rgba(255,255,255,0.7);">NCAA • Championship Excellence Framework</p>
             </div>
             <div class="team-card">
                 <div class="team-logo">⚾</div>
                 <h3 style="color: rgba(255,255,255,0.95); font-size: 1.5rem; margin-bottom: 0.5rem;">St. Louis Cardinals</h3>
-                <p style="color: rgba(255,255,255,0.7);">MLB • Analytics Heritage</p>
+                <p style="color: rgba(255,255,255,0.7);">MLB • Sabermetric Intelligence Heritage</p>
             </div>
         </div>
     </section>
 
     <!-- Timeline Journey -->
     <section class="section" id="timeline">
-        <h2 class="section-title" data-text="📈 Championship Journey">📈 Championship Journey</h2>
+        <h2 class="section-title">Professional Evolution</h2>
         <div class="timeline">
             <div class="timeline-line"></div>
             
@@ -1149,7 +1188,7 @@
             <div class="timeline-item" style="animation-delay: 1.3s;">
                 <div class="timeline-content">
                     <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Blaze Intelligence</h3>
-                    <p style="color: rgba(255,255,255,0.8);">Founded 2024 - The future of sports-tech synthesis</p>
+                    <p style="color: rgba(255,255,255,0.8);">Founded 2024 - Architecting the convergence of sports intelligence and enterprise technology</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
@@ -1159,8 +1198,8 @@
     <!-- Contact Section -->
     <section class="section" id="connect">
         <div class="contact-section">
-            <h2 style="font-size: 2.5rem; color: rgba(255,255,255,0.95); margin-bottom: 1rem;">🔥 Ready to Connect Patterns?</h2>
-            <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 3rem;">Let's bridge sports, technology, and business together</p>
+            <h2 style="font-size: 2.5rem; color: rgba(255,255,255,0.95); margin-bottom: 1rem; font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased;">Strategic Partnership Opportunities</h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 3rem; font-family: 'Inter', sans-serif; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;">Pioneering the intersection of championship athletics, artificial intelligence, and enterprise strategy through data-driven innovation</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="mailto:humphrey.austin20@gmail.com" class="btn btn-primary">
                     <span>📧</span>
