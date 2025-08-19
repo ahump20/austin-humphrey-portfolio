@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/austin-humphrey-portfolio/static/css/main.284198f7.css",
+    "main.js": "/austin-humphrey-portfolio/static/js/main.ad3e9483.js",
+    "index.html": "/austin-humphrey-portfolio/index.html",
+    "main.284198f7.css.map": "/austin-humphrey-portfolio/static/css/main.284198f7.css.map",
+    "main.ad3e9483.js.map": "/austin-humphrey-portfolio/static/js/main.ad3e9483.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.284198f7.css",
+    "static/js/main.ad3e9483.js"
+  ]
+}
