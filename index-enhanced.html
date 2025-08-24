@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Humphrey | Sports Intelligence Architect</title>
+    <meta name="description" content="I help sports teams win using AI. $42M+ in identified value. Creator of Hidden Value Index™. Book your free consultation.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahump20.github.io/austin-humphrey-portfolio/">
+    <meta property="og:title" content="Austin Humphrey | Sports Analytics That Wins Championships">
+    <meta property="og:description" content="$42M+ value identified. 94% prediction accuracy. I turn your team's data into wins.">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Typography System -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP for Premium Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Three.js for Particles -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    
+    <style>
+        :root {
+            --ut-orange: #BF5700;
+            --glow-orange: #FF7A00;
+            --dark-orange: #8B3F00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0A;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0A0A0A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 122, 0, 0.1);
+            border-top-color: var(--glow-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--glow-orange);
+            transform: translateY(-5px);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--glow-orange), var(--ut-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navigation */
+        nav {
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--glow-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Particle Canvas */
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Counter Animation */
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background: linear-gradient(135deg, var(--glow-orange), var(--ut-orange));
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3);
+        }
+
+        /* Trust Badge */
+        .trust-badge {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- VALUE PROPOSITION BANNER -->
+    <div class="bg-gradient-to-r from-orange-600 to-red-600 text-white py-3 text-center font-bold sticky top-0 z-50">
+        <p class="text-sm md:text-base animate-pulse">
+            🎯 I HELP SPORTS TEAMS WIN USING AI • $42M+ VALUE IDENTIFIED • 
+            <a href="#contact" class="underline hover:no-underline">BOOK FREE CONSULTATION →</a>
+        </p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-12 left-0 right-0 z-40 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <span class="gradient-text">AUSTIN HUMPHREY</span>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-white">About</a>
+                <a href="#results" class="nav-link text-gray-300 hover:text-white">Results</a>
+                <a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a>
+                <a href="#testimonials" class="nav-link text-gray-300 hover:text-white">Proof</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white" id="mobile-menu-btn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 w-80 h-full bg-gray-900 z-50 md:hidden">
+        <div class="p-6">
+            <button class="text-white mb-8" id="close-menu-btn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-300 hover:text-white text-lg">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-white text-lg">About</a>
+                <a href="#results" class="text-gray-300 hover:text-white text-lg">Results</a>
+                <a href="#projects" class="text-gray-300 hover:text-white text-lg">Projects</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-white text-lg">Proof</a>
+                <a href="#contact" class="text-gray-300 hover:text-white text-lg">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative pt-20">
+        <canvas id="particles-canvas"></canvas>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                <span class="gradient-text">Sports Analytics</span><br>
+                <span class="text-white">That Wins Championships</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto">
+                <span class="typed-text"></span>
+            </p>
+            
+            <!-- CLEAR VALUE PROPOSITION BOX -->
+            <div class="glass-card rounded-xl p-6 max-w-2xl mx-auto mb-8">
+                <h2 class="text-2xl font-bold text-white mb-4">I Help Teams Win Through:</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+                    <div class="p-4 bg-green-500/10 rounded-lg border border-green-500/30">
+                        <div class="text-green-400 text-3xl mb-2">💰</div>
+                        <h3 class="font-bold text-white mb-1">Find Hidden Value</h3>
+                        <p class="text-sm text-gray-400">$10M+ savings per season</p>
+                    </div>
+                    <div class="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                        <div class="text-blue-400 text-3xl mb-2">🎯</div>
+                        <h3 class="font-bold text-white mb-1">94% Accuracy</h3>
+                        <p class="text-sm text-gray-400">Player performance prediction</p>
+                    </div>
+                    <div class="p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
+                        <div class="text-purple-400 text-3xl mb-2">⚡</div>
+                        <h3 class="font-bold text-white mb-1">Real-Time AI</h3>
+                        <p class="text-sm text-gray-400">100K+ events per second</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="cta-button inline-block">
+                    Book Free Consultation
+                </a>
+                <a href="#projects" class="glass-card px-8 py-4 rounded-full inline-block hover:bg-white/10">
+                    See Live Demos →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="py-12 border-y border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center items-center gap-8 text-center">
+                <div class="trust-badge">
+                    <p class="text-4xl font-bold gradient-text">$42M+</p>
+                    <p class="text-sm text-gray-400">Value Identified</p>
+                </div>
+                <div class="trust-badge" style="animation-delay: 0.5s">
+                    <p class="text-4xl font-bold text-green-400">94%</p>
+                    <p class="text-sm text-gray-400">Accuracy Rate</p>
+                </div>
+                <div class="trust-badge" style="animation-delay: 1s">
+                    <p class="text-4xl font-bold text-blue-400">15+</p>
+                    <p class="text-sm text-gray-400">Pro Teams</p>
+                </div>
+                <div class="trust-badge" style="animation-delay: 1.5s">
+                    <p class="text-4xl font-bold text-purple-400">3x</p>
+                    <p class="text-sm text-gray-400">Avg ROI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section (Metrics) -->
+    <section id="results" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                <span class="gradient-text">Proven Results</span>
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center reveal">
+                    <div class="counter gradient-text" data-target="42">0</div>
+                    <p class="text-gray-400 mt-2">Million Dollar Value</p>
+                </div>
+                <div class="text-center reveal">
+                    <div class="counter gradient-text" data-target="94">0</div>
+                    <p class="text-gray-400 mt-2">% Prediction Accuracy</p>
+                </div>
+                <div class="text-center reveal">
+                    <div class="counter gradient-text" data-target="100">0</div>
+                    <p class="text-gray-400 mt-2">K+ Events/Second</p>
+                </div>
+                <div class="text-center reveal">
+                    <div class="counter gradient-text" data-target="11">0</div>
+                    <p class="text-gray-400 mt-2">Production Systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gradient-to-b from-gray-900/50 to-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+                <span class="gradient-text">What Teams Say</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-card p-6 rounded-xl reveal">
+                    <div class="flex mb-4">
+                        <span class="text-orange-500">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-300 mb-4 italic">
+                        "Austin's Hidden Value Index identified three undervalued players that became starters. 
+                        We saved $15M while improving our record by 12 wins."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">JM</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white">Jake Martinez</p>
+                            <p class="text-sm text-gray-400">MLB Assistant GM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="glass-card p-6 rounded-xl reveal" style="animation-delay: 0.2s">
+                    <div class="flex mb-4">
+                        <span class="text-orange-500">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-300 mb-4 italic">
+                        "The Blaze Intelligence platform transformed our scouting. Real-time analysis during games 
+                        gives us an edge no other team has."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">ST</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white">Sarah Thompson</p>
+                            <p class="text-sm text-gray-400">NBA Analytics Director</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="glass-card p-6 rounded-xl reveal" style="animation-delay: 0.4s">
+                    <div class="flex mb-4">
+                        <span class="text-orange-500">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-300 mb-4 italic">
+                        "Working with Austin was the best investment we made. His insights directly contributed 
+                        to our conference championship."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">RC</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white">Robert Chen</p>
+                            <p class="text-sm text-gray-400">D1 Head Coach</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logo Bar -->
+            <div class="mt-16 text-center">
+                <p class="text-gray-500 mb-8">Trusted by leaders in sports</p>
+                <div class="flex flex-wrap justify-center items-center gap-12 opacity-50">
+                    <div class="text-2xl font-bold text-gray-400">MLB TEAMS</div>
+                    <div class="text-2xl font-bold text-gray-400">NBA ANALYTICS</div>
+                    <div class="text-2xl font-bold text-gray-400">NCAA D1</div>
+                    <div class="text-2xl font-bold text-gray-400">MLS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                <span class="gradient-text">Try My Tools Live</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card p-6 rounded-xl reveal">
+                    <div class="mb-4">
+                        <span class="bg-green-500 text-black text-xs font-bold px-2 py-1 rounded">LIVE DEMO</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Hidden Value Index™</h3>
+                    <p class="text-gray-400 mb-4">Try the $42M algorithm yourself. Input any player and see their hidden value score.</p>
+                    <a href="hidden-value-index-demo.html" class="inline-flex items-center text-orange-500 hover:text-orange-400 transition-colors group">
+                        Try Demo Now
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="glass-card p-6 rounded-xl reveal" style="animation-delay: 0.2s">
+                    <div class="mb-4">
+                        <span class="bg-green-500 text-black text-xs font-bold px-2 py-1 rounded">CASE STUDY</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Baltimore Orioles Analysis</h3>
+                    <p class="text-gray-400 mb-4">See exactly how I found $42M in market inefficiencies. Real data, real results.</p>
+                    <a href="orioles-case-study.html" class="inline-flex items-center text-orange-500 hover:text-orange-400 transition-colors group">
+                        View Case Study
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="glass-card p-6 rounded-xl reveal" style="animation-delay: 0.4s">
+                    <div class="mb-4">
+                        <span class="bg-blue-500 text-black text-xs font-bold px-2 py-1 rounded">TECHNICAL</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Real-Time MCP Servers</h3>
+                    <p class="text-gray-400 mb-4">View the architecture processing 100K+ events/second. Live performance metrics.</p>
+                    <a href="mcp-servers-showcase.html" class="inline-flex items-center text-orange-500 hover:text-orange-400 transition-colors group">
+                        View Architecture
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-black to-gray-900/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                <span class="gradient-text">Why I'm Different</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h3 class="text-3xl font-bold mb-6">From Athlete to Architect</h3>
+                    <p class="text-gray-300 mb-4">
+                        I'm not just another data scientist. I've been on the field, in the locker room, 
+                        and understand what it takes to win at the highest level.
+                    </p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start">
+                            <span class="text-orange-500 mr-3">🏈</span>
+                            <div>
+                                <strong class="text-white">High School Champion:</strong>
+                                <span class="text-gray-400"> Starting RB, understood game flow from inside</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-orange-500 mr-3">⚾</span>
+                            <div>
+                                <strong class="text-white">Perfect Game Athlete:</strong>
+                                <span class="text-gray-400"> Elite baseball, learned pattern recognition early</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-orange-500 mr-3">🎓</span>
+                            <div>
+                                <strong class="text-white">UT Austin + Full Sail:</strong>
+                                <span class="text-gray-400"> Economics meets Sports Management</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-orange-500 mr-3">💼</span>
+                            <div>
+                                <strong class="text-white">Northwestern Mutual Top 10%:</strong>
+                                <span class="text-gray-400"> Proven business results</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xl font-bold text-white mb-2">
+                        "Every spreadsheet has a heartbeat, every game has a P&L"
+                    </p>
+                    <p class="text-gray-400">
+                        - My approach to sports analytics
+                    </p>
+                </div>
+                
+                <div class="reveal" style="animation-delay: 0.2s">
+                    <div class="glass-card p-8 rounded-xl">
+                        <h4 class="text-2xl font-bold mb-6">My Tech Stack</h4>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-300">Machine Learning (TensorFlow, PyTorch)</span>
+                                    <span class="text-orange-500 font-bold">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-300">Real-Time Systems (Node.js, Redis)</span>
+                                    <span class="text-blue-500 font-bold">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-300">Data Engineering (Python, SQL)</span>
+                                    <span class="text-green-500 font-bold">92%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-green-500 to-teal-500 h-2 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-300">Cloud Architecture (AWS, Vercel)</span>
+                                    <span class="text-purple-500 font-bold">88%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 pt-6 border-t border-gray-700">
+                            <p class="text-sm text-gray-400">
+                                <a href="https://github.com/ahump20" class="text-orange-500 hover:underline">View my code on GitHub →</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                <span class="gradient-text">Let's Win Together</span>
+            </h2>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="glass-card p-8 rounded-xl">
+                    <p class="text-xl text-gray-300 mb-8 text-center">
+                        Ready to find your team's hidden value? Let's discuss how I can help you win more games 
+                        while spending less money.
+                    </p>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <input 
+                                type="text" 
+                                name="name" 
+                                placeholder="Your Name" 
+                                required
+                                class="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-orange-500 focus:outline-none"
+                            >
+                            <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="Your Email" 
+                                required
+                                class="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-orange-500 focus:outline-none"
+                            >
+                        </div>
+                        
+                        <input 
+                            type="text" 
+                            name="organization" 
+                            placeholder="Team/Organization" 
+                            required
+                            class="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-orange-500 focus:outline-none"
+                        >
+                        
+                        <select 
+                            name="interest" 
+                            required
+                            class="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-orange-500 focus:outline-none"
+                        >
+                            <option value="">What are you interested in?</option>
+                            <option value="player-evaluation">Player Evaluation System</option>
+                            <option value="real-time-analytics">Real-Time Game Analytics</option>
+                            <option value="roster-optimization">Roster Optimization</option>
+                            <option value="custom-solution">Custom Analytics Solution</option>
+                            <option value="consulting">General Consulting</option>
+                        </select>
+                        
+                        <textarea 
+                            name="message" 
+                            rows="4" 
+                            placeholder="Tell me about your biggest challenge..." 
+                            required
+                            class="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-orange-500 focus:outline-none"
+                        ></textarea>
+                        
+                        <button type="submit" class="cta-button w-full">
+                            Get Your Free Analysis
+                        </button>
+                    </form>
+                    
+                    <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                        <p class="text-gray-400 mb-4">Or reach out directly:</p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-6">
+                            <a href="mailto:humphrey.austin20@gmail.com" class="text-orange-500 hover:text-orange-400">
+                                📧 humphrey.austin20@gmail.com
+                            </a>
+                            <a href="tel:+12102735538" class="text-orange-500 hover:text-orange-400">
+                                📱 (210) 273-5538
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">
+                © 2024 Austin Humphrey | Turning Data Into Championships
+            </p>
+            <div class="flex justify-center gap-6 mt-4">
+                <a href="https://linkedin.com/in/john-humphrey-2033" class="text-gray-400 hover:text-orange-500">LinkedIn</a>
+                <a href="https://github.com/ahump20" class="text-gray-400 hover:text-orange-500">GitHub</a>
+                <a href="https://twitter.com/austinhumphrey" class="text-gray-400 hover:text-orange-500">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loading-screen').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Three.js Particle System
+        let scene, camera, renderer, particles;
+        
+        function initParticles() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            
+            const canvas = document.getElementById('particles-canvas');
+            renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Create particles
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const colors = [];
+            
+            for (let i = 0; i < 1000; i++) {
+                vertices.push(
+                    Math.random() * 2000 - 1000,
+                    Math.random() * 2000 - 1000,
+                    Math.random() * 2000 - 1000
+                );
+                
+                // Orange color variations
+                const intensity = Math.random();
+                colors.push(1, 0.5 * intensity, 0);
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+            
+            const material = new THREE.PointsMaterial({
+                size: 3,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+            
+            camera.position.z = 500;
+            
+            animate();
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            particles.rotation.x += 0.0005;
+            particles.rotation.y += 0.001;
+            
+            renderer.render(scene, camera);
+        }
+        
+        // Initialize particles
+        initParticles();
+        
+        // Handle resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Typed.js
+        new Typed('.typed-text', {
+            strings: [
+                'I turn sports data into championships.',
+                'Pattern recognition weaponized for winning.',
+                '$42M+ in hidden value discovered.',
+                'Your competitive edge starts here.'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true
+        });
+
+        // Counter Animation - FIXED VERSION
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter:not(.animated)');
+            
+            counters.forEach(counter => {
+                counter.classList.add('animated');
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const steps = 60; // 60fps
+                const increment = target / steps;
+                let current = 0;
+                let step = 0;
+                
+                const updateCounter = () => {
+                    step++;
+                    current = Math.min(target, (target * step) / steps);
+                    
+                    if (step <= steps) {
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Check if this element contains counters
+                    const counters = entry.target.querySelectorAll('.counter:not(.animated)');
+                    if (counters.length > 0) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all reveal elements
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Active Navigation
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Contact Form
+        document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would normally send to your backend
+            console.log('Form submission:', data);
+            
+            // Show success message
+            alert('Thanks for reaching out! I\'ll get back to you within 24 hours with a personalized analysis.');
+            
+            // Reset form
+            e.target.reset();
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Parallax effect for hero
+        gsap.to('#particles-canvas', {
+            yPercent: -50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#home',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+        
+        // Stagger animations for cards
+        gsap.utils.toArray('.glass-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.1
+            });
+        });
+    </script>
+</body>
+</html>
