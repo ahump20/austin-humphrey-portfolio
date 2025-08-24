@@ -883,40 +883,6 @@
             gap: 1rem;
         }
 
-        /* Link Button Styles */
-        .link-button {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin: 0.25rem;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            color: var(--light);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .link-button:hover {
-            background: var(--primary);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--glow);
-        }
-
-        .team-links {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .espn-link:hover { background: #ff6b35; }
-        .twitter-link:hover { background: #1da1f2; }
-        .official-link:hover { background: var(--accent); }
-
         .external-link {
             display: flex;
             align-items: center;
@@ -967,200 +933,6 @@
 
         .modal-body::-webkit-scrollbar-thumb:hover {
             background: var(--primary-light);
-        }
-
-        /* Player Search Styles */
-        .toggle-container {
-            display: flex;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 0.25rem;
-            margin-bottom: 1rem;
-            width: fit-content;
-        }
-
-        .toggle-btn {
-            background: none;
-            border: none;
-            color: var(--light);
-            padding: 0.75rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .toggle-btn.active {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(191, 87, 0, 0.3);
-        }
-
-        .toggle-btn:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .search-controls {
-            display: flex;
-            gap: 1rem;
-            flex: 1;
-            align-items: center;
-        }
-
-        .player-search {
-            background: linear-gradient(135deg, var(--glass), rgba(255, 184, 28, 0.1));
-            border-color: var(--accent);
-        }
-
-        .player-filters {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-tag {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            color: var(--light);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .filter-tag:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .players-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .player-card {
-            background: linear-gradient(135deg, var(--glass), rgba(255, 184, 28, 0.05));
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .player-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(191, 87, 0, 0.2);
-            border-color: var(--primary);
-        }
-
-        .player-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .player-name {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .player-rating {
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .player-position {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .player-league {
-            font-size: 0.9rem;
-            color: var(--light);
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-
-        .player-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--light);
-            opacity: 0.7;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-value {
-            font-weight: 700;
-            color: var(--light);
-            font-size: 1.1rem;
-        }
-
-        .stat-value.clutch {
-            color: var(--primary);
-        }
-
-        .player-bio {
-            font-style: italic;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            color: var(--light);
-            opacity: 0.8;
-        }
-
-        .achievements-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 0.75rem;
-        }
-
-        .achievement-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: rgba(255, 184, 28, 0.1);
-            border: 1px solid var(--accent);
-            border-radius: 10px;
-            font-weight: 500;
-        }
-
-        .achievement-icon {
-            color: var(--accent);
-            font-size: 1.1rem;
         }
 
         /* Footer */
@@ -1316,37 +1088,6 @@ function Dashboard() {
   const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
   const [teamsData, setTeamsData] = useState([]);
   const [analyticsData, setAnalyticsData] = useState(null);
-  const [playerSearchTerm, setPlayerSearchTerm] = useState('');
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [showPlayerSearch, setShowPlayerSearch] = useState(false);
-
-  // Elite Player Database - 15 top athletes across multiple sports
-  const rawPlayersData = [
-    // MLB Players (3)
-    {"Player":"Mike Trout","Sport":"MLB","Team":"Los Angeles Angels","Position":"CF","Age":32,"Location":"Anaheim, CA","Championships":0,"Notes":"Generational talent with consistent MVP-level performance","Analytics":{"performanceIndex":96,"marketValue":426500000,"fanEngagement":91,"careerWAR":83.1,"proprietaryMetrics":["Elite Consistency: 97","Peak Performance: 95","Longevity Projection: 92"]},"Links":{"ESPN":"https://www.espn.com/mlb/player/_/id/30836/mike-trout","Twitter":"https://twitter.com/MikeTrout","MLB":"https://www.mlb.com/player/mike-trout-545361"}},
-    {"Player":"Aaron Judge","Sport":"MLB","Team":"New York Yankees","Position":"RF","Age":32,"Location":"New York, NY","Championships":0,"Notes":"Home run champion with elite power and leadership","Analytics":{"performanceIndex":93,"marketValue":360000000,"fanEngagement":89,"careerWAR":37.2,"proprietaryMetrics":["Power Rating: 98","Clutch Performance: 91","Leadership: 94"]},"Links":{"ESPN":"https://www.espn.com/mlb/player/_/id/33192/aaron-judge","Twitter":"https://twitter.com/TheJudge44","MLB":"https://www.mlb.com/player/aaron-judge-592450"}},
-    {"Player":"Mookie Betts","Sport":"MLB","Team":"Los Angeles Dodgers","Position":"RF","Age":31,"Location":"Los Angeles, CA","Championships":2,"Notes":"Elite all-around player with championship pedigree","Analytics":{"performanceIndex":95,"marketValue":365000000,"fanEngagement":87,"careerWAR":62.3,"proprietaryMetrics":["All-Around Excellence: 96","Championship DNA: 93","Consistency: 95"]},"Links":{"ESPN":"https://www.espn.com/mlb/player/_/id/33039/mookie-betts","Twitter":"https://twitter.com/mookiebetts","MLB":"https://www.mlb.com/player/mookie-betts-605141"}},
-    
-    // NFL Players (3)
-    {"Player":"Patrick Mahomes","Sport":"NFL","Team":"Kansas City Chiefs","Position":"QB","Age":29,"Location":"Kansas City, MO","Championships":3,"Notes":"Dynamic quarterback leading current NFL dynasty","Analytics":{"performanceIndex":97,"marketValue":450000000,"fanEngagement":94,"careerRating":105.8,"proprietaryMetrics":["Clutch Performance: 98","Innovation: 96","Championship DNA: 97"]},"Links":{"ESPN":"https://www.espn.com/nfl/player/_/id/3139477/patrick-mahomes","Twitter":"https://twitter.com/PatrickMahomes","NFL":"https://www.nfl.com/players/patrick-mahomes/"}},
-    {"Player":"Josh Allen","Sport":"NFL","Team":"Buffalo Bills","Position":"QB","Age":28,"Location":"Buffalo, NY","Championships":0,"Notes":"Dual-threat quarterback with elite arm strength and mobility","Analytics":{"performanceIndex":94,"marketValue":258000000,"fanEngagement":92,"careerRating":89.2,"proprietaryMetrics":["Arm Strength: 98","Mobility: 93","Leadership: 95"]},"Links":{"ESPN":"https://www.espn.com/nfl/player/_/id/3918298/josh-allen","Twitter":"https://twitter.com/JoshAllenQB","NFL":"https://www.nfl.com/players/josh-allen/"}},
-    {"Player":"Derrick Henry","Sport":"NFL","Team":"Tennessee Titans","Position":"RB","Age":30,"Location":"Nashville, TN","Championships":0,"Notes":"Elite power runner with exceptional size-speed combination","Analytics":{"performanceIndex":91,"marketValue":50000000,"fanEngagement":88,"careerYards":9502,"proprietaryMetrics":["Power Rating: 97","Durability: 93","Big Play Ability: 89"]},"Links":{"ESPN":"https://www.espn.com/nfl/player/_/id/2976499/derrick-henry","Twitter":"https://twitter.com/KingHenry_2","NFL":"https://www.nfl.com/players/derrick-henry/"}},
-    
-    // NBA Players (3)
-    {"Player":"LeBron James","Sport":"NBA","Team":"Los Angeles Lakers","Position":"SF","Age":39,"Location":"Los Angeles, CA","Championships":4,"Notes":"All-time great with unparalleled longevity and basketball IQ","Analytics":{"performanceIndex":94,"marketValue":120000000,"fanEngagement":96,"careerPoints":38652,"proprietaryMetrics":["Basketball IQ: 99","Longevity: 98","Clutch Performance: 94"]},"Links":{"ESPN":"https://www.espn.com/nba/player/_/id/1966/lebron-james","Twitter":"https://twitter.com/KingJames","NBA":"https://www.nba.com/player/2544/lebron-james"}},
-    {"Player":"Luka Doncic","Sport":"NBA","Team":"Dallas Mavericks","Position":"PG","Age":25,"Location":"Dallas, TX","Championships":0,"Notes":"Triple-double machine with elite court vision and clutch gene","Analytics":{"performanceIndex":96,"marketValue":215000000,"fanEngagement":91,"careerTripleDoubles":78,"proprietaryMetrics":["Court Vision: 97","Clutch Factor: 95","Basketball IQ: 96"]},"Links":{"ESPN":"https://www.espn.com/nba/player/_/id/3945274/luka-doncic","Twitter":"https://twitter.com/luka7doncic","NBA":"https://www.nba.com/player/1629029/luka-doncic"}},
-    {"Player":"Ja Morant","Sport":"NBA","Team":"Memphis Grizzlies","Position":"PG","Age":25,"Location":"Memphis, TN","Championships":0,"Notes":"Explosive athletic guard with elite playmaking and highlight-reel dunks","Analytics":{"performanceIndex":89,"marketValue":193000000,"fanEngagement":93,"careerPPG":22.5,"proprietaryMetrics":["Athleticism: 98","Playmaking: 91","Entertainment Value: 96"]},"Links":{"ESPN":"https://www.espn.com/nba/player/_/id/4066421/ja-morant","Twitter":"https://twitter.com/JaMorant","NBA":"https://www.nba.com/player/1629630/ja-morant"}},
-    
-    // College Football (3)
-    {"Player":"Quinn Ewers","Sport":"College Football","Team":"Texas Longhorns","Position":"QB","Age":21,"Location":"Austin, TX","Championships":0,"Notes":"Elite quarterback prospect leading championship contenders","Analytics":{"performanceIndex":91,"marketValue":2500000,"fanEngagement":87,"completionPct":67.8,"proprietaryMetrics":["Arm Talent: 94","Leadership: 89","Championship Potential: 92"]},"Links":{"ESPN":"https://www.espn.com/college-football/player/_/id/4870414/quinn-ewers","Twitter":"https://twitter.com/QuinnEwers","247Sports":"https://247sports.com/Player/Quinn-Ewers-46050757/"}},
-    {"Player":"Caleb Williams","Sport":"College Football","Team":"USC Trojans","Position":"QB","Age":22,"Location":"Los Angeles, CA","Championships":0,"Notes":"Dynamic quarterback with exceptional mobility and arm strength","Analytics":{"performanceIndex":93,"marketValue":3000000,"fanEngagement":89,"passingYards":8170,"proprietaryMetrics":["Mobility: 95","Arm Strength: 92","Playmaking: 94"]},"Links":{"ESPN":"https://www.espn.com/college-football/player/_/id/4685669/caleb-williams","Twitter":"https://twitter.com/CALEBcsw","247Sports":"https://247sports.com/Player/Caleb-Williams-46057248/"}},
-    {"Player":"Bo Nix","Sport":"College Football","Team":"Oregon Ducks","Position":"QB","Age":24,"Location":"Eugene, OR","Championships":0,"Notes":"Experienced quarterback with high football IQ and accuracy","Analytics":{"performanceIndex":88,"marketValue":1800000,"fanEngagement":83,"completionPct":77.4,"proprietaryMetrics":["Football IQ: 91","Accuracy: 89","Experience: 95"]},"Links":{"ESPN":"https://www.espn.com/college-football/player/_/id/4036378/bo-nix","Twitter":"https://twitter.com/BoNix10","247Sports":"https://247sports.com/Player/Bo-Nix-46048178/"}},
-    
-    // International Sports (3)
-    {"Player":"Lionel Messi","Sport":"Soccer","Team":"Inter Miami","Position":"RW","Age":36,"Location":"Miami, FL","Championships":1,"Notes":"GOAT candidate bringing global attention to MLS","Analytics":{"performanceIndex":92,"marketValue":50000000,"fanEngagement":98,"careerGoals":821,"proprietaryMetrics":["Technical Ability: 99","Vision: 98","Legacy Impact: 100"]},"Links":{"ESPN":"https://www.espn.com/soccer/player/_/id/45843/lionel-messi","Twitter":"https://twitter.com/teammessi","MLS":"https://www.mlssoccer.com/players/lionel-messi/"}},
-    {"Player":"Connor McDavid","Sport":"NHL","Team":"Edmonton Oilers","Position":"C","Age":27,"Location":"Edmonton, AB","Championships":0,"Notes":"Generational hockey talent with elite speed and playmaking","Analytics":{"performanceIndex":97,"marketValue":100000000,"fanEngagement":89,"careerPoints":982,"proprietaryMetrics":["Speed: 99","Playmaking: 97","Hockey IQ: 96"]},"Links":{"ESPN":"https://www.espn.com/nhl/player/_/id/3114960/connor-mcdavid","Twitter":"https://twitter.com/cmcdavid97","NHL":"https://www.nhl.com/player/connor-mcdavid-8478402"}},
-    {"Player":"Coco Gauff","Sport":"Tennis","Team":"USA","Position":"Singles","Age":20,"Location":"Delray Beach, FL","Championships":1,"Notes":"Rising tennis star with major championship breakthrough","Analytics":{"performanceIndex":87,"marketValue":25000000,"fanEngagement":91,"ranking":3,"proprietaryMetrics":["Mental Toughness: 92","Athleticism: 89","Potential: 95"]},"Links":{"ESPN":"https://www.espn.com/tennis/player/_/id/2366/coco-gauff","Twitter":"https://twitter.com/CocoGauff","WTA":"https://www.wtatennis.com/players/330994/coco-gauff"}}
-  ];
 
   // Complete 227 teams data across 16 leagues - preserving all existing functionality
   const rawTeamsData = [
@@ -1612,37 +1353,6 @@ function Dashboard() {
     {"Team":"San Diego FC","League/Sport":"MLS","Founded":2023,"Division/Conference":"Western Conference","Location":"San Diego, CA","Titles":0,"Notes":"Newest MLS franchise preparing for 2025 launch","Analytics":{"competitiveIndex":72,"legacyScore":65,"marketValue":500000000,"fanEngagement":79,"proprietaryMetrics":["New Energy: 82","San Diego Market: 88","MLS Expansion: 76"]}}
   ];
 
-  // Player Intelligence Database - Elite Athletes Across Sports
-  const playersData = [
-    // MLB Players
-    {"name":"Mike Trout","position":"CF","team":"Los Angeles Angels","league":"MLB","age":33,"analytics":{"overallRating":97,"powerIndex":95,"speedIndex":92,"contactIndex":94,"fieldingIndex":89,"clutchFactor":91,"injuryRisk":25,"marketValue":450000000,"careerOPS":0.999,"wAR":85.4,"proprietaryMetrics":["Elite Vision: 96","Plate Discipline: 95","Power Ceiling: 98"]},"achievements":["3× MVP","11× All-Star","Rookie of the Year"],"bio":"Generational talent redefining center field excellence"},
-    {"name":"Mookie Betts","position":"RF","team":"Los Angeles Dodgers","league":"MLB","age":32,"analytics":{"overallRating":94,"powerIndex":90,"speedIndex":88,"contactIndex":92,"fieldingIndex":95,"clutchFactor":94,"injuryRisk":15,"marketValue":365000000,"careerOPS":0.893,"wAR":72.3,"proprietaryMetrics":["Championship DNA: 97","Versatility: 94","Leadership: 93"]},"achievements":["World Series Champion","MVP","6× All-Star"],"bio":"Elite two-way player with championship pedigree"},
-    {"name":"Aaron Judge","position":"RF","team":"New York Yankees","league":"MLB","age":32,"analytics":{"overallRating":96,"powerIndex":98,"speedIndex":75,"contactIndex":85,"fieldingIndex":87,"clutchFactor":95,"injuryRisk":30,"marketValue":360000000,"careerOPS":0.955,"wAR":45.2,"proprietaryMetrics":["Power Ceiling: 99","Yankee Legacy: 92","Clutch Gene: 96"]},"achievements":["AL MVP","Home Run Champion","Captain"],"bio":"Power-hitting captain leading Yankees resurgence"},
-    
-    // NFL Players  
-    {"name":"Patrick Mahomes","position":"QB","team":"Kansas City Chiefs","league":"NFL","age":29,"analytics":{"overallRating":98,"armStrength":96,"accuracy":94,"mobility":90,"leadership":98,"clutchFactor":99,"injuryRisk":20,"marketValue":500000000,"passingYards":28424,"touchdowns":219,"proprietaryMetrics":["Magic Factor: 99","Championship DNA: 98","Improvisational: 97"]},"achievements":["3× Super Bowl Champion","2× MVP","6× Pro Bowl"],"bio":"Generational quarterback redefining the position"},
-    {"name":"Josh Allen","position":"QB","team":"Buffalo Bills","league":"NFL","age":28,"analytics":{"overallRating":95,"armStrength":98,"accuracy":88,"mobility":94,"leadership":95,"clutchFactor":93,"injuryRisk":25,"marketValue":420000000,"passingYards":21527,"touchdowns":181,"proprietaryMetrics":["Cannon Arm: 99","Buffalo Heart: 96","Dual Threat: 95"]},"achievements":["4× Pro Bowl","Division Champion","MVP Candidate"],"bio":"Elite dual-threat quarterback with unlimited ceiling"},
-    {"name":"Derrick Henry","position":"RB","team":"Tennessee Titans","league":"NFL","age":30,"analytics":{"overallRating":92,"powerIndex":98,"speedIndex":85,"visionIndex":90,"durability":95,"clutchFactor":94,"injuryRisk":35,"marketValue":180000000,"rushingYards":10441,"touchdowns":90,"proprietaryMetrics":["King Henry Factor: 98","4th Quarter Power: 96","Titan Pride: 94"]},"achievements":["2× Rushing Champion","NFL MVP Candidate","4× Pro Bowl"],"bio":"Physical specimen redefining power running"},
-    
-    // NBA Players
-    {"name":"LeBron James","position":"SF","team":"Los Angeles Lakers","league":"NBA","age":40,"analytics":{"overallRating":94,"athleticism":85,"bbiq":99,"leadership":98,"versatility":97,"clutchFactor":96,"injuryRisk":45,"marketValue":800000000,"points":40474,"assists":11009,"proprietaryMetrics":["GOAT Debate: 98","Lakers Legacy: 95","Longevity: 99"]},"achievements":["4× NBA Champion","4× Finals MVP","20× All-Star"],"bio":"The King - basketball excellence personified"},
-    {"name":"Ja Morant","position":"PG","team":"Memphis Grizzlies","league":"NBA","age":25,"analytics":{"overallRating":91,"athleticism":97,"playmaking":93,"scoring":89,"leadership":88,"clutchFactor":92,"injuryRisk":30,"marketValue":250000000,"points":8934,"assists":3732,"proprietaryMetrics":["Grit & Grind: 95","Explosive Factor: 98","Memphis Heart: 96"]},"achievements":["Rookie of the Year","2× All-Star","Most Improved Player"],"bio":"Electrifying point guard embodying Grizzlies grit"},
-    {"name":"Luka Dončić","position":"PG","team":"Dallas Mavericks","league":"NBA","age":25,"analytics":{"overallRating":96,"bbiq":97,"scoring":95,"playmaking":96,"rebounding":88,"clutchFactor":94,"injuryRisk":20,"marketValue":400000000,"points":12446,"assists":4821,"proprietaryMetrics":["European Excellence: 96","Triple-Double Machine: 94","Clutch Gene: 95"]},"achievements":["Rookie of the Year","5× All-Star","All-NBA First Team"],"bio":"European prodigy revolutionizing point guard play"},
-    
-    // College Football Players
-    {"name":"Quinn Ewers","position":"QB","team":"Texas Longhorns","league":"College Football","age":21,"analytics":{"overallRating":93,"armStrength":92,"accuracy":94,"mobility":85,"leadership":91,"clutchFactor":89,"injuryRisk":15,"marketValue":15000000,"passingYards":7895,"touchdowns":67,"proprietaryMetrics":["Hook Em Factor: 95","SEC Ready: 92","NFL Projection: 94"]},"achievements":["Big 12 Champion","All-American","Longhorn Legend"],"bio":"Hometown hero leading Texas back to prominence"},
-    {"name":"Caleb Williams","position":"QB","team":"USC Trojans","league":"College Football","age":22,"analytics":{"overallRating":95,"armStrength":90,"accuracy":96,"mobility":93,"leadership":94,"clutchFactor":92,"injuryRisk":10,"marketValue":18000000,"passingYards":8170,"touchdowns":72,"proprietaryMetrics":["Heisman Winner: 97","West Coast Swagger: 89","NFL Ready: 96"]},"achievements":["Heisman Trophy","Pac-12 Champion","All-American"],"bio":"Heisman winner with elite arm talent"},
-    
-    // College Basketball Players
-    {"name":"Cooper Flagg","position":"PF","team":"Duke Blue Devils","league":"College Basketball","age":18,"analytics":{"overallRating":94,"athleticism":92,"shooting":88,"defense":95,"bbiq":93,"leadership":89,"clutchFactor":90,"injuryRisk":5,"marketValue":12000000,"points":0,"rebounds":0,"proprietaryMetrics":["Cameron Crazy Factor: 91","NBA Projection: 95","Duke DNA: 93"]},"achievements":["#1 Recruit","McDonald's All-American","Future Star"],"bio":"Generational prospect arriving at Duke"},
-    
-    // International Soccer
-    {"name":"Lionel Messi","position":"RW","team":"Inter Miami CF","league":"MLS","age":37,"analytics":{"overallRating":96,"technical":99,"vision":98,"finishing":97,"pace":78,"leadership":95,"clutchFactor":98,"injuryRisk":40,"marketValue":150000000,"goals":821,"assists":361,"proprietaryMetrics":["GOAT Status: 99","Miami Magic: 87","MLS Impact: 94"]},"achievements":["World Cup Champion","8× Ballon d'Or","MLS Cup"],"bio":"The greatest footballer of all time gracing MLS"},
-    
-    // Formula 1
-    {"name":"Max Verstappen","position":"Driver","team":"Red Bull Racing","league":"Formula 1","age":27,"analytics":{"overallRating":97,"racecraft":96,"speed":95,"consistency":98,"pressure":94,"leadership":88,"clutchFactor":95,"injuryRisk":25,"marketValue":80000000,"wins":61,"podiums":103,"proprietaryMetrics":["Dominant Era: 98","Red Bull Synergy: 96","Championship DNA: 97"]},"achievements":["3× World Champion","Youngest Champion","Record Breaker"],"bio":"Current F1 dominant force with generational talent"}
-  ];
-
   useEffect(() => {
     setTeamsData(rawTeamsData);
     
@@ -1677,17 +1387,6 @@ function Dashboard() {
       return matchesSearch && matchesLeague;
     });
   }, [teamsData, searchTerm, selectedLeague]);
-
-  // Player filtering logic
-  const filteredPlayers = useMemo(() => {
-    return rawPlayersData.filter(player => {
-      const matchesSearch = player.Player.toLowerCase().includes(playerSearchTerm.toLowerCase()) ||
-                           player.Sport.toLowerCase().includes(playerSearchTerm.toLowerCase()) ||
-                           player.Team.toLowerCase().includes(playerSearchTerm.toLowerCase()) ||
-                           player.Position.toLowerCase().includes(playerSearchTerm.toLowerCase());
-      return matchesSearch;
-    });
-  }, [playerSearchTerm]);
 
   const initializeCharts = () => {
     // League Distribution Chart
@@ -1919,63 +1618,21 @@ function Dashboard() {
         ),
         
         React.createElement("div", { className: "dashboard-controls" },
-          React.createElement("div", { className: "toggle-container" },
-            React.createElement("button", {
-              className: `toggle-btn ${!showPlayerSearch ? 'active' : ''}`,
-              onClick: () => setShowPlayerSearch(false)
-            }, "Teams"),
-            React.createElement("button", {
-              className: `toggle-btn ${showPlayerSearch ? 'active' : ''}`,
-              onClick: () => setShowPlayerSearch(true)
-            }, "Players")
-          ),
-          !showPlayerSearch ? React.createElement("div", { className: "search-controls" },
-            React.createElement("input", {
-              type: "text",
-              placeholder: "Search teams, leagues, locations...",
-              value: searchTerm,
-              onChange: (e) => setSearchTerm(e.target.value),
-              className: "search-input"
-            }),
-            React.createElement("select", {
-              value: selectedLeague,
-              onChange: (e) => setSelectedLeague(e.target.value),
-              className: "filter-select"
-            },
-              React.createElement("option", { value: "All" }, "All Leagues"),
-              leagues.map((league) =>
-                React.createElement("option", { key: league, value: league }, league)
-              )
-            )
-          ) : React.createElement("div", { className: "search-controls" },
-            React.createElement("input", {
-              type: "text",
-              placeholder: "Search elite athletes across all sports...",
-              value: playerSearchTerm,
-              onChange: (e) => setPlayerSearchTerm(e.target.value),
-              className: "search-input player-search"
-            }),
-            React.createElement("div", { className: "player-filters" },
-              React.createElement("button", { 
-                className: "filter-tag", 
-                onClick: () => setPlayerSearchTerm("MLB") 
-              }, "MLB"),
-              React.createElement("button", { 
-                className: "filter-tag", 
-                onClick: () => setPlayerSearchTerm("NFL") 
-              }, "NFL"),
-              React.createElement("button", { 
-                className: "filter-tag", 
-                onClick: () => setPlayerSearchTerm("NBA") 
-              }, "NBA"),
-              React.createElement("button", { 
-                className: "filter-tag", 
-                onClick: () => setPlayerSearchTerm("College") 
-              }, "College"),
-              React.createElement("button", { 
-                className: "filter-tag", 
-                onClick: () => setPlayerSearchTerm("") 
-              }, "Clear")
+          React.createElement("input", {
+            type: "text",
+            placeholder: "Search teams, leagues, locations...",
+            value: searchTerm,
+            onChange: (e) => setSearchTerm(e.target.value),
+            className: "search-input"
+          }),
+          React.createElement("select", {
+            value: selectedLeague,
+            onChange: (e) => setSelectedLeague(e.target.value),
+            className: "filter-select"
+          },
+            React.createElement("option", { value: "All" }, "All Leagues"),
+            leagues.map((league) =>
+              React.createElement("option", { key: league, value: league }, league)
             )
           )
         ),
@@ -2010,85 +1667,7 @@ function Dashboard() {
           )
         ),
 
-        // Player Search Results
-        showPlayerSearch ? React.createElement("div", { className: "players-grid" },
-          (() => {
-            const filteredPlayers = playersData.filter(player =>
-              playerSearchTerm === '' ||
-              player.name.toLowerCase().includes(playerSearchTerm.toLowerCase()) ||
-              player.team.toLowerCase().includes(playerSearchTerm.toLowerCase()) ||
-              player.league.toLowerCase().includes(playerSearchTerm.toLowerCase()) ||
-              player.position.toLowerCase().includes(playerSearchTerm.toLowerCase())
-            );
-            
-            return filteredPlayers.length === 0 ?
-              React.createElement("div", {
-                style: {
-                  gridColumn: '1 / -1',
-                  textAlign: 'center',
-                  padding: '3rem',
-                  color: 'var(--light)',
-                  opacity: 0.7
-                }
-              },
-                React.createElement("p", null, "No players found matching your search.")
-              ) :
-              filteredPlayers.map((player) =>
-                React.createElement("div", {
-                  key: player.Player,
-                  className: "player-card",
-                  onClick: () => setSelectedPlayer(player)
-                },
-                  React.createElement("div", { className: "player-header" },
-                    React.createElement("div", { className: "player-name" }, player.Player),
-                    React.createElement("div", { className: "player-rating" }, player.Analytics.performanceIndex)
-                  ),
-                  React.createElement("div", { className: "player-position" }, 
-                    player.Position + " • " + player.Team
-                  ),
-                  React.createElement("div", { className: "player-league" }, player.Sport),
-                  React.createElement("div", { className: "player-stats" },
-                    React.createElement("div", { className: "stat-item" },
-                      React.createElement("span", { className: "stat-label" }, "Age"),
-                      React.createElement("span", { className: "stat-value" }, player.Age)
-                    ),
-                    React.createElement("div", { className: "stat-item" },
-                      React.createElement("span", { className: "stat-label" }, "Championships"),
-                      React.createElement("span", { className: "stat-value" }, player.Championships)
-                    ),
-                    React.createElement("div", { className: "stat-item" },
-                      React.createElement("span", { className: "stat-label" }, "Market Value"),
-                      React.createElement("span", { className: "stat-value" }, 
-                        '$' + (player.Analytics.marketValue / 1000000).toFixed(0) + 'M'
-                      )
-                    ),
-                    React.createElement("div", { className: "stat-item" },
-                      React.createElement("span", { className: "stat-label" }, "Fan Engagement"),
-                      React.createElement("span", { className: "stat-value clutch" }, player.Analytics.fanEngagement)
-                    )
-                  ),
-                  React.createElement("div", { className: "player-bio" }, player.Notes),
-                  React.createElement("div", { className: "external-links" },
-                    React.createElement("a", { 
-                      href: player.Links.ESPN, 
-                      target: "_blank", 
-                      className: "link-button espn-link" 
-                    }, "ESPN"),
-                    React.createElement("a", { 
-                      href: player.Links.Twitter, 
-                      target: "_blank", 
-                      className: "link-button twitter-link" 
-                    }, "Twitter"),
-                    Object.keys(player.Links).length > 2 && React.createElement("a", { 
-                      href: Object.values(player.Links)[2], 
-                      target: "_blank", 
-                      className: "link-button official-link" 
-                    }, player.Sport === "MLB" ? "MLB" : player.Sport === "NFL" ? "NFL" : player.Sport === "NBA" ? "NBA" : "Official")
-                  )
-                )
-              )
-          })()
-        ) : React.createElement("div", { className: "teams-grid" },
+        React.createElement("div", { className: "teams-grid" },
           filteredTeams.length === 0 ?
             React.createElement("div", {
               style: {
@@ -2128,33 +1707,7 @@ function Dashboard() {
                       ((_team$analytics2 = team.analytics) === null || _team$analytics2 === void 0 ? void 0 : _team$analytics2.legacyScore) || 'N/A'
                     ),
                     React.createElement("div", { className: "metric-label" }, "Legacy")
-                  ),
-                  React.createElement("div", { className: "metric" },
-                    React.createElement("div", { className: "metric-value" }, 
-                      team.Analytics?.fanEngagement || 'N/A'
-                    ),
-                    React.createElement("div", { className: "metric-label" }, "Fan Engagement")
                   )
-                ),
-                React.createElement("div", { className: "external-links team-links" },
-                  React.createElement("a", { 
-                    href: `https://www.espn.com/${team['League/Sport'].toLowerCase()}/team/_/name/${team.Team.toLowerCase().replace(/\s+/g, '')}/`, 
-                    target: "_blank", 
-                    className: "link-button espn-link" 
-                  }, "ESPN"),
-                  React.createElement("a", { 
-                    href: `https://twitter.com/search?q=${encodeURIComponent(team.Team)}`, 
-                    target: "_blank", 
-                    className: "link-button twitter-link" 
-                  }, "Twitter"),
-                  React.createElement("a", { 
-                    href: team['League/Sport'] === 'MLB' ? `https://www.mlb.com/team/${team.Team.toLowerCase().replace(/\s+/g, '-')}/` :
-                          team['League/Sport'] === 'NFL' ? `https://www.nfl.com/teams/${team.Team.toLowerCase().replace(/\s+/g, '-')}/` :
-                          team['League/Sport'] === 'NBA' ? `https://www.nba.com/team/${team.Team.toLowerCase().replace(/\s+/g, '')}/` :
-                          `https://www.google.com/search?q=${encodeURIComponent(team.Team + ' ' + team['League/Sport'])}`, 
-                    target: "_blank", 
-                    className: "link-button official-link" 
-                  }, "Official")
                 )
               );
             })
@@ -2295,170 +1848,6 @@ function Dashboard() {
               ),
               React.createElement("a", { 
                 href: `https://www.youtube.com/results?search_query=${encodeURIComponent(selectedTeam.Team + ' highlights')}`, 
-                target: "_blank", 
-                className: "external-link youtube-link" 
-              },
-                React.createElement("i", { className: "fab fa-youtube" }),
-                React.createElement("span", null, "Video Highlights")
-              )
-            )
-          )
-        )
-      )
-    ),
-
-    // Player Modal
-    selectedPlayer && React.createElement("div", { className: "modal", onClick: (e) => {
-      if (e.target.classList.contains('modal')) {
-        setSelectedPlayer(null);
-      }
-    } },
-      React.createElement("div", { className: "modal-content player-modal", onClick: (e) => e.stopPropagation() },
-        React.createElement("div", { className: "modal-header" },
-          React.createElement("div", null,
-            React.createElement("div", { className: "modal-title" }, selectedPlayer.Player),
-            React.createElement("div", { className: "player-details" },
-              React.createElement("span", { className: "position" }, selectedPlayer.Position + " • " + selectedPlayer.Team),
-              React.createElement("span", { className: "sport" }, selectedPlayer.Sport + " • Age " + selectedPlayer.Age)
-            ),
-            React.createElement("button", {
-              className: "close-btn",
-              onClick: () => setSelectedPlayer(null)
-            },
-              React.createElement("i", { className: "fas fa-times" })
-            )
-          )
-        ),
-        React.createElement("div", { className: "modal-body" },
-          React.createElement("div", { className: "modal-section" },
-            React.createElement("h3", null, "Player Intelligence"),
-            React.createElement("div", { className: "team-info-grid" },
-              React.createElement("div", { className: "info-item" },
-                React.createElement("span", { className: "info-label" }, "Position:"),
-                React.createElement("span", { className: "info-value" }, selectedPlayer.position)
-              ),
-              React.createElement("div", { className: "info-item" },
-                React.createElement("span", { className: "info-label" }, "Team:"),
-                React.createElement("span", { className: "info-value" }, selectedPlayer.team)
-              ),
-              React.createElement("div", { className: "info-item" },
-                React.createElement("span", { className: "info-label" }, "League:"),
-                React.createElement("span", { className: "info-value" }, selectedPlayer.league)
-              ),
-              React.createElement("div", { className: "info-item" },
-                React.createElement("span", { className: "info-label" }, "Age:"),
-                React.createElement("span", { className: "info-value" }, selectedPlayer.age)
-              ),
-              React.createElement("div", { className: "info-item" },
-                React.createElement("span", { className: "info-label" }, "Overall Rating:"),
-                React.createElement("span", { className: "info-value championship" }, selectedPlayer.analytics.overallRating)
-              ),
-              React.createElement("div", { className: "info-item" },
-                React.createElement("span", { className: "info-label" }, "Market Value:"),
-                React.createElement("span", { className: "info-value" }, 
-                  '$' + (selectedPlayer.analytics.marketValue / 1000000).toFixed(0) + 'M'
-                )
-              )
-            )
-          ),
-          
-          React.createElement("div", { className: "modal-section" },
-            React.createElement("h3", null, "Performance Analytics"),
-            React.createElement("div", { className: "analytics-grid" },
-              Object.entries(selectedPlayer.analytics).slice(0, 6).map(([key, value]) => 
-                typeof value === 'number' && key !== 'marketValue' && key !== 'injuryRisk' &&
-                React.createElement("div", { key: key, className: "metric-card" },
-                  React.createElement("div", { className: "metric-value" }, value),
-                  React.createElement("div", { className: "metric-label" }, 
-                    key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())
-                  )
-                )
-              ).filter(Boolean)
-            )
-          ),
-          
-          selectedPlayer.Analytics.proprietaryMetrics && React.createElement("div", { className: "modal-section" },
-            React.createElement("h3", null, "Elite Traits"),
-            React.createElement("div", { className: "proprietary-metrics" },
-              selectedPlayer.Analytics.proprietaryMetrics.map((metric, index) => 
-                React.createElement("div", { key: index, className: "proprietary-item" },
-                  React.createElement("i", { className: "fas fa-star metric-icon" }),
-                  React.createElement("span", null, metric)
-                )
-              )
-            )
-          ),
-
-          React.createElement("div", { className: "modal-section" },
-            React.createElement("h3", null, "External Links"),
-            React.createElement("div", { className: "external-links player-modal-links" },
-              React.createElement("a", { 
-                href: selectedPlayer.Links.ESPN, 
-                target: "_blank", 
-                className: "link-button espn-link",
-                style: { textAlign: "center", minWidth: "100px" }
-              }, "ESPN Profile"),
-              React.createElement("a", { 
-                href: selectedPlayer.Links.Twitter, 
-                target: "_blank", 
-                className: "link-button twitter-link",
-                style: { textAlign: "center", minWidth: "100px" }
-              }, "Follow on Twitter"),
-              Object.keys(selectedPlayer.Links).length > 2 && React.createElement("a", { 
-                href: Object.values(selectedPlayer.Links)[2], 
-                target: "_blank", 
-                className: "link-button official-link",
-                style: { textAlign: "center", minWidth: "100px" }
-              }, selectedPlayer.Sport === "MLB" ? "MLB Profile" : selectedPlayer.Sport === "NFL" ? "NFL Profile" : selectedPlayer.Sport === "NBA" ? "NBA Profile" : "Official Site")
-            )
-          ),
-          
-          React.createElement("div", { className: "modal-section" },
-            React.createElement("h3", null, "Achievements"),
-            React.createElement("div", { className: "achievements-list" },
-              selectedPlayer.achievements.map((achievement, index) =>
-                React.createElement("div", { key: index, className: "achievement-item" },
-                  React.createElement("i", { className: "fas fa-trophy achievement-icon" }),
-                  React.createElement("span", null, achievement)
-                )
-              )
-            )
-          ),
-          
-          React.createElement("div", { className: "modal-section" },
-            React.createElement("h3", null, "Player Bio"),
-            React.createElement("p", { className: "team-notes" }, selectedPlayer.bio)
-          ),
-          
-          React.createElement("div", { className: "modal-section" },
-            React.createElement("h3", null, "External Resources"),
-            React.createElement("div", { className: "external-links" },
-              React.createElement("a", { 
-                href: `https://www.espn.com/search/_/q/${encodeURIComponent(selectedPlayer.name)}`, 
-                target: "_blank", 
-                className: "external-link espn-link" 
-              },
-                React.createElement("i", { className: "fas fa-external-link-alt" }),
-                React.createElement("span", null, "ESPN Profile")
-              ),
-              React.createElement("a", { 
-                href: `https://www.google.com/search?q=${encodeURIComponent(selectedPlayer.name + ' stats')}`, 
-                target: "_blank", 
-                className: "external-link stats-link" 
-              },
-                React.createElement("i", { className: "fas fa-chart-bar" }),
-                React.createElement("span", null, "Career Stats")
-              ),
-              React.createElement("a", { 
-                href: `https://twitter.com/search?q=${encodeURIComponent(selectedPlayer.name)}&src=typed_query&f=top`, 
-                target: "_blank", 
-                className: "external-link twitter-link" 
-              },
-                React.createElement("i", { className: "fab fa-twitter" }),
-                React.createElement("span", null, "Twitter Updates")
-              ),
-              React.createElement("a", { 
-                href: `https://www.youtube.com/results?search_query=${encodeURIComponent(selectedPlayer.name + ' highlights')}`, 
                 target: "_blank", 
                 className: "external-link youtube-link" 
               },
