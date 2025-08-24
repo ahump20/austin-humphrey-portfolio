@@ -333,6 +333,87 @@
             border-color: var(--accent);
         }
 
+        /* Advanced Search Controls */
+        .search-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .filters-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .advanced-toggle-btn, .sort-toggle-btn, .clear-filters-btn {
+            padding: 0.75rem 1.2rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--light);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+
+        .advanced-toggle-btn:hover, .sort-toggle-btn:hover, .clear-filters-btn:hover {
+            background: var(--primary);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .advanced-filters {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            margin-top: 1rem;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .filter-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .results-count {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .clear-filters-btn {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #ff6b6b;
+        }
+
+        .clear-filters-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ff6b6b;
+        }
+
         /* Cards Grid */
         .teams-grid, .players-grid {
             display: grid;
@@ -824,6 +905,14 @@
             const [playerSearchTerm, setPlayerSearchTerm] = useState('');
             const [selectedPlayer, setSelectedPlayer] = useState(null);
             const [showPlayerSearch, setShowPlayerSearch] = useState(false);
+            
+            // Advanced Filtering State
+            const [sortBy, setSortBy] = useState('Team');
+            const [sortOrder, setSortOrder] = useState('asc');
+            const [filterByTitles, setFilterByTitles] = useState('All');
+            const [filterByMarketValue, setFilterByMarketValue] = useState('All');
+            const [filterByRegion, setFilterByRegion] = useState('All');
+            const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
 
             // Elite Player Database - 15 top athletes across multiple sports
             const rawPlayersData = [
@@ -986,14 +1075,87 @@
             }, [teamsData]);
 
             const filteredTeams = useMemo(() => {
-                return teamsData.filter(team => {
+                let filtered = teamsData.filter(team => {
+                    // Basic search and league filtering
                     const matchesSearch = team.Team.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                          team['League/Sport'].toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                         (team.Location && team.Location.toLowerCase().includes(searchTerm.toLowerCase()));
+                                         (team.Location && team.Location.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                                         (team.Notes && team.Notes.toLowerCase().includes(searchTerm.toLowerCase()));
                     const matchesLeague = selectedLeague === 'All' || team['League/Sport'] === selectedLeague;
-                    return matchesSearch && matchesLeague;
+                    
+                    // Advanced filtering
+                    let matchesTitles = true;
+                    if (filterByTitles === 'Champions') {
+                        matchesTitles = (team.Titles || 0) > 0;
+                    } else if (filterByTitles === 'No Titles') {
+                        matchesTitles = (team.Titles || 0) === 0;
+                    } else if (filterByTitles === 'Multiple') {
+                        matchesTitles = (team.Titles || 0) > 1;
+                    }
+                    
+                    let matchesMarketValue = true;
+                    if (filterByMarketValue === 'Billion+') {
+                        matchesMarketValue = (team.Analytics?.marketValue || 0) >= 1000000000;
+                    } else if (filterByMarketValue === '5Billion+') {
+                        matchesMarketValue = (team.Analytics?.marketValue || 0) >= 5000000000;
+                    } else if (filterByMarketValue === 'Under1B') {
+                        matchesMarketValue = (team.Analytics?.marketValue || 0) < 1000000000;
+                    }
+                    
+                    let matchesRegion = true;
+                    if (filterByRegion !== 'All') {
+                        const location = team.Location || '';
+                        const state = location.split(', ')[1] || location;
+                        const region = getRegion(state);
+                        matchesRegion = region === filterByRegion;
+                    }
+                    
+                    return matchesSearch && matchesLeague && matchesTitles && matchesMarketValue && matchesRegion;
                 });
-            }, [teamsData, searchTerm, selectedLeague]);
+
+                // Sorting
+                filtered.sort((a, b) => {
+                    let aVal, bVal;
+                    
+                    switch (sortBy) {
+                        case 'Team':
+                            aVal = a.Team || '';
+                            bVal = b.Team || '';
+                            break;
+                        case 'Titles':
+                            aVal = a.Titles || 0;
+                            bVal = b.Titles || 0;
+                            break;
+                        case 'Founded':
+                            aVal = a.Founded || 0;
+                            bVal = b.Founded || 0;
+                            break;
+                        case 'Market Value':
+                            aVal = a.Analytics?.marketValue || 0;
+                            bVal = b.Analytics?.marketValue || 0;
+                            break;
+                        case 'Competitive Index':
+                            aVal = a.Analytics?.competitiveIndex || 0;
+                            bVal = b.Analytics?.competitiveIndex || 0;
+                            break;
+                        case 'Fan Engagement':
+                            aVal = a.Analytics?.fanEngagement || 0;
+                            bVal = b.Analytics?.fanEngagement || 0;
+                            break;
+                        default:
+                            aVal = a.Team || '';
+                            bVal = b.Team || '';
+                    }
+                    
+                    if (typeof aVal === 'string') {
+                        return sortOrder === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                    } else {
+                        return sortOrder === 'asc' ? aVal - bVal : bVal - aVal;
+                    }
+                });
+                
+                return filtered;
+            }, [teamsData, searchTerm, selectedLeague, filterByTitles, filterByMarketValue, filterByRegion, sortBy, sortOrder]);
 
             // Player filtering logic
             const filteredPlayers = useMemo(() => {
@@ -1526,21 +1688,104 @@
                             }, 'Players')
                         ),
                         !showPlayerSearch ? React.createElement('div', { className: 'search-controls' },
-                            React.createElement('input', {
-                                type: 'text',
-                                placeholder: 'Search teams, leagues, locations...',
-                                value: searchTerm,
-                                onChange: (e) => setSearchTerm(e.target.value),
-                                className: 'search-input'
-                            }),
-                            React.createElement('select', {
-                                value: selectedLeague,
-                                onChange: (e) => setSelectedLeague(e.target.value),
-                                className: 'filter-select'
-                            },
-                                React.createElement('option', { value: 'All' }, 'All Leagues'),
-                                leagues.map(league =>
-                                    React.createElement('option', { key: league, value: league }, league)
+                            // Main search bar
+                            React.createElement('div', { className: 'search-row' },
+                                React.createElement('input', {
+                                    type: 'text',
+                                    placeholder: 'Search teams, leagues, locations, notes...',
+                                    value: searchTerm,
+                                    onChange: (e) => setSearchTerm(e.target.value),
+                                    className: 'search-input'
+                                }),
+                                React.createElement('button', {
+                                    className: 'advanced-toggle-btn',
+                                    onClick: () => setShowAdvancedFilters(!showAdvancedFilters)
+                                }, showAdvancedFilters ? 'Hide Filters' : 'Advanced Filters')
+                            ),
+                            
+                            // Basic filters row
+                            React.createElement('div', { className: 'filters-row' },
+                                React.createElement('select', {
+                                    value: selectedLeague,
+                                    onChange: (e) => setSelectedLeague(e.target.value),
+                                    className: 'filter-select'
+                                },
+                                    React.createElement('option', { value: 'All' }, 'All Leagues'),
+                                    leagues.map(league =>
+                                        React.createElement('option', { key: league, value: league }, league)
+                                    )
+                                ),
+                                React.createElement('select', {
+                                    value: sortBy,
+                                    onChange: (e) => setSortBy(e.target.value),
+                                    className: 'filter-select'
+                                },
+                                    React.createElement('option', { value: 'Team' }, 'Sort by Team'),
+                                    React.createElement('option', { value: 'Titles' }, 'Sort by Championships'),
+                                    React.createElement('option', { value: 'Founded' }, 'Sort by Founded'),
+                                    React.createElement('option', { value: 'Market Value' }, 'Sort by Market Value'),
+                                    React.createElement('option', { value: 'Competitive Index' }, 'Sort by Competitive Index'),
+                                    React.createElement('option', { value: 'Fan Engagement' }, 'Sort by Fan Engagement')
+                                ),
+                                React.createElement('button', {
+                                    className: 'sort-toggle-btn',
+                                    onClick: () => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
+                                }, sortOrder === 'asc' ? '↑ Ascending' : '↓ Descending')
+                            ),
+                            
+                            // Advanced filters (conditionally shown)
+                            showAdvancedFilters && React.createElement('div', { className: 'advanced-filters' },
+                                React.createElement('div', { className: 'filters-row' },
+                                    React.createElement('select', {
+                                        value: filterByTitles,
+                                        onChange: (e) => setFilterByTitles(e.target.value),
+                                        className: 'filter-select'
+                                    },
+                                        React.createElement('option', { value: 'All' }, 'All Championship Levels'),
+                                        React.createElement('option', { value: 'Champions' }, 'Has Championships'),
+                                        React.createElement('option', { value: 'Multiple' }, 'Multiple Championships'),
+                                        React.createElement('option', { value: 'No Titles' }, 'No Championships')
+                                    ),
+                                    React.createElement('select', {
+                                        value: filterByMarketValue,
+                                        onChange: (e) => setFilterByMarketValue(e.target.value),
+                                        className: 'filter-select'
+                                    },
+                                        React.createElement('option', { value: 'All' }, 'All Market Values'),
+                                        React.createElement('option', { value: '5Billion+' }, '$5B+ Franchise'),
+                                        React.createElement('option', { value: 'Billion+' }, '$1B+ Franchise'),
+                                        React.createElement('option', { value: 'Under1B' }, 'Under $1B')
+                                    ),
+                                    React.createElement('select', {
+                                        value: filterByRegion,
+                                        onChange: (e) => setFilterByRegion(e.target.value),
+                                        className: 'filter-select'
+                                    },
+                                        React.createElement('option', { value: 'All' }, 'All Regions'),
+                                        React.createElement('option', { value: 'Northeast' }, 'Northeast'),
+                                        React.createElement('option', { value: 'Southeast' }, 'Southeast'),
+                                        React.createElement('option', { value: 'Midwest' }, 'Midwest'),
+                                        React.createElement('option', { value: 'Southwest' }, 'Southwest'),
+                                        React.createElement('option', { value: 'West' }, 'West'),
+                                        React.createElement('option', { value: 'Other' }, 'Other')
+                                    )
+                                ),
+                                React.createElement('div', { className: 'filter-stats' },
+                                    React.createElement('span', { className: 'results-count' }, 
+                                        `${filteredTeams.length} teams match your filters`
+                                    ),
+                                    React.createElement('button', {
+                                        className: 'clear-filters-btn',
+                                        onClick: () => {
+                                            setSearchTerm('');
+                                            setSelectedLeague('All');
+                                            setFilterByTitles('All');
+                                            setFilterByMarketValue('All');
+                                            setFilterByRegion('All');
+                                            setSortBy('Team');
+                                            setSortOrder('asc');
+                                        }
+                                    }, 'Clear All Filters')
                                 )
                             )
                         ) : React.createElement('div', { className: 'search-controls' },
