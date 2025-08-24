@@ -498,10 +498,28 @@
         }
 
         .chart-container {
-            background: var(--dark);
+            background: var(--glass);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
             padding: 1.5rem;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .chart-container:nth-child(odd) {
+            box-shadow: 0 8px 32px rgba(191, 87, 0, 0.15);
+        }
+
+        .chart-container:nth-child(even) {
+            box-shadow: 0 8px 32px rgba(255, 184, 28, 0.15);
+        }
+
+        .chart-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(191, 87, 0, 0.25);
         }
 
         .chart-title {
@@ -1135,6 +1153,216 @@
                         }
                     });
                 }
+
+                // Market Valuations by League Chart
+                const valuationCtx = document.getElementById('valuationChart');
+                if (valuationCtx) {
+                    const valuationData = leagues.map(league => {
+                        const leagueTeams = teamsData.filter(team => team['League/Sport'] === league);
+                        const avgValue = leagueTeams.reduce((sum, team) => sum + (team.Analytics?.marketValue || 0), 0) / leagueTeams.length;
+                        return avgValue / 1000000000; // Convert to billions
+                    });
+
+                    new Chart(valuationCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: leagues,
+                            datasets: [{
+                                label: 'Average Market Value (Billions $)',
+                                data: valuationData,
+                                backgroundColor: ['#BF5700', '#FFB81C', '#FF7A00', '#8B3D00', '#FFA500'],
+                                borderColor: '#FFB81C',
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { labels: { color: '#F8F9FA' } }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: { display: true, text: 'Market Value (Billions)', color: '#F8F9FA' },
+                                    ticks: { color: '#F8F9FA' }
+                                },
+                                x: {
+                                    ticks: { color: '#F8F9FA' }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Championship Success Timeline Chart
+                const timelineCtx = document.getElementById('timelineChart');
+                if (timelineCtx) {
+                    const decades = ['1900s', '1910s', '1920s', '1930s', '1940s', '1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+                    const championshipsByDecade = decades.map((decade, index) => {
+                        const startYear = 1900 + (index * 10);
+                        const endYear = startYear + 9;
+                        return teamsData.reduce((count, team) => {
+                            const founded = team.Founded;
+                            if (founded >= startYear && founded <= endYear && team.Titles > 0) {
+                                return count + team.Titles;
+                            }
+                            return count;
+                        }, 0);
+                    });
+
+                    new Chart(timelineCtx, {
+                        type: 'line',
+                        data: {
+                            labels: decades,
+                            datasets: [{
+                                label: 'Championships Won by Era',
+                                data: championshipsByDecade,
+                                borderColor: '#BF5700',
+                                backgroundColor: 'rgba(191, 87, 0, 0.1)',
+                                borderWidth: 3,
+                                fill: true,
+                                tension: 0.4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { labels: { color: '#F8F9FA' } }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: { display: true, text: 'Championships', color: '#F8F9FA' },
+                                    ticks: { color: '#F8F9FA' }
+                                },
+                                x: {
+                                    ticks: { color: '#F8F9FA' }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Fan Engagement vs Competitive Index Chart
+                const engagementCtx = document.getElementById('engagementChart');
+                if (engagementCtx) {
+                    const engagementData = teamsData.map(team => ({
+                        x: team.Analytics?.fanEngagement || Math.random() * 100,
+                        y: team.Analytics?.competitiveIndex || Math.random() * 100,
+                        r: Math.sqrt((team.Analytics?.marketValue || 1000000000) / 100000000), // Size by market value
+                        label: team.Team,
+                        league: team['League/Sport']
+                    }));
+
+                    const leagueColors = {
+                        'MLB': '#BF5700',
+                        'NFL': '#FFB81C', 
+                        'NBA': '#FF7A00',
+                        'College Football': '#8B3D00',
+                        'College Baseball': '#FFA500',
+                        'High School Football': '#FF6347'
+                    };
+
+                    const datasets = Object.keys(leagueColors).map(league => ({
+                        label: league,
+                        data: engagementData.filter(d => d.league === league),
+                        backgroundColor: leagueColors[league] + '80',
+                        borderColor: leagueColors[league],
+                        borderWidth: 2
+                    }));
+
+                    new Chart(engagementCtx, {
+                        type: 'bubble',
+                        data: { datasets },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { labels: { color: '#F8F9FA' } },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return context.raw.label + ': Engagement ' + context.raw.x + '%, Competitive ' + context.raw.y + '%';
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    title: { display: true, text: 'Fan Engagement %', color: '#F8F9FA' },
+                                    ticks: { color: '#F8F9FA' }
+                                },
+                                y: {
+                                    title: { display: true, text: 'Competitive Index', color: '#F8F9FA' },
+                                    ticks: { color: '#F8F9FA' }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Regional Market Analysis Chart
+                const regionalCtx = document.getElementById('regionalChart');
+                if (regionalCtx) {
+                    const regions = {};
+                    teamsData.forEach(team => {
+                        const location = team.Location || '';
+                        const state = location.split(', ')[1] || location;
+                        const region = getRegion(state);
+                        if (!regions[region]) regions[region] = { teams: 0, value: 0, titles: 0 };
+                        regions[region].teams++;
+                        regions[region].value += (team.Analytics?.marketValue || 0);
+                        regions[region].titles += (team.Titles || 0);
+                    });
+
+                    new Chart(regionalCtx, {
+                        type: 'radar',
+                        data: {
+                            labels: Object.keys(regions),
+                            datasets: [{
+                                label: 'Teams Count',
+                                data: Object.values(regions).map(r => r.teams),
+                                backgroundColor: 'rgba(191, 87, 0, 0.2)',
+                                borderColor: '#BF5700',
+                                pointBackgroundColor: '#BF5700'
+                            }, {
+                                label: 'Championships',
+                                data: Object.values(regions).map(r => r.titles),
+                                backgroundColor: 'rgba(255, 184, 28, 0.2)',
+                                borderColor: '#FFB81C',
+                                pointBackgroundColor: '#FFB81C'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { labels: { color: '#F8F9FA' } }
+                            },
+                            scales: {
+                                r: {
+                                    ticks: { color: '#F8F9FA' },
+                                    grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                                }
+                            }
+                        }
+                    });
+                }
+            };
+
+            // Helper function to determine region from state
+            const getRegion = (state) => {
+                const regions = {
+                    'Northeast': ['NY', 'MA', 'PA', 'NJ', 'CT', 'RI', 'VT', 'NH', 'ME'],
+                    'Southeast': ['FL', 'GA', 'SC', 'NC', 'VA', 'WV', 'KY', 'TN', 'AL', 'MS', 'AR', 'LA'],
+                    'Midwest': ['OH', 'IN', 'IL', 'MI', 'WI', 'MN', 'IA', 'MO', 'ND', 'SD', 'NE', 'KS'],
+                    'Southwest': ['TX', 'OK', 'AZ', 'NM'],
+                    'West': ['CA', 'OR', 'WA', 'NV', 'ID', 'UT', 'MT', 'WY', 'CO'],
+                    'Other': ['AK', 'HI', 'ON', 'DC']
+                };
+                
+                for (const [region, states] of Object.entries(regions)) {
+                    if (states.includes(state)) return region;
+                }
+                return 'Other';
             };
 
             const playPodcast = (episodeId) => {
@@ -1265,6 +1493,22 @@
                             React.createElement('div', { className: 'chart-container' },
                                 React.createElement('h3', { className: 'chart-title' }, 'Performance Matrix'),
                                 React.createElement('canvas', { id: 'performanceChart' })
+                            ),
+                            React.createElement('div', { className: 'chart-container' },
+                                React.createElement('h3', { className: 'chart-title' }, 'Market Valuations by League'),
+                                React.createElement('canvas', { id: 'valuationChart' })
+                            ),
+                            React.createElement('div', { className: 'chart-container' },
+                                React.createElement('h3', { className: 'chart-title' }, 'Championship Success Timeline'),
+                                React.createElement('canvas', { id: 'timelineChart' })
+                            ),
+                            React.createElement('div', { className: 'chart-container' },
+                                React.createElement('h3', { className: 'chart-title' }, 'Fan Engagement vs Competitive Index'),
+                                React.createElement('canvas', { id: 'engagementChart' })
+                            ),
+                            React.createElement('div', { className: 'chart-container' },
+                                React.createElement('h3', { className: 'chart-title' }, 'Regional Market Analysis'),
+                                React.createElement('canvas', { id: 'regionalChart' })
                             )
                         )
                     ),
