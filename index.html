@@ -1083,6 +1083,260 @@
                 font-size: 1.25rem;
             }
         }
+
+        /* Contact Section Styles */
+        .contact-section {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .contact-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .blaze-contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            color: var(--light);
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(191, 87, 0, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border: none;
+            color: var(--light);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(191, 87, 0, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-methods h3,
+        .specialties h3,
+        .response-time h3 {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: var(--glass);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .specialties ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .specialties li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.9;
+        }
+
+        .specialties li:last-child {
+            border-bottom: none;
+        }
+
+        .response-time {
+            background: rgba(191, 87, 0, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(191, 87, 0, 0.2);
+        }
+
+        .response-time p {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .response-time i {
+            color: var(--primary);
+        }
+
+        /* Contact Form Mobile Responsive */
+        @media (max-width: 1024px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+
+            .contact-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-subtitle {
+                font-size: 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+
+            .blaze-contact-form {
+                gap: 1rem;
+            }
+
+            .submit-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .contact-info {
+                gap: 1.5rem;
+            }
+
+            .response-time {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -1564,18 +1818,377 @@
             }
         }
 
+        // ================== PERFORMANCE OPTIMIZATION SYSTEM ==================
+        class BlazePerformanceOptimizer {
+            constructor() {
+                this.metrics = {
+                    loadTime: 0,
+                    chartsLoaded: 0,
+                    imagesOptimized: 0,
+                    videoOptimized: false,
+                    mobileDetected: false
+                };
+                this.isMobile = this.detectMobile();
+                this.connectionSpeed = this.detectConnectionSpeed();
+                this.lazyLoadThreshold = 0.1;
+                this.init();
+            }
+
+            init() {
+                this.metrics.loadTime = performance.now();
+                this.optimizeInitialLoad();
+                this.setupIntersectionObserver();
+                this.optimizeForConnection();
+                this.preloadCriticalAssets();
+                console.log('⚡ Blaze Performance Optimizer initialized');
+            }
+
+            detectMobile() {
+                const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                             window.innerWidth <= 768;
+                this.metrics.mobileDetected = mobile;
+                return mobile;
+            }
+
+            detectConnectionSpeed() {
+                if ('connection' in navigator) {
+                    const conn = navigator.connection;
+                    const effectiveType = conn.effectiveType;
+                    return {
+                        type: effectiveType,
+                        downlink: conn.downlink || 1,
+                        rtt: conn.rtt || 100,
+                        saveData: conn.saveData || false
+                    };
+                }
+                return { type: 'unknown', downlink: 1, rtt: 100, saveData: false };
+            }
+
+            optimizeInitialLoad() {
+                // Defer non-critical JavaScript
+                this.deferNonCriticalScripts();
+                
+                // Optimize images with lazy loading
+                this.setupImageOptimization();
+                
+                // Reduce initial bundle size
+                if (this.isMobile || this.connectionSpeed.saveData) {
+                    this.enableDataSaverMode();
+                }
+            }
+
+            deferNonCriticalScripts() {
+                // Defer Chart.js loading until needed
+                window.loadChartJS = () => {
+                    return new Promise((resolve) => {
+                        if (window.Chart) {
+                            resolve(window.Chart);
+                            return;
+                        }
+                        
+                        const script = document.createElement('script');
+                        script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+                        script.onload = () => {
+                            this.metrics.chartsLoaded++;
+                            resolve(window.Chart);
+                        };
+                        document.head.appendChild(script);
+                    });
+                };
+
+                // Lazy load Three.js particles for mobile
+                if (this.isMobile && this.connectionSpeed.downlink < 2) {
+                    this.deferParticleSystem();
+                }
+            }
+
+            deferParticleSystem() {
+                const canvas = document.getElementById('hero-canvas');
+                if (canvas) {
+                    canvas.style.display = 'none';
+                    
+                    // Load particles only on user interaction
+                    const loadParticles = () => {
+                        canvas.style.display = 'block';
+                        if (window.initParticles) {
+                            window.initParticles();
+                        }
+                        document.removeEventListener('scroll', loadParticles);
+                        document.removeEventListener('touchstart', loadParticles);
+                    };
+                    
+                    document.addEventListener('scroll', loadParticles, { once: true });
+                    document.addEventListener('touchstart', loadParticles, { once: true });
+                }
+            }
+
+            setupImageOptimization() {
+                const images = document.querySelectorAll('img[data-src], img[src]');
+                images.forEach(img => this.optimizeImage(img));
+            }
+
+            optimizeImage(img) {
+                // Convert to WebP if supported
+                const supportsWebP = this.supportsWebP();
+                
+                if (img.dataset.src || img.src) {
+                    const originalSrc = img.dataset.src || img.src;
+                    
+                    // Lazy load non-critical images
+                    if (img.dataset.src) {
+                        this.lazyLoadImage(img);
+                    }
+                    
+                    // Add loading="lazy" for native lazy loading
+                    if ('loading' in HTMLImageElement.prototype) {
+                        img.loading = 'lazy';
+                    }
+                    
+                    // Optimize image quality based on connection
+                    if (this.connectionSpeed.downlink < 1 || this.connectionSpeed.saveData) {
+                        this.applyImageCompression(img);
+                    }
+                    
+                    this.metrics.imagesOptimized++;
+                }
+            }
+
+            supportsWebP() {
+                const canvas = document.createElement('canvas');
+                canvas.width = 1;
+                canvas.height = 1;
+                return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+            }
+
+            lazyLoadImage(img) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const image = entry.target;
+                            image.src = image.dataset.src;
+                            image.removeAttribute('data-src');
+                            observer.unobserve(image);
+                        }
+                    });
+                }, { threshold: this.lazyLoadThreshold });
+                
+                observer.observe(img);
+            }
+
+            applyImageCompression(img) {
+                // Add compression parameters for external images
+                const src = img.src || img.dataset.src;
+                if (src && src.includes('githubusercontent.com')) {
+                    // GitHub images support size parameters
+                    const newSrc = src.includes('?') ? 
+                        `${src}&w=${this.isMobile ? '400' : '800'}&q=80` :
+                        `${src}?w=${this.isMobile ? '400' : '800'}&q=80`;
+                    
+                    if (img.dataset.src) {
+                        img.dataset.src = newSrc;
+                    } else {
+                        img.src = newSrc;
+                    }
+                }
+            }
+
+            setupIntersectionObserver() {
+                // Lazy load charts when they come into view
+                const chartElements = document.querySelectorAll('canvas[id$="Chart"]');
+                
+                const chartObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            this.loadChart(entry.target);
+                            chartObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                chartElements.forEach(canvas => chartObserver.observe(canvas));
+            }
+
+            async loadChart(canvas) {
+                try {
+                    await window.loadChartJS();
+                    // Trigger chart creation through React state update
+                    window.dispatchEvent(new CustomEvent('loadChart', { 
+                        detail: { canvasId: canvas.id } 
+                    }));
+                } catch (error) {
+                    console.warn('Failed to load chart:', error);
+                }
+            }
+
+            optimizeForConnection() {
+                const conn = this.connectionSpeed;
+                
+                // Reduce video quality for slow connections
+                if (conn.downlink < 1.5 || conn.saveData) {
+                    this.optimizeVideoStreaming();
+                }
+                
+                // Reduce animation complexity for slow devices
+                if (conn.rtt > 200 || this.isMobile) {
+                    this.reduceAnimations();
+                }
+                
+                // Prefetch strategy based on connection
+                if (conn.downlink > 4 && !conn.saveData) {
+                    this.aggressivePrefetch();
+                } else {
+                    this.conservativePrefetch();
+                }
+            }
+
+            optimizeVideoStreaming() {
+                const video = document.getElementById('hero-video');
+                if (video && window.blazeVideoManager) {
+                    // Prefer MP4 over HLS for mobile
+                    if (this.isMobile) {
+                        video.preload = 'metadata';
+                    }
+                    
+                    // Reduce video quality
+                    video.style.opacity = '0.2';
+                    this.metrics.videoOptimized = true;
+                }
+            }
+
+            reduceAnimations() {
+                const style = document.createElement('style');
+                style.textContent = `
+                    @media (prefers-reduced-motion: reduce) {
+                        *, *::before, *::after {
+                            animation-duration: 0.01ms !important;
+                            animation-iteration-count: 1 !important;
+                            transition-duration: 0.01ms !important;
+                        }
+                    }
+                    
+                    .mobile-reduced-motion {
+                        animation-duration: 0.3s !important;
+                        transition-duration: 0.3s !important;
+                    }
+                `;
+                
+                if (this.isMobile) {
+                    document.body.classList.add('mobile-reduced-motion');
+                }
+                
+                document.head.appendChild(style);
+            }
+
+            preloadCriticalAssets() {
+                const criticalAssets = [
+                    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap',
+                    'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap'
+                ];
+
+                if (!this.connectionSpeed.saveData) {
+                    criticalAssets.forEach(asset => {
+                        const link = document.createElement('link');
+                        link.rel = 'preload';
+                        link.as = 'style';
+                        link.href = asset;
+                        document.head.appendChild(link);
+                    });
+                }
+            }
+
+            aggressivePrefetch() {
+                // Prefetch likely navigation targets
+                const prefetchUrls = [
+                    'https://ahump20.github.io/austin-humphrey-portfolio/',
+                    'https://github.com/ahump20',
+                    'https://linkedin.com/in/john-humphrey-2033'
+                ];
+
+                prefetchUrls.forEach(url => {
+                    const link = document.createElement('link');
+                    link.rel = 'prefetch';
+                    link.href = url;
+                    document.head.appendChild(link);
+                });
+            }
+
+            conservativePrefetch() {
+                // Only prefetch most critical assets
+                const link = document.createElement('link');
+                link.rel = 'dns-prefetch';
+                link.href = 'https://cdn.jsdelivr.net';
+                document.head.appendChild(link);
+            }
+
+            enableDataSaverMode() {
+                document.body.classList.add('data-saver-mode');
+                
+                // Add data saver styles
+                const style = document.createElement('style');
+                style.textContent = `
+                    .data-saver-mode #hero-video {
+                        display: none !important;
+                    }
+                    
+                    .data-saver-mode .particles-js-canvas-el {
+                        opacity: 0.3 !important;
+                    }
+                    
+                    .data-saver-mode .analysis-btn:before {
+                        display: none !important;
+                    }
+                    
+                    .data-saver-mode * {
+                        animation-duration: 0.2s !important;
+                        transition-duration: 0.2s !important;
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                console.log('📱 Data saver mode enabled');
+            }
+
+            getMetrics() {
+                this.metrics.totalLoadTime = performance.now() - this.metrics.loadTime;
+                return {
+                    ...this.metrics,
+                    isMobile: this.isMobile,
+                    connection: this.connectionSpeed,
+                    score: this.calculatePerformanceScore()
+                };
+            }
+
+            calculatePerformanceScore() {
+                let score = 100;
+                
+                // Deduct points for slow load time
+                if (this.metrics.totalLoadTime > 3000) score -= 20;
+                else if (this.metrics.totalLoadTime > 2000) score -= 10;
+                
+                // Add points for optimizations
+                if (this.metrics.imagesOptimized > 0) score += 5;
+                if (this.metrics.chartsLoaded > 0) score += 5;
+                if (this.metrics.videoOptimized) score += 5;
+                
+                return Math.max(0, Math.min(100, score));
+            }
+        }
+
         // Initialize systems
         let videoManager;
         let visualAnalytics;
+        let performanceOptimizer;
 
         // Initialize after DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
+            performanceOptimizer = new BlazePerformanceOptimizer();
             videoManager = new BlazeVideoManager();
             visualAnalytics = new BlazeVisualAnalytics();
             
             // Make systems globally available for React components
             window.blazeVideoManager = videoManager;
             window.blazeVisualAnalytics = visualAnalytics;
+            window.blazePerformanceOptimizer = performanceOptimizer;
         });
 
         function App() {
@@ -2857,6 +3470,180 @@
                                         React.createElement('i', { className: 'fas fa-info-circle', style: { marginRight: '6px' } }),
                                         'Analysis powered by Blaze Intelligence MCP servers with Claude Vision integration. Results combine computer vision, biomechanical modeling, and psychological assessment.'
                                     )
+                                )
+                            )
+                        )
+                    )
+                ),
+
+                // Contact & Partnership Section
+                React.createElement('section', { className: 'contact-section' },
+                    React.createElement('div', { className: 'contact-header' },
+                        React.createElement('h2', { className: 'contact-title' },
+                            React.createElement('i', { className: 'fas fa-handshake', style: { marginRight: '12px' } }),
+                            'Partner with Blaze Intelligence'
+                        ),
+                        React.createElement('p', { className: 'contact-subtitle' }, 
+                            'Elite sports analytics for championship organizations. Let\'s discuss how we can elevate your competitive intelligence.'
+                        )
+                    ),
+                    React.createElement('div', { className: 'contact-content' },
+                        React.createElement('div', { className: 'contact-form-container' },
+                            React.createElement('form', { 
+                                className: 'blaze-contact-form',
+                                onSubmit: async (e) => {
+                                    e.preventDefault();
+                                    const formData = new FormData(e.target);
+                                    const data = Object.fromEntries(formData.entries());
+                                    
+                                    try {
+                                        console.log('🚀 Submitting contact form:', data);
+                                        
+                                        // Submit to Blaze Intelligence MCP Contact API
+                                        const response = await fetch('https://blaze-contact-api.workers.dev/submit', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'Authorization': 'Bearer blaze_contact_2024'
+                                            },
+                                            body: JSON.stringify({
+                                                ...data,
+                                                source: 'blaze_intelligence_dashboard',
+                                                timestamp: new Date().toISOString(),
+                                                user_agent: navigator.userAgent,
+                                                referrer: document.referrer || 'direct'
+                                            })
+                                        });
+                                        
+                                        if (response.ok) {
+                                            const result = await response.json();
+                                            alert('🏆 Message sent successfully! We\'ll be in touch within 24 hours to discuss your sports intelligence needs.');
+                                            e.target.reset();
+                                        } else {
+                                            throw new Error(`HTTP ${response.status}`);
+                                        }
+                                    } catch (error) {
+                                        console.error('Contact form error:', error);
+                                        
+                                        // Fallback to mailto
+                                        const subject = encodeURIComponent(`Partnership Inquiry from ${data.name || 'Potential Client'}`);
+                                        const body = encodeURIComponent(`
+Name: ${data.name}
+Organization: ${data.organization}
+Email: ${data.email}
+Interest: ${data.interest}
+
+Message:
+${data.message}
+
+---
+Sent from Blaze Intelligence Dashboard
+                                        `.trim());
+                                        
+                                        window.location.href = `mailto:ahump20@outlook.com?subject=${subject}&body=${body}`;
+                                    }
+                                }
+                            },
+                                React.createElement('div', { className: 'form-grid' },
+                                    React.createElement('div', { className: 'form-group' },
+                                        React.createElement('label', { htmlFor: 'name' }, 'Name *'),
+                                        React.createElement('input', {
+                                            type: 'text',
+                                            id: 'name',
+                                            name: 'name',
+                                            required: true,
+                                            placeholder: 'Your full name'
+                                        })
+                                    ),
+                                    React.createElement('div', { className: 'form-group' },
+                                        React.createElement('label', { htmlFor: 'email' }, 'Email *'),
+                                        React.createElement('input', {
+                                            type: 'email',
+                                            id: 'email',
+                                            name: 'email',
+                                            required: true,
+                                            placeholder: 'your.email@organization.com'
+                                        })
+                                    ),
+                                    React.createElement('div', { className: 'form-group' },
+                                        React.createElement('label', { htmlFor: 'organization' }, 'Organization'),
+                                        React.createElement('input', {
+                                            type: 'text',
+                                            id: 'organization',
+                                            name: 'organization',
+                                            placeholder: 'Team, league, or company'
+                                        })
+                                    ),
+                                    React.createElement('div', { className: 'form-group' },
+                                        React.createElement('label', { htmlFor: 'interest' }, 'Primary Interest'),
+                                        React.createElement('select', {
+                                            id: 'interest',
+                                            name: 'interest',
+                                            defaultValue: ''
+                                        },
+                                            React.createElement('option', { value: '' }, 'Select area of interest...'),
+                                            React.createElement('option', { value: 'player_analytics' }, 'Player Analytics & Scouting'),
+                                            React.createElement('option', { value: 'team_strategy' }, 'Team Strategy & Performance'),
+                                            React.createElement('option', { value: 'visual_analysis' }, 'Visual Analysis & Biomechanics'),
+                                            React.createElement('option', { value: 'competitive_intelligence' }, 'Competitive Intelligence'),
+                                            React.createElement('option', { value: 'custom_solutions' }, 'Custom Analytics Solutions'),
+                                            React.createElement('option', { value: 'partnership' }, 'Strategic Partnership'),
+                                            React.createElement('option', { value: 'other' }, 'Other')
+                                        )
+                                    )
+                                ),
+                                React.createElement('div', { className: 'form-group full-width' },
+                                    React.createElement('label', { htmlFor: 'message' }, 'Message *'),
+                                    React.createElement('textarea', {
+                                        id: 'message',
+                                        name: 'message',
+                                        required: true,
+                                        rows: 4,
+                                        placeholder: 'Tell us about your analytics needs, current challenges, or partnership ideas...'
+                                    })
+                                ),
+                                React.createElement('button', {
+                                    type: 'submit',
+                                    className: 'submit-btn'
+                                },
+                                    React.createElement('i', { className: 'fas fa-paper-plane' }),
+                                    ' Send Message'
+                                )
+                            )
+                        ),
+                        React.createElement('div', { className: 'contact-info' },
+                            React.createElement('div', { className: 'contact-methods' },
+                                React.createElement('h3', null, 'Direct Contact'),
+                                React.createElement('div', { className: 'contact-item' },
+                                    React.createElement('i', { className: 'fas fa-envelope' }),
+                                    React.createElement('a', { href: 'mailto:ahump20@outlook.com' }, 'ahump20@outlook.com')
+                                ),
+                                React.createElement('div', { className: 'contact-item' },
+                                    React.createElement('i', { className: 'fas fa-phone' }),
+                                    React.createElement('a', { href: 'tel:+12102735538' }, '(210) 273-5538')
+                                ),
+                                React.createElement('div', { className: 'contact-item' },
+                                    React.createElement('i', { className: 'fab fa-linkedin' }),
+                                    React.createElement('a', { href: 'https://linkedin.com/in/john-humphrey-2033', target: '_blank' }, 'LinkedIn Profile')
+                                )
+                            ),
+                            React.createElement('div', { className: 'specialties' },
+                                React.createElement('h3', null, 'Our Specialties'),
+                                React.createElement('ul', null,
+                                    React.createElement('li', null, '⚾ MLB Analytics & Player Development'),
+                                    React.createElement('li', null, '🏈 NFL Strategy & Performance Intelligence'),
+                                    React.createElement('li', null, '🏀 NBA Advanced Metrics & Scouting'),
+                                    React.createElement('li', null, '🎓 NCAA Sports Analytics & Recruiting'),
+                                    React.createElement('li', null, '📊 Custom Dashboard Development'),
+                                    React.createElement('li', null, '🔬 Visual Analysis & Biomechanics'),
+                                    React.createElement('li', null, '🏆 Championship Consulting')
+                                )
+                            ),
+                            React.createElement('div', { className: 'response-time' },
+                                React.createElement('h3', null, 'Response Commitment'),
+                                React.createElement('p', null, 
+                                    React.createElement('i', { className: 'fas fa-clock' }),
+                                    ' We respond to all partnership inquiries within 24 hours during business days.'
                                 )
                             )
                         )
