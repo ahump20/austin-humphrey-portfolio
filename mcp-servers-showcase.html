@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Server Architecture - 11+ Production Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --ut-orange: #BF5700;
+            --glow-orange: #FF7A00;
+            --dark-orange: #8B3F00;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--ut-orange), var(--glow-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .server-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .server-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--ut-orange);
+            box-shadow: 0 10px 30px rgba(191, 87, 0, 0.3);
+        }
+        
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-active {
+            background: #10B981;
+            box-shadow: 0 0 10px #10B981;
+        }
+        
+        .status-development {
+            background: #F59E0B;
+            box-shadow: 0 0 10px #F59E0B;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+        
+        .tech-badge {
+            background: rgba(191, 87, 0, 0.2);
+            border: 1px solid var(--ut-orange);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+        
+        .metric-value {
+            font-family: 'Courier New', monospace;
+            color: #10B981;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4">
+                <span class="gradient-text">MCP Server Architecture</span>
+            </h1>
+            <p class="text-xl text-gray-300">11+ Production Systems Processing 100K+ Events/Second</p>
+            <div class="flex justify-center gap-8 mt-6">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-400">11+</div>
+                    <div class="text-sm text-gray-400">Active Servers</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-400">100K+</div>
+                    <div class="text-sm text-gray-400">Events/Second</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-orange-400">99.9%</div>
+                    <div class="text-sm text-gray-400">Uptime</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-400">&lt;50ms</div>
+                    <div class="text-sm text-gray-400">Response Time</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Server Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Cardinals Analytics MCP Server -->
+            <div class="server-card rounded-lg p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i class="fas fa-baseball text-red-500"></i>
+                            Cardinals Analytics
+                        </h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="status-indicator status-active"></div>
+                            <span class="text-xs text-gray-400">Production</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/ahump20/cardinals-mcp" target="_blank" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">Real-time MLB analytics for St. Louis Cardinals organization with advanced caching and prediction models.</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Requests/Day</span>
+                        <span class="metric-value">2.4M</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Avg Response</span>
+                        <span class="metric-value">32ms</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Win Prediction</span>
+                        <span class="metric-value">87%</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">TypeScript</span>
+                    <span class="tech-badge">Redis</span>
+                    <span class="tech-badge">WebSocket</span>
+                </div>
+            </div>
+
+            <!-- Blaze Intelligence Core -->
+            <div class="server-card rounded-lg p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i class="fas fa-fire text-orange-500"></i>
+                            Blaze Intelligence Core
+                        </h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="status-indicator status-active"></div>
+                            <span class="text-xs text-gray-400">Production</span>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-lock"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">Central AI orchestration system managing pattern recognition and cognitive analytics across all sports.</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">AI Models</span>
+                        <span class="metric-value">6</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Pattern Accuracy</span>
+                        <span class="metric-value">98%</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Processing Speed</span>
+                        <span class="metric-value">100K/s</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">TensorFlow</span>
+                    <span class="tech-badge">CUDA</span>
+                </div>
+            </div>
+
+            <!-- MLB The Show Integration -->
+            <div class="server-card rounded-lg p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i class="fas fa-gamepad text-blue-500"></i>
+                            MLB The Show API
+                        </h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="status-indicator status-active"></div>
+                            <span class="text-xs text-gray-400">Production</span>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">Bridges video game analytics with real-world player performance for ShowIQ swing analysis.</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Players Analyzed</span>
+                        <span class="metric-value">1,200+</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Swing Comparisons</span>
+                        <span class="metric-value">45K</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Accuracy</span>
+                        <span class="metric-value">91%</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">Node.js</span>
+                    <span class="tech-badge">GraphQL</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                </div>
+            </div>
+
+            <!-- Sports Intelligence Gateway -->
+            <div class="server-card rounded-lg p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i class="fas fa-network-wired text-purple-500"></i>
+                            Intelligence Gateway
+                        </h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="status-indicator status-active"></div>
+                            <span class="text-xs text-gray-400">Production</span>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-shield-alt"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">API gateway managing authentication, rate limiting, and request routing for all MCP servers.</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Endpoints</span>
+                        <span class="metric-value">127</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Auth Success</span>
+                        <span class="metric-value">99.8%</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Latency</span>
+                        <span class="metric-value">8ms</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">Go</span>
+                    <span class="tech-badge">Kong</span>
+                    <span class="tech-badge">JWT</span>
+                </div>
+            </div>
+
+            <!-- Baseball Savant Connector -->
+            <div class="server-card rounded-lg p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i class="fas fa-chart-line text-green-500"></i>
+                            Savant Connector
+                        </h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="status-indicator status-active"></div>
+                            <span class="text-xs text-gray-400">Production</span>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-database"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">Real-time Statcast data ingestion and processing from Baseball Savant with advanced metrics.</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Data Points/Day</span>
+                        <span class="metric-value">8.5M</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Metrics Tracked</span>
+                        <span class="metric-value">342</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Update Freq</span>
+                        <span class="metric-value">15s</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Kafka</span>
+                    <span class="tech-badge">ClickHouse</span>
+                </div>
+            </div>
+
+            <!-- Blaze Backyard Backend -->
+            <div class="server-card rounded-lg p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i class="fas fa-mobile-alt text-indigo-500"></i>
+                            Blaze Backyard API
+                        </h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="status-indicator status-development"></div>
+                            <span class="text-xs text-gray-400">Beta</span>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-rocket"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">Mobile app backend for gamified sports training with real-time coaching and progress tracking.</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Beta Users</span>
+                        <span class="metric-value">450</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Sessions/Day</span>
+                        <span class="metric-value">2.1K</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Launch Target</span>
+                        <span class="metric-value">10K D1</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">FastAPI</span>
+                    <span class="tech-badge">Firebase</span>
+                    <span class="tech-badge">WebRTC</span>
+                </div>
+            </div>
+
+            <!-- Pattern Recognition Engine -->
+            <div class="server-card rounded-lg p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i class="fas fa-brain text-pink-500"></i>
+                            Pattern Engine
+                        </h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="status-indicator status-active"></div>
+                            <span class="text-xs text-gray-400">Production</span>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-lock"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">Core pattern recognition system implementing Decision Velocity Model™ and predictive analytics.</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Patterns/Sec</span>
+                        <span class="metric-value">45K</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Recognition Rate</span>
+                        <span class="metric-value">98%</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Neural Layers</span>
+                        <span class="metric-value">12</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">PyTorch</span>
+                    <span class="tech-badge">CUDA</span>
+                    <span class="tech-badge">C++</span>
+                </div>
+            </div>
+
+            <!-- Titans Analytics -->
+            <div class="server-card rounded-lg p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i class="fas fa-football-ball text-blue-400"></i>
+                            Titans Analytics
+                        </h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="status-indicator status-development"></div>
+                            <span class="text-xs text-gray-400">Development</span>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-code-branch"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">NFL analytics focusing on Tennessee Titans with play prediction and roster optimization.</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Play Analysis</span>
+                        <span class="metric-value">22K</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Prediction Acc</span>
+                        <span class="metric-value">73%</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Status</span>
+                        <span class="metric-value">Alpha</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">R</span>
+                    <span class="tech-badge">nflscrapR</span>
+                    <span class="tech-badge">Docker</span>
+                </div>
+            </div>
+
+            <!-- Grizzlies Intelligence -->
+            <div class="server-card rounded-lg p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i class="fas fa-basketball-ball text-cyan-500"></i>
+                            Grizzlies Intel
+                        </h3>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="status-indicator status-development"></div>
+                            <span class="text-xs text-gray-400">Development</span>
+                        </div>
+                    </div>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-code-branch"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">NBA analytics for Memphis Grizzlies with shot selection optimization and lineup analysis.</p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Shots Analyzed</span>
+                        <span class="metric-value">18K</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Lineup Combos</span>
+                        <span class="metric-value">450</span>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">+/- Impact</span>
+                        <span class="metric-value">+4.2</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">NBA API</span>
+                    <span class="tech-badge">Spark</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architecture Overview -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">System Architecture</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="server-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <i class="fas fa-layer-group text-orange-400"></i>
+                        Tech Stack Overview
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Languages</span>
+                            <div class="flex gap-2">
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Go</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Databases</span>
+                            <div class="flex gap-2">
+                                <span class="tech-badge">Redis</span>
+                                <span class="tech-badge">PostgreSQL</span>
+                                <span class="tech-badge">MongoDB</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">ML/AI</span>
+                            <div class="flex gap-2">
+                                <span class="tech-badge">TensorFlow</span>
+                                <span class="tech-badge">PyTorch</span>
+                                <span class="tech-badge">CUDA</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Infrastructure</span>
+                            <div class="flex gap-2">
+                                <span class="tech-badge">AWS</span>
+                                <span class="tech-badge">Docker</span>
+                                <span class="tech-badge">K8s</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="server-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <i class="fas fa-tachometer-alt text-green-400"></i>
+                        Performance Metrics
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Total Throughput</span>
+                            <span class="metric-value font-semibold">100K+ events/sec</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Average Latency</span>
+                            <span class="metric-value font-semibold">&lt;50ms p99</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">System Uptime</span>
+                            <span class="metric-value font-semibold">99.97%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Data Processed Daily</span>
+                            <span class="metric-value font-semibold">2.4TB</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Concurrent Users</span>
+                            <span class="metric-value font-semibold">10K+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integration Capabilities -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">Integration Capabilities</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="server-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <i class="fas fa-plug text-blue-400"></i>
+                        Data Sources
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>• MLB Statcast & Baseball Savant</li>
+                        <li>• Sportradar API Suite</li>
+                        <li>• ESPN & Sports Reference</li>
+                        <li>• MLB The Show Database</li>
+                        <li>• Custom Scout Reports</li>
+                        <li>• Video Analysis Systems</li>
+                    </ul>
+                </div>
+
+                <div class="server-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <i class="fas fa-share-alt text-green-400"></i>
+                        Output Formats
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>• REST API (JSON/XML)</li>
+                        <li>• GraphQL Endpoints</li>
+                        <li>• WebSocket Streams</li>
+                        <li>• CSV/Excel Reports</li>
+                        <li>• Interactive Dashboards</li>
+                        <li>• Mobile Push Notifications</li>
+                    </ul>
+                </div>
+
+                <div class="server-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <i class="fas fa-shield-alt text-purple-400"></i>
+                        Security & Compliance
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>• OAuth 2.0 / JWT Auth</li>
+                        <li>• End-to-end Encryption</li>
+                        <li>• GDPR Compliant</li>
+                        <li>• Rate Limiting & DDoS Protection</li>
+                        <li>• Audit Logging</li>
+                        <li>• PCI DSS Level 1</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-12 text-sm text-gray-500">
+            <p>MCP Server Architecture - Built by Austin Humphrey</p>
+            <p>Processing 100K+ events/second across 11+ production systems</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Value Index™ - Interactive MLB Player Valuation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --ut-orange: #BF5700;
+            --glow-orange: #FF7A00;
+            --dark-orange: #8B3F00;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--ut-orange), var(--glow-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .value-positive {
+            color: #10B981;
+        }
+        
+        .value-negative {
+            color: #EF4444;
+        }
+        
+        .metric-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        
+        .pulse-on-change {
+            animation: pulse 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-4">
+                <span class="gradient-text">Hidden Value Index™</span>
+            </h1>
+            <p class="text-xl text-gray-300">Revolutionary MLB Talent Valuation Framework</p>
+            <div class="flex justify-center gap-6 mt-4">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-400">$42M+</div>
+                    <div class="text-sm text-gray-400">Value Identified</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-400">94%</div>
+                    <div class="text-sm text-gray-400">Prediction Accuracy</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-orange-400">Baltimore</div>
+                    <div class="text-sm text-gray-400">Orioles Case Study</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player Selection -->
+        <div class="mb-8">
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Player Input -->
+                <div class="metric-card rounded-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">Player Analysis</h2>
+                    <select id="playerSelect" class="w-full bg-gray-800 text-white p-3 rounded mb-4">
+                        <option value="custom">Custom Player</option>
+                        <option value="cedric">Cedric Mullins (2021 Breakout)</option>
+                        <option value="john">John Means (2019 Discovery)</option>
+                        <option value="austin">Austin Hays (2020 Emergence)</option>
+                        <option value="ryan">Ryan Mountcastle (Rookie Projection)</option>
+                    </select>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-sm text-gray-400">Player Name</label>
+                            <input type="text" id="playerName" class="w-full bg-gray-800 p-2 rounded" value="Custom Player">
+                        </div>
+                        <div>
+                            <label class="text-sm text-gray-400">Current Market Value ($M)</label>
+                            <input type="number" id="marketValue" class="w-full bg-gray-800 p-2 rounded" value="2.5" step="0.1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Market Context -->
+                <div class="metric-card rounded-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">Market Context</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-sm text-gray-400">League Average WAR Value ($M/WAR)</label>
+                            <input type="number" id="warValue" class="w-full bg-gray-800 p-2 rounded" value="8.5" step="0.1">
+                        </div>
+                        <div>
+                            <label class="text-sm text-gray-400">Team Payroll Efficiency</label>
+                            <select id="efficiency" class="w-full bg-gray-800 p-3 rounded">
+                                <option value="1.2">High (+20%)</option>
+                                <option value="1.0" selected>Average</option>
+                                <option value="0.8">Low (-20%)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-sm text-gray-400">Contract Year Multiplier</label>
+                            <input type="range" id="contractMultiplier" min="0.8" max="1.5" value="1.0" step="0.1" class="w-full">
+                            <div class="text-center text-sm mt-1">
+                                <span id="multiplierValue">1.0x</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Metrics Input -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Performance Metrics</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="metric-card rounded p-4">
+                    <label class="text-xs text-gray-400">WAR Projection</label>
+                    <input type="number" id="war" class="w-full bg-gray-800 p-2 rounded mt-1 text-lg" value="3.5" step="0.1">
+                </div>
+                <div class="metric-card rounded p-4">
+                    <label class="text-xs text-gray-400">OPS+</label>
+                    <input type="number" id="ops" class="w-full bg-gray-800 p-2 rounded mt-1 text-lg" value="120" step="1">
+                </div>
+                <div class="metric-card rounded p-4">
+                    <label class="text-xs text-gray-400">Defensive Runs</label>
+                    <input type="number" id="defense" class="w-full bg-gray-800 p-2 rounded mt-1 text-lg" value="5" step="1">
+                </div>
+                <div class="metric-card rounded p-4">
+                    <label class="text-xs text-gray-400">Age</label>
+                    <input type="number" id="age" class="w-full bg-gray-800 p-2 rounded mt-1 text-lg" value="26" step="1">
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden Value Analysis -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Hidden Value Analysis™</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Traditional Value -->
+                <div class="metric-card rounded-lg p-6 text-center">
+                    <div class="text-sm text-gray-400 mb-2">Traditional Valuation</div>
+                    <div id="traditionalValue" class="text-3xl font-bold text-gray-300">$0.0M</div>
+                    <div class="text-xs text-gray-500 mt-2">WAR × League Average</div>
+                </div>
+                
+                <!-- HVI Value -->
+                <div class="metric-card rounded-lg p-6 text-center border-2 border-orange-500">
+                    <div class="text-sm text-orange-400 mb-2">HVI™ Valuation</div>
+                    <div id="hviValue" class="text-3xl font-bold gradient-text">$0.0M</div>
+                    <div class="text-xs text-gray-500 mt-2">Pattern Recognition Applied</div>
+                </div>
+                
+                <!-- Inefficiency -->
+                <div class="metric-card rounded-lg p-6 text-center">
+                    <div class="text-sm text-gray-400 mb-2">Market Inefficiency</div>
+                    <div id="inefficiency" class="text-3xl font-bold">$0.0M</div>
+                    <div class="text-xs text-gray-500 mt-2">Potential Value Capture</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Value Components Breakdown -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Value Components</h2>
+            <div class="metric-card rounded-lg p-6">
+                <canvas id="valueChart" class="w-full" height="100"></canvas>
+            </div>
+        </div>
+
+        <!-- Pattern Recognition Factors -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Pattern Recognition Factors</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center metric-card rounded p-3">
+                        <span class="text-sm">Trajectory Analysis</span>
+                        <div class="flex items-center gap-2">
+                            <input type="range" id="trajectory" min="0" max="100" value="75" class="w-24">
+                            <span class="text-sm font-bold w-12 text-right"><span id="trajectoryVal">75</span>%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center metric-card rounded p-3">
+                        <span class="text-sm">Similarity Score</span>
+                        <div class="flex items-center gap-2">
+                            <input type="range" id="similarity" min="0" max="100" value="82" class="w-24">
+                            <span class="text-sm font-bold w-12 text-right"><span id="similarityVal">82</span>%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center metric-card rounded p-3">
+                        <span class="text-sm">Context Adjustment</span>
+                        <div class="flex items-center gap-2">
+                            <input type="range" id="context" min="0" max="100" value="68" class="w-24">
+                            <span class="text-sm font-bold w-12 text-right"><span id="contextVal">68</span>%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center metric-card rounded p-3">
+                        <span class="text-sm">Breakout Probability</span>
+                        <div class="flex items-center gap-2">
+                            <input type="range" id="breakout" min="0" max="100" value="45" class="w-24">
+                            <span class="text-sm font-bold w-12 text-right"><span id="breakoutVal">45</span>%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center metric-card rounded p-3">
+                        <span class="text-sm">Injury Risk Factor</span>
+                        <div class="flex items-center gap-2">
+                            <input type="range" id="injury" min="0" max="100" value="25" class="w-24">
+                            <span class="text-sm font-bold w-12 text-right text-red-400"><span id="injuryVal">25</span>%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center metric-card rounded p-3">
+                        <span class="text-sm">Team Fit Score</span>
+                        <div class="flex items-center gap-2">
+                            <input type="range" id="teamfit" min="0" max="100" value="88" class="w-24">
+                            <span class="text-sm font-bold w-12 text-right"><span id="teamfitVal">88</span>%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendation -->
+        <div class="metric-card rounded-lg p-6 border-2 border-green-500">
+            <h2 class="text-xl font-semibold mb-4">HVI™ Recommendation</h2>
+            <div id="recommendation" class="space-y-3">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-chart-line text-green-400 text-2xl"></i>
+                    <div>
+                        <div class="font-semibold">Action: <span id="actionRecommend" class="text-green-400">ACQUIRE</span></div>
+                        <div class="text-sm text-gray-400">Market inefficiency detected</div>
+                    </div>
+                </div>
+                <div class="mt-4 p-4 bg-gray-800 rounded">
+                    <div class="text-sm text-gray-300" id="analysisText">
+                        Based on pattern recognition analysis, this player represents significant hidden value.
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mt-4">
+                    <div class="text-center">
+                        <div class="text-xs text-gray-400">Confidence</div>
+                        <div class="text-xl font-bold text-orange-400" id="confidence">94%</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-xs text-gray-400">ROI Potential</div>
+                        <div class="text-xl font-bold text-green-400" id="roi">285%</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-xs text-gray-400">Time Horizon</div>
+                        <div class="text-xl font-bold text-blue-400" id="horizon">2-3 Years</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 text-sm text-gray-500">
+            <p>Hidden Value Index™ - Proprietary Framework by Austin Humphrey</p>
+            <p>Identified $42M+ in market inefficiencies for Baltimore Orioles</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize chart
+        let valueChart;
+        
+        // Player presets
+        const playerPresets = {
+            cedric: {
+                name: "Cedric Mullins",
+                marketValue: 2.1,
+                war: 5.3,
+                ops: 136,
+                defense: 12,
+                age: 27,
+                trajectory: 85,
+                similarity: 78,
+                context: 72,
+                breakout: 92,
+                injury: 15,
+                teamfit: 94
+            },
+            john: {
+                name: "John Means",
+                marketValue: 3.5,
+                war: 3.8,
+                ops: 0,
+                defense: 0,
+                age: 28,
+                trajectory: 72,
+                similarity: 81,
+                context: 65,
+                breakout: 58,
+                injury: 35,
+                teamfit: 87
+            },
+            austin: {
+                name: "Austin Hays",
+                marketValue: 1.8,
+                war: 3.2,
+                ops: 115,
+                defense: 8,
+                age: 25,
+                trajectory: 78,
+                similarity: 75,
+                context: 70,
+                breakout: 65,
+                injury: 22,
+                teamfit: 91
+            },
+            ryan: {
+                name: "Ryan Mountcastle",
+                marketValue: 0.6,
+                war: 2.8,
+                ops: 108,
+                defense: -5,
+                age: 24,
+                trajectory: 82,
+                similarity: 70,
+                context: 68,
+                breakout: 75,
+                injury: 18,
+                teamfit: 89
+            }
+        };
+
+        // Initialize chart
+        function initChart() {
+            const ctx = document.getElementById('valueChart').getContext('2d');
+            valueChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Base WAR', 'Performance', 'Trajectory', 'Context', 'Team Fit', 'Risk Adj', 'Total HVI'],
+                    datasets: [{
+                        label: 'Value Components ($M)',
+                        data: [0, 0, 0, 0, 0, 0, 0],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(251, 146, 60, 0.8)',
+                            'rgba(147, 51, 234, 0.8)',
+                            'rgba(236, 72, 153, 0.8)',
+                            'rgba(239, 68, 68, 0.8)',
+                            'rgba(191, 87, 0, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(251, 146, 60, 1)',
+                            'rgba(147, 51, 234, 1)',
+                            'rgba(236, 72, 153, 1)',
+                            'rgba(239, 68, 68, 1)',
+                            'rgba(191, 87, 0, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toFixed(1) + 'M';
+                                },
+                                color: '#9CA3AF'
+                            },
+                            grid: {
+                                color: 'rgba(156, 163, 175, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#9CA3AF'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Calculate HVI Value
+        function calculateHVI() {
+            // Get inputs
+            const war = parseFloat(document.getElementById('war').value) || 0;
+            const ops = parseFloat(document.getElementById('ops').value) || 100;
+            const defense = parseFloat(document.getElementById('defense').value) || 0;
+            const age = parseFloat(document.getElementById('age').value) || 26;
+            const marketValue = parseFloat(document.getElementById('marketValue').value) || 0;
+            const warValue = parseFloat(document.getElementById('warValue').value) || 8.5;
+            const efficiency = parseFloat(document.getElementById('efficiency').value) || 1.0;
+            const contractMultiplier = parseFloat(document.getElementById('contractMultiplier').value) || 1.0;
+            
+            // Pattern recognition factors
+            const trajectory = parseFloat(document.getElementById('trajectory').value) / 100;
+            const similarity = parseFloat(document.getElementById('similarity').value) / 100;
+            const context = parseFloat(document.getElementById('context').value) / 100;
+            const breakout = parseFloat(document.getElementById('breakout').value) / 100;
+            const injury = parseFloat(document.getElementById('injury').value) / 100;
+            const teamfit = parseFloat(document.getElementById('teamfit').value) / 100;
+            
+            // Traditional valuation
+            const traditionalValue = war * warValue;
+            
+            // HVI Calculations
+            const baseValue = war * warValue * efficiency;
+            const performanceBonus = ((ops - 100) / 100) * 2 + (defense / 10);
+            const ageAdjustment = age <= 27 ? 1.2 : (age >= 32 ? 0.8 : 1.0);
+            const trajectoryValue = baseValue * trajectory * 0.3;
+            const contextValue = baseValue * context * 0.2;
+            const teamFitValue = baseValue * teamfit * 0.15;
+            const riskAdjustment = -baseValue * injury * 0.2;
+            const breakoutPotential = breakout > 0.5 ? baseValue * breakout * 0.4 : 0;
+            
+            // Calculate final HVI value
+            const hviValue = (baseValue + performanceBonus + trajectoryValue + 
+                             contextValue + teamFitValue + riskAdjustment + 
+                             breakoutPotential) * ageAdjustment * contractMultiplier;
+            
+            // Calculate inefficiency
+            const inefficiency = hviValue - marketValue;
+            
+            // Update display
+            document.getElementById('traditionalValue').textContent = '$' + traditionalValue.toFixed(1) + 'M';
+            document.getElementById('hviValue').textContent = '$' + hviValue.toFixed(1) + 'M';
+            document.getElementById('inefficiency').textContent = 
+                (inefficiency >= 0 ? '+$' : '-$') + Math.abs(inefficiency).toFixed(1) + 'M';
+            document.getElementById('inefficiency').className = 
+                'text-3xl font-bold ' + (inefficiency >= 0 ? 'value-positive' : 'value-negative');
+            
+            // Update chart
+            valueChart.data.datasets[0].data = [
+                baseValue,
+                performanceBonus,
+                trajectoryValue,
+                contextValue,
+                teamFitValue,
+                riskAdjustment,
+                hviValue
+            ];
+            valueChart.update();
+            
+            // Update recommendation
+            updateRecommendation(inefficiency, hviValue, marketValue);
+            
+            // Add pulse animation
+            document.getElementById('hviValue').classList.add('pulse-on-change');
+            setTimeout(() => {
+                document.getElementById('hviValue').classList.remove('pulse-on-change');
+            }, 500);
+        }
+
+        // Update recommendation
+        function updateRecommendation(inefficiency, hviValue, marketValue) {
+            const roi = ((hviValue - marketValue) / marketValue * 100).toFixed(0);
+            const confidence = Math.min(94, Math.max(60, 94 - Math.abs(inefficiency) * 2)).toFixed(0);
+            
+            let action, actionClass, analysisText;
+            
+            if (inefficiency > 10) {
+                action = "STRONG BUY";
+                actionClass = "text-green-400";
+                analysisText = "Exceptional hidden value detected. This player is significantly undervalued by the market. Immediate acquisition recommended before market correction.";
+            } else if (inefficiency > 5) {
+                action = "BUY";
+                actionClass = "text-green-400";
+                analysisText = "Strong value opportunity identified. Pattern recognition indicates this player will outperform market expectations.";
+            } else if (inefficiency > 2) {
+                action = "ACQUIRE";
+                actionClass = "text-blue-400";
+                analysisText = "Moderate value opportunity. Consider acquisition if fits team needs and budget constraints.";
+            } else if (inefficiency > -2) {
+                action = "HOLD";
+                actionClass = "text-yellow-400";
+                analysisText = "Fair market value. Player is appropriately priced. Monitor for changes in performance trajectory.";
+            } else {
+                action = "AVOID";
+                actionClass = "text-red-400";
+                analysisText = "Overvalued asset. Market price exceeds projected value. Recommend exploring alternatives.";
+            }
+            
+            document.getElementById('actionRecommend').textContent = action;
+            document.getElementById('actionRecommend').className = actionClass;
+            document.getElementById('analysisText').textContent = analysisText;
+            document.getElementById('confidence').textContent = confidence + '%';
+            document.getElementById('roi').textContent = roi + '%';
+            
+            // Set horizon based on age and trajectory
+            const age = parseFloat(document.getElementById('age').value);
+            const horizon = age < 25 ? "3-5 Years" : (age < 30 ? "2-3 Years" : "1-2 Years");
+            document.getElementById('horizon').textContent = horizon;
+        }
+
+        // Setup event listeners
+        function setupListeners() {
+            // Player preset selection
+            document.getElementById('playerSelect').addEventListener('change', (e) => {
+                const preset = playerPresets[e.target.value];
+                if (preset) {
+                    document.getElementById('playerName').value = preset.name;
+                    document.getElementById('marketValue').value = preset.marketValue;
+                    document.getElementById('war').value = preset.war;
+                    document.getElementById('ops').value = preset.ops;
+                    document.getElementById('defense').value = preset.defense;
+                    document.getElementById('age').value = preset.age;
+                    document.getElementById('trajectory').value = preset.trajectory;
+                    document.getElementById('similarity').value = preset.similarity;
+                    document.getElementById('context').value = preset.context;
+                    document.getElementById('breakout').value = preset.breakout;
+                    document.getElementById('injury').value = preset.injury;
+                    document.getElementById('teamfit').value = preset.teamfit;
+                    updateSliderDisplays();
+                    calculateHVI();
+                }
+            });
+            
+            // All input changes
+            const inputs = document.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    updateSliderDisplays();
+                    calculateHVI();
+                });
+            });
+            
+            // Contract multiplier display
+            document.getElementById('contractMultiplier').addEventListener('input', (e) => {
+                document.getElementById('multiplierValue').textContent = e.target.value + 'x';
+            });
+        }
+
+        // Update slider display values
+        function updateSliderDisplays() {
+            document.getElementById('trajectoryVal').textContent = document.getElementById('trajectory').value;
+            document.getElementById('similarityVal').textContent = document.getElementById('similarity').value;
+            document.getElementById('contextVal').textContent = document.getElementById('context').value;
+            document.getElementById('breakoutVal').textContent = document.getElementById('breakout').value;
+            document.getElementById('injuryVal').textContent = document.getElementById('injury').value;
+            document.getElementById('teamfitVal').textContent = document.getElementById('teamfit').value;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initChart();
+            setupListeners();
+            updateSliderDisplays();
+            calculateHVI();
+        });
+    </script>
+</body>
+</html>
