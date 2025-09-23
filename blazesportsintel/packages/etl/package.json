@@ -1,0 +1,12 @@
+{
+  "name": "@blaze-intelligence/etl",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    "./httpClient": "./src/httpClient.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  }
+}

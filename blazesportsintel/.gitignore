@@ -1,0 +1,9 @@
+node_modules/
+.turbo/
+.wrangler/
+.cache/
+apps/web/.next/
+apps/web/out/
+apps/api/.wrangler/
+.env
+*.log

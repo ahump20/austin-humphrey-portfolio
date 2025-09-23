@@ -1,0 +1,36 @@
+{
+  "name": "blazesportsintel",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "refresh:all": "node packages/pipeline/run-all.mjs",
+    "refresh:nfl": "node packages/pipeline/run.mjs nfl",
+    "refresh:mlb": "node packages/pipeline/run.mjs mlb",
+    "refresh:ncaa_fb": "node packages/pipeline/run.mjs ncaa_fb",
+    "refresh:college_bb": "node packages/pipeline/run.mjs college_bb",
+    "refresh:tx_hs_fb": "node packages/pipeline/run.mjs tx_hs_fb",
+    "refresh:pg_tx": "node packages/pipeline/run.mjs pg_tx",
+    "validate": "node scripts/validate.mjs",
+    "linkcheck": "node scripts/linkcheck.mjs",
+    "seed": "node scripts/seed.mjs"
+  },
+  "devDependencies": {
+    "zod": "^3.21.4",
+    "typescript": "^5.0.0",
+    "turbo": "^1.6.0",
+    "pnpm": "^9.0.0",
+    "undici": "^6.0.0",
+    "parquetjs-lite": "^0.8.7",
+    "node-fetch": "^3.3.1",
+    "next": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vitepress": "^1.0.0",
+    "wrangler": "^3.0.0",
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0"
+  }
+}
