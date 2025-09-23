@@ -1,0 +1,13 @@
+{
+  "name": "@blaze-intelligence/api",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "wrangler deploy --dry-run",
+    "dev": "wrangler dev"
+  },
+  "dependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

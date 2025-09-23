@@ -1,0 +1,9 @@
+{
+  "name": "@blaze-intelligence/pipeline",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "run-all.mjs",
+  "scripts": {
+    "build": "echo 'pipeline scripts only'"
+  }
+}
