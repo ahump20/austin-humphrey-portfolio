@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🔥 Blaze Intelligence OS — Championship Sports Analytics Platform | Austin Humphrey</title>
-    <meta name="description" content="Elite sports analytics platform combining AI-driven insights, real-time data feeds, and championship intelligence. Professional scouting, player analysis, and team strategy for MLB, NFL, NBA, and NCAA organizations.">
+    <meta name="description" content="Elite sports analytics platform combining AI-driven insights, high-level data models, and championship intelligence. Professional scouting, player analysis, and team strategy for MLB, NFL, NBA, and NCAA organizations.">
     <meta name="keywords" content="sports analytics, baseball analytics, football analytics, basketball analytics, player scouting, team strategy, sports intelligence, competitive analysis, Austin Humphrey, MLB analytics, NFL analytics, NBA analytics, NCAA analytics, sports data, performance analytics, championship consulting">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ahump20.github.io/austin-humphrey-portfolio/">
     <meta property="og:title" content="🔥 Blaze Intelligence OS — Championship Sports Analytics Platform">
-    <meta property="og:description" content="Elite sports analytics platform combining AI-driven insights, real-time data feeds, and championship intelligence for professional sports organizations.">
+    <meta property="og:description" content="Elite sports analytics platform combining AI-driven insights, high-level data models, and championship intelligence for professional sports organizations.">
     <meta property="og:image" content="https://ahump20.github.io/austin-humphrey-portfolio/austin-professional.jpg">
     <meta property="og:site_name" content="Blaze Intelligence">
     
@@ -19,7 +19,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ahump20.github.io/austin-humphrey-portfolio/">
     <meta property="twitter:title" content="🔥 Blaze Intelligence OS — Championship Sports Analytics Platform">
-    <meta property="twitter:description" content="Elite sports analytics platform combining AI-driven insights, real-time data feeds, and championship intelligence for professional sports organizations.">
+    <meta property="twitter:description" content="Elite sports analytics platform combining AI-driven insights, high-level data models, and championship intelligence for professional sports organizations.">
     <meta property="twitter:image" content="https://ahump20.github.io/austin-humphrey-portfolio/austin-professional.jpg">
     <meta property="twitter:creator" content="@a_hump20">
     
@@ -396,6 +396,26 @@
             line-height: 1.6;
             margin-bottom: 2rem;
             opacity: 0.8;
+        }
+
+        .compliance-disclaimer {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            background: rgba(10, 10, 15, 0.6);
+            border: 1px solid var(--glass-border);
+            text-align: left;
+        }
+
+        .compliance-disclaimer p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.75;
+            margin-bottom: 0.75rem;
+        }
+
+        .compliance-disclaimer p:last-child {
+            margin-bottom: 0;
         }
 
         /* Dashboard Container */
@@ -2561,7 +2581,7 @@
             init() {
                 this.startDataStreams();
                 this.setupHeartbeat();
-                console.log('📡 Blaze Real-Time Data Feeds initialized');
+                console.log('📡 Blaze high-level data streams initialized');
             }
 
             async startDataStreams() {
@@ -3740,8 +3760,12 @@
                         ),
                         React.createElement('h1', { className: 'hero-title' }, '🔥 Blaze Intelligence OS'),
                         React.createElement('h2', { className: 'hero-subtitle' }, 'Championship Sports Analytics'),
-                        React.createElement('p', { className: 'hero-description' }, 
+                        React.createElement('p', { className: 'hero-description' },
                             'Where cognitive performance meets quarterly performance. Advanced analytics platform combining AI-driven insights with championship-level strategic thinking.'
+                        ),
+                        React.createElement('div', { className: 'compliance-disclaimer', role: 'note' },
+                            React.createElement('p', null, 'Blaze Intelligence is an independent concept project. Names, logos, and trademarks remain the property of their respective leagues, teams, and athletes.'),
+                            React.createElement('p', null, 'All analytics shown are illustrative, not sourced from official or real-time data feeds, and should not be interpreted as verified facts or endorsements.')
                         )
                     )
                 ),
@@ -3755,7 +3779,7 @@
                         ),
                         React.createElement('div', { className: 'connection-status' },
                             React.createElement('div', { className: 'status-indicator live' }),
-                            'Real-Time Data Feeds Active'
+                            'High-Level Data Streams (Simulated)'
                         )
                     ),
                     React.createElement('div', { className: 'ticker-content' },
@@ -3831,8 +3855,8 @@
                     React.createElement('div', { className: 'data-source-info' },
                         React.createElement('p', null,
                             React.createElement('i', { className: 'fas fa-satellite-dish' }),
-                            ' Powered by Blaze Intelligence MCP • Live updates every 10-30 seconds • ',
-                            React.createElement('span', { className: 'last-update' }, 'Last update: Just now')
+                            ' Powered by Blaze Intelligence MCP • Sample updates refreshed periodically • ',
+                            React.createElement('span', { className: 'last-update' }, 'Last simulated refresh: Just now')
                         )
                     )
                 ),
@@ -3877,7 +3901,7 @@
                 React.createElement('section', { className: 'dashboard' },
                     React.createElement('div', { className: 'dashboard-header' },
                         React.createElement('h2', { className: 'dashboard-title' }, 'Championship Analytics Dashboard'),
-                        React.createElement('p', { className: 'dashboard-subtitle' }, 'Real-time intelligence across all major sports leagues')
+                        React.createElement('p', { className: 'dashboard-subtitle' }, 'High-level intelligence snapshots across major sports leagues')
                     ),
 
                     // Analytics Overview
@@ -4130,11 +4154,11 @@
                                                 target: '_blank', 
                                                 className: 'link-button twitter-link' 
                                             }, 'Twitter'),
-                                            Object.keys(player.Links).length > 2 && React.createElement('a', { 
-                                                href: Object.values(player.Links)[2], 
-                                                target: '_blank', 
-                                                className: 'link-button official-link' 
-                                            }, player.Sport === 'MLB' ? 'MLB' : player.Sport === 'NFL' ? 'NFL' : player.Sport === 'NBA' ? 'NBA' : 'Official')
+                                            Object.keys(player.Links).length > 2 && React.createElement('a', {
+                                                href: Object.values(player.Links)[2],
+                                                target: '_blank',
+                                                className: 'link-button official-link'
+                                            }, player.Sport === 'MLB' ? 'MLB' : player.Sport === 'NFL' ? 'NFL' : player.Sport === 'NBA' ? 'NBA' : 'League Profile')
                                         )
                                     )
                                 )
@@ -4194,14 +4218,14 @@
                                                 target: '_blank', 
                                                 className: 'link-button twitter-link' 
                                             }, 'Twitter'),
-                                            React.createElement('a', { 
+                                            React.createElement('a', {
                                                 href: team['League/Sport'] === 'MLB' ? `https://www.mlb.com/team/${team.Team.toLowerCase().replace(/\s+/g, '-')}/` :
                                                       team['League/Sport'] === 'NFL' ? `https://www.nfl.com/teams/${team.Team.toLowerCase().replace(/\s+/g, '-')}/` :
                                                       team['League/Sport'] === 'NBA' ? `https://www.nba.com/team/${team.Team.toLowerCase().replace(/\s+/g, '')}/` :
-                                                      `https://www.google.com/search?q=${encodeURIComponent(team.Team + ' ' + team['League/Sport'])}`, 
-                                                target: '_blank', 
-                                                className: 'link-button official-link' 
-                                            }, 'Official')
+                                                      `https://www.google.com/search?q=${encodeURIComponent(team.Team + ' ' + team['League/Sport'])}`,
+                                                target: '_blank',
+                                                className: 'link-button official-link'
+                                            }, 'League Website')
                                         )
                                     );
                                 })
@@ -4258,15 +4282,15 @@
                                         className: 'link-button twitter-link',
                                         style: { minWidth: '120px', textAlign: 'center' }
                                     }, 'Twitter Feed'),
-                                    React.createElement('a', { 
+                                    React.createElement('a', {
                                         href: selectedTeam['League/Sport'] === 'MLB' ? `https://www.mlb.com/team/${selectedTeam.Team.toLowerCase().replace(/\s+/g, '-')}/` :
                                               selectedTeam['League/Sport'] === 'NFL' ? `https://www.nfl.com/teams/${selectedTeam.Team.toLowerCase().replace(/\s+/g, '-')}/` :
                                               selectedTeam['League/Sport'] === 'NBA' ? `https://www.nba.com/team/${selectedTeam.Team.toLowerCase().replace(/\s+/g, '')}/` :
-                                              `https://www.google.com/search?q=${encodeURIComponent(selectedTeam.Team + ' ' + selectedTeam['League/Sport'])}`, 
-                                        target: '_blank', 
+                                              `https://www.google.com/search?q=${encodeURIComponent(selectedTeam.Team + ' ' + selectedTeam['League/Sport'])}`,
+                                        target: '_blank',
                                         className: 'link-button official-link',
                                         style: { minWidth: '120px', textAlign: 'center' }
-                                    }, 'Official Site')
+                                    }, 'League Website')
                                 )
                             )
                         )
@@ -4326,12 +4350,12 @@
                                         className: 'link-button twitter-link',
                                         style: { textAlign: 'center', minWidth: '100px' }
                                     }, 'Follow on Twitter'),
-                                    Object.keys(selectedPlayer.Links).length > 2 && React.createElement('a', { 
-                                        href: Object.values(selectedPlayer.Links)[2], 
-                                        target: '_blank', 
+                                    Object.keys(selectedPlayer.Links).length > 2 && React.createElement('a', {
+                                        href: Object.values(selectedPlayer.Links)[2],
+                                        target: '_blank',
                                         className: 'link-button official-link',
                                         style: { textAlign: 'center', minWidth: '100px' }
-                                    }, selectedPlayer.Sport === 'MLB' ? 'MLB Profile' : selectedPlayer.Sport === 'NFL' ? 'NFL Profile' : selectedPlayer.Sport === 'NBA' ? 'NBA Profile' : 'Official Site')
+                                    }, selectedPlayer.Sport === 'MLB' ? 'MLB Profile' : selectedPlayer.Sport === 'NFL' ? 'NFL Profile' : selectedPlayer.Sport === 'NBA' ? 'NBA Profile' : 'League Profile')
                                 )
                             ),
                             
