@@ -19,7 +19,7 @@ type SeasonSnapshot = {
 
 type Dataset = Record<string, Record<string, SeasonSnapshot>>;
 
-const data: Dataset = dataset as unknown as Dataset;
+const data: Dataset = dataset as Dataset;
 
 function getSeasonSnapshot(league: string, season: string): SeasonSnapshot | null {
   const leagueEntry = data[league];
