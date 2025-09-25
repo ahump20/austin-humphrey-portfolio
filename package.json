@@ -75,7 +75,7 @@
     "serve": "npx serve -s build",
     "clean": "rm -rf build node_modules/.cache"
   },
-  "homepage": "https://ahump20.github.io/austin-humphrey-portfolio",
+  "homepage": ".",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ahump20/austin-humphrey-portfolio.git"
