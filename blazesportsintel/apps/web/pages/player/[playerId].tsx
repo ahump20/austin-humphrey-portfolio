@@ -13,6 +13,25 @@ type Props = {
 
 export default function PlayerPage({ league, season, teamId, data }: Props) {
   const { player, metadata } = data;
+  const numberFormatter = new Intl.NumberFormat("en-US");
+  const percentFormatter = new Intl.NumberFormat("en-US", {
+    style: "percent",
+    maximumFractionDigits: 0
+  });
+  const externalRefs = player.externalRefs ?? [];
+  const verifiedRefs = externalRefs.filter((ref) => ref.verified === true).length;
+  const verificationRate = externalRefs.length > 0 ? verifiedRefs / externalRefs.length : 0;
+  const sourceMixMap = externalRefs.reduce<Map<string, number>>((acc, ref) => {
+    const key = ref.sourceType?.trim() ?? "other";
+    acc.set(key, (acc.get(key) ?? 0) + 1);
+    return acc;
+  }, new Map<string, number>());
+  const sourceMix = Array.from(sourceMixMap.entries()).sort((a, b) => {
+    if (b[1] === a[1]) {
+      return a[0].localeCompare(b[0]);
+    }
+    return b[1] - a[1];
+  });
   return (
     <>
       <Head>
@@ -38,6 +57,29 @@ export default function PlayerPage({ league, season, teamId, data }: Props) {
             </>
           ) : null}
         </dl>
+        <section>
+          <h2>Intelligence Signals</h2>
+          <dl>
+            <dt>Verified link coverage</dt>
+            <dd>
+              {externalRefs.length > 0
+                ? `${percentFormatter.format(verificationRate)} (${numberFormatter.format(verifiedRefs)} of ${numberFormatter.format(externalRefs.length)} links)`
+                : "No verified links yet."}
+            </dd>
+          </dl>
+          {sourceMix.length > 0 ? (
+            <div>
+              <h3 style={{ fontSize: "1rem" }}>Source Mix</h3>
+              <ul>
+                {sourceMix.map(([sourceType, count]) => (
+                  <li key={sourceType}>{`${sourceType}: ${numberFormatter.format(count)} links`}</li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <p>No source mix recorded.</p>
+          )}
+        </section>
         <section>
           <h2>External Links</h2>
           <ul>
