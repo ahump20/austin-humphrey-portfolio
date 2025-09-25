@@ -1,23 +1,32 @@
-import fs from "node:fs";
-import path from "node:path";
+import type {
+  Metadata,
+  Player,
+  ScheduleGame,
+  Staff,
+  StandingRow,
+  Team
+} from "../../../packages/schema/dist/index.js";
+import { dataset } from "./generated/dataset.js";
 
-const DATA_ROOT = path.resolve(process.cwd(), "data");
+type SeasonSnapshot = {
+  metadata: Metadata;
+  teams: Team[];
+  players: Player[];
+  staff: Staff[];
+  schedules: ScheduleGame[];
+  standings: StandingRow[];
+};
 
-function readJsonl(filePath: string) {
-  if (!fs.existsSync(filePath)) return [];
-  const content = fs.readFileSync(filePath, "utf8");
-  return content
-    .split(/\r?\n/)
-    .filter((line) => line.trim().length > 0)
-    .map((line) => JSON.parse(line));
-}
+type Dataset = Record<string, Record<string, SeasonSnapshot>>;
 
-function readMetadata(league: string, season: string) {
-  const metadataPath = path.join(DATA_ROOT, league, season, "metadata.json");
-  if (!fs.existsSync(metadataPath)) {
-    return { league, season: Number.parseInt(season, 10), asOf: new Date().toISOString() };
-  }
-  return JSON.parse(fs.readFileSync(metadataPath, "utf8"));
+const data: Dataset = dataset as unknown as Dataset;
+
+function getSeasonSnapshot(league: string, season: string): SeasonSnapshot | null {
+  const leagueEntry = data[league];
+  if (!leagueEntry) return null;
+  const snapshot = leagueEntry[season];
+  if (!snapshot) return null;
+  return snapshot;
 }
 
 export default {
@@ -29,39 +38,35 @@ export default {
     }
 
     const [, league, season, resource, entityId] = segments;
-    const baseDir = path.join(DATA_ROOT, league, season ?? "");
-    if (!fs.existsSync(baseDir)) {
+    const snapshot = getSeasonSnapshot(league, season);
+    if (!snapshot) {
       return new Response("Not found", { status: 404 });
     }
 
-    const metadata = readMetadata(league, season);
+    const { metadata } = snapshot;
 
     switch (resource) {
       case "teams": {
-        const teams = readJsonl(path.join(baseDir, "teams.jsonl"));
-        return json({ meta: metadata, data: teams });
+        return json({ meta: metadata, data: snapshot.teams });
       }
       case "roster": {
         const teamId = url.searchParams.get("teamId");
-        const players = readJsonl(path.join(baseDir, "players.jsonl"));
-        const filtered = teamId ? players.filter((player) => player.teamId === teamId) : players;
-        return json({ meta: metadata, data: filtered });
+        const players = teamId
+          ? snapshot.players.filter((player) => player.teamId === teamId)
+          : snapshot.players;
+        return json({ meta: metadata, data: players });
       }
       case "standings": {
-        const standings = readJsonl(path.join(baseDir, "standings.jsonl"));
-        return json({ meta: metadata, data: standings });
+        return json({ meta: metadata, data: snapshot.standings });
       }
       case "schedules": {
-        const schedules = readJsonl(path.join(baseDir, "schedules.jsonl"));
-        return json({ meta: metadata, data: schedules });
+        return json({ meta: metadata, data: snapshot.schedules });
       }
       case "players": {
         if (!entityId) {
-          const players = readJsonl(path.join(baseDir, "players.jsonl"));
-          return json({ meta: metadata, data: players });
+          return json({ meta: metadata, data: snapshot.players });
         }
-        const players = readJsonl(path.join(baseDir, "players.jsonl"));
-        const player = players.find((entry) => entry.id === entityId);
+        const player = snapshot.players.find((entry) => entry.id === entityId);
         if (!player) {
           return new Response("Not found", { status: 404 });
         }

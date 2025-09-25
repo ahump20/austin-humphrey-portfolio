@@ -4,7 +4,10 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "wrangler deploy --dry-run",
+    "generate": "node ../../scripts/build-api-dataset.mjs",
+    "compile": "tsc -p tsconfig.json",
+    "build": "pnpm run generate && pnpm run compile && wrangler deploy --dry-run",
+    "test": "pnpm run generate && pnpm run compile && node --test test/fetch.test.mjs",
     "dev": "wrangler dev"
   },
   "dependencies": {
