@@ -27,79 +27,64 @@ const RealTimeUpdates: React.FC = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
   
-  const { liveGames, isConnected } = useSportsData();
-  const { user, canAccessFeature } = useAuth();
+  const { liveGames, isConnected, isLoading, errors, lastUpdated } = useSportsData();
+  const { canAccessFeature } = useAuth();
+
+  const addNotification = React.useCallback(
+    (notification: Notification) => {
+      if (!canAccessFeature('live_data') && notification.type === 'score_update') {
+        return; // Skip live data notifications for free users
+      }
+
+      setNotifications((prev) => [notification, ...prev.slice(0, 19)]); // Keep only 20 notifications
+
+      // Show toast for high priority notifications
+      if (notification.priority === 'high') {
+        toast(notification.message, {
+          icon: getNotificationIcon(notification.type),
+          duration: 3000,
+        });
+      }
+    },
+    [canAccessFeature],
+  );
 
   useEffect(() => {
-    // Listen for live game updates and generate notifications
-    const gameUpdateHandler = () => {
-      liveGames.forEach((game) => {
-        if (game.status === 'live') {
-          // Check for score changes and generate notifications
-          const existingNotification = notifications.find(
-            (n) => n.gameId === game.id && n.type === 'score_update'
-          );
-
-          if (!existingNotification) {
-            const notification: Notification = {
-              id: `${game.id}-${Date.now()}`,
-              type: 'score_update',
-              title: 'Live Score Update',
-              message: `${game.homeTeam} ${game.homeScore} - ${game.awayScore} ${game.awayTeam}`,
-              timestamp: new Date(),
-              gameId: game.id,
-              priority: 'high',
-              read: false,
-            };
-
-            addNotification(notification);
-          }
-        }
-      });
-    };
-
-    if (isConnected && liveGames.length > 0) {
-      gameUpdateHandler();
+    if (!isConnected || liveGames.length === 0) {
+      return;
     }
-  }, [liveGames, isConnected]);
 
-  useEffect(() => {
-    // Generate welcome notification for new users
-    if (user && notifications.length === 0) {
-      const welcomeNotification: Notification = {
-        id: 'welcome',
-        type: 'milestone',
-        title: 'Welcome to Blaze Intelligence!',
-        message: 'Get ready for real-time sports insights and AI-powered analytics.',
-        timestamp: new Date(),
-        priority: 'medium',
-        read: false,
-      };
-      addNotification(welcomeNotification);
-    }
-  }, [user]);
+    liveGames.forEach((game) => {
+      if (game.status !== 'live') {
+        return;
+      }
+
+      const existingNotification = notifications.find(
+        (n) => n.gameId === game.id && n.type === 'score_update'
+      );
+
+      if (!existingNotification) {
+        const notification: Notification = {
+          id: `${game.id}-${Date.now()}`,
+          type: 'score_update',
+          title: 'Live Score Update',
+          message: `${game.homeTeam} ${game.homeScore} - ${game.awayScore} ${game.awayTeam}`,
+          timestamp: new Date(),
+          gameId: game.id,
+          priority: 'high',
+          read: false,
+        };
+
+        addNotification(notification);
+      }
+    });
+  }, [liveGames, isConnected, notifications, addNotification]);
 
   useEffect(() => {
     // Update unread count
     const unread = notifications.filter((n) => !n.read).length;
     setUnreadCount(unread);
   }, [notifications]);
-
-  const addNotification = (notification: Notification) => {
-    if (!canAccessFeature('live_data') && notification.type === 'score_update') {
-      return; // Skip live data notifications for free users
-    }
-
-    setNotifications((prev) => [notification, ...prev.slice(0, 19)]); // Keep only 20 notifications
-
-    // Show toast for high priority notifications
-    if (notification.priority === 'high') {
-      toast(notification.message, {
-        icon: getNotificationIcon(notification.type),
-        duration: 3000,
-      });
-    }
-  };
 
   const markAsRead = (notificationId: string) => {
     setNotifications((prev) =>
@@ -145,47 +130,31 @@ const RealTimeUpdates: React.FC = () => {
     }
   };
 
-  // Generate some sample notifications for demo purposes
-  useEffect(() => {
-    const demoNotifications: Notification[] = [
-      {
-        id: 'demo-1',
-        type: 'prediction',
-        title: 'AI Prediction Alert',
-        message: 'High confidence prediction: Cowboys have 78% win probability against Packers',
-        timestamp: new Date(Date.now() - 1000 * 60 * 5), // 5 minutes ago
-        priority: 'high',
-        read: false,
-      },
-      {
-        id: 'demo-2',
-        type: 'milestone',
-        title: 'Performance Milestone',
-        message: 'LeBron James just reached 25 points in the 3rd quarter!',
-        timestamp: new Date(Date.now() - 1000 * 60 * 10), // 10 minutes ago
-        priority: 'medium',
-        read: false,
-      },
-      {
-        id: 'demo-3',
-        type: 'game_start',
-        title: 'Game Starting Soon',
-        message: 'Chiefs vs Bills kicks off in 15 minutes - predictions available!',
-        timestamp: new Date(Date.now() - 1000 * 60 * 15), // 15 minutes ago
-        priority: 'low',
-        read: true,
-      },
-    ];
+  const healthState = React.useMemo(() => {
+    if (errors.length > 0) {
+      return {
+        label: 'Data feed unavailable',
+        tone: 'error' as const,
+      };
+    }
 
-    // Add demo notifications after a short delay
-    const timer = setTimeout(() => {
-      if (notifications.length <= 1) {
-        setNotifications((prev) => [...demoNotifications, ...prev]);
-      }
-    }, 2000);
+    if (isLoading && notifications.length === 0) {
+      return {
+        label: 'Loading live feeds…',
+        tone: 'info' as const,
+      };
+    }
 
-    return () => clearTimeout(timer);
-  }, []);
+    if (lastUpdated) {
+      const timestamp = new Date(lastUpdated).toLocaleTimeString();
+      return {
+        label: `Updated ${timestamp}`,
+        tone: 'success' as const,
+      };
+    }
+
+    return null;
+  }, [errors, isLoading, notifications.length, lastUpdated]);
 
   return (
     <>
@@ -199,6 +168,25 @@ const RealTimeUpdates: React.FC = () => {
           >
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             <span>Live Data Connected</span>
+          </motion.div>
+        </div>
+      )}
+
+      {healthState && (
+        <div className="fixed top-32 right-4 z-40">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            className={`flex items-center space-x-2 px-3 py-1 rounded-full text-xs border ${
+              healthState.tone === 'error'
+                ? 'bg-red-100 text-red-800 border-red-200'
+                : healthState.tone === 'info'
+                ? 'bg-blue-100 text-blue-800 border-blue-200'
+                : 'bg-green-100 text-green-800 border-green-200'
+            }`}
+          >
+            <ClockIcon className="w-3 h-3" />
+            <span>{healthState.label}</span>
           </motion.div>
         </div>
       )}
