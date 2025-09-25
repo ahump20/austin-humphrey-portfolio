@@ -507,7 +507,7 @@ class NeuralQuantificationEngine {
       { name: 'Muhammad Ali', sport: 'Boxing', archetype: ChampionArchetype.THE_TRANSCENDENT },
       { name: 'Tiger Woods', sport: 'Golf', archetype: ChampionArchetype.THE_ASSASSIN },
       { name: 'Kobe Bryant', sport: 'Basketball', archetype: ChampionArchetype.THE_PREDATOR },
-      { name: 'Lionel Messi', sport: 'Soccer', archetype: ChampionArchetype.THE_GENIUS }
+      { name: 'Allyson Felix', sport: 'Track & Field', archetype: ChampionArchetype.THE_GENIUS }
     ];
 
     // Generate synthetic profiles for legends (in production, these would be real)

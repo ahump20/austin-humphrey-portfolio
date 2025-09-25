@@ -29,21 +29,17 @@ const UserProfile: React.FC = () => {
     name: user?.name || '',
     email: user?.email || '',
     favoriteTeams: user?.preferences?.favoriteTeams || [],
-    favoriteSports: user?.preferences?.favoriteSports || ['football', 'basketball'],
+    favoriteSports: user?.preferences?.favoriteSports || ['baseball', 'football'],
     notifications: user?.preferences?.notifications || true,
   });
   const [newTeam, setNewTeam] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const availableSports = [
+    { id: 'baseball', name: 'Baseball', icon: '⚾' },
     { id: 'football', name: 'Football', icon: '🏈' },
     { id: 'basketball', name: 'Basketball', icon: '🏀' },
-    { id: 'baseball', name: 'Baseball', icon: '⚾' },
-    { id: 'hockey', name: 'Hockey', icon: '🏒' },
-    { id: 'soccer', name: 'Soccer', icon: '⚽' },
-    { id: 'tennis', name: 'Tennis', icon: '🎾' },
-    { id: 'golf', name: 'Golf', icon: '⛳' },
-    { id: 'mma', name: 'MMA', icon: '🥊' },
+    { id: 'track_and_field', name: 'Track & Field', icon: '🏃' },
   ];
 
   const popularTeams = [
@@ -83,7 +79,7 @@ const UserProfile: React.FC = () => {
       name: user?.name || '',
       email: user?.email || '',
       favoriteTeams: user?.preferences?.favoriteTeams || [],
-      favoriteSports: user?.preferences?.favoriteSports || ['football', 'basketball'],
+      favoriteSports: user?.preferences?.favoriteSports || ['baseball', 'football'],
       notifications: user?.preferences?.notifications || true,
     });
     setIsEditing(false);
