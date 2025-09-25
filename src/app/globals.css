@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-[#0A0A0A] text-white font-sans antialiased;
+}
+
+a {
+  @apply text-burnt-orange-400 hover:text-burnt-orange-300 transition-colors;
+}
+
+.section-container {
+  @apply container mx-auto px-6 py-16 md:py-24;
+}
+
+.glass-card {
+  @apply bg-white/5 border border-white/10 backdrop-blur rounded-3xl shadow-xl transition-transform hover:-translate-y-1 hover:shadow-2xl;
+}
+
+.section-heading {
+  @apply text-3xl md:text-4xl font-display font-semibold tracking-tight mb-6 text-white;
+}
+
+.section-subheading {
+  @apply text-lg text-zinc-300 max-w-3xl;
+}
+
+.button-primary {
+  @apply inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-burnt-orange-400 to-burnt-orange-600 px-6 py-3 font-semibold uppercase tracking-wide text-white shadow-lg transition hover:shadow-xl hover:shadow-burnt-orange-500/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burnt-orange-500;
+}
+
+.badge {
+  @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-sm text-white;
+}

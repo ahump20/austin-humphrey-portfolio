@@ -6,9 +6,9 @@
 
 ## 2. Deploy to Vercel
 ```bash
-npm install -g vercel
-vercel login
-vercel --prod
+npm install
+npm run build
+vercel deploy --prebuilt --prod
 ```
 
 ## 3. Set Environment Variables in Vercel Dashboard

@@ -6,6 +6,10 @@
 # Dependencies
 node_modules/
 package-lock.json
+.next/
+.vercel/
+pnpm-lock.yaml
+yarn.lock
 
 # Build outputs
 dist/
