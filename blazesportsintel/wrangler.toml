@@ -3,7 +3,7 @@ main = "apps/api/dist/index.js"
 compatibility_date = "2025-09-22"
 account_id = "${CLOUDFLARE_ACCOUNT_ID}"
 workers_dev = true
-route = ""
 routes = []
+
 [vars]
 BLAZE_USER_AGENT = "BlazeSportsIntelBot/1.0"
