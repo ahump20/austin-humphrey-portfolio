@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML5 and CSS3 Highlights | Blaze Intelligence</title>
+    <meta
+      name="description"
+      content="Key capabilities of HTML5 and CSS3 for building modern, responsive, and accessible web applications."
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+        background-color: #0a0a0f;
+        color: #f8f9fa;
+      }
+
+      body {
+        margin: 0;
+        padding: 3rem 1.5rem 4rem;
+        display: grid;
+        place-items: center;
+      }
+
+      main {
+        width: min(960px, 100%);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 16px;
+        padding: clamp(1.5rem, 3vw, 3rem);
+        box-shadow: 0 24px 40px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(18px);
+      }
+
+      h1,
+      h2 {
+        font-family: "Orbitron", monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #ffb81c;
+      }
+
+      h1 {
+        font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        margin: 2rem 0 1rem;
+      }
+
+      p {
+        margin: 0 0 1rem;
+        color: rgba(248, 249, 250, 0.88);
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      li {
+        background: rgba(10, 10, 15, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+      }
+
+      li strong {
+        display: block;
+        font-size: 1.05rem;
+        margin-bottom: 0.35rem;
+        color: #ff7a00;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 2rem 1rem 3rem;
+        }
+
+        main {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>HTML5 &amp; CSS3 Highlights</h1>
+      <p>
+        HTML5 and CSS3 give Blaze Intelligence engineers the semantic structure, rich media tooling, and responsive design
+        system needed to ship modern, interactive web experiences without plugin dependencies.
+      </p>
+
+      <section>
+        <h2>HTML5 Key Features</h2>
+        <ul>
+          <li>
+            <strong>Improved semantics</strong>
+            New structural elements (&lt;header&gt;, &lt;footer&gt;, &lt;article&gt;, &lt;section&gt;, &lt;aside&gt;) make layouts more meaningful
+            for assistive tech and search engines.
+          </li>
+          <li>
+            <strong>Multimedia</strong>
+            Native &lt;audio&gt; and &lt;video&gt; tags stream content without Flash, enabling low-latency playback with caption tracks.
+          </li>
+          <li>
+            <strong>Richer forms</strong>
+            Input types like email, url, date, number, and range pair with placeholder, required, and pattern attributes for
+            built-in validation.
+          </li>
+          <li>
+            <strong>Canvas API</strong>
+            The &lt;canvas&gt; element powers custom graphics, dashboards, and simulations via JavaScript drawing commands.
+          </li>
+          <li>
+            <strong>Geolocation</strong>
+            The Geolocation API surfaces user location (with consent) for localized insights and services.
+          </li>
+          <li>
+            <strong>Web storage</strong>
+            localStorage and sessionStorage offer key/value persistence beyond cookies for offline-friendly data.
+          </li>
+          <li>
+            <strong>Offline support</strong>
+            Application Cache and Service Workers keep core experiences available during network disruptions.
+          </li>
+          <li>
+            <strong>Drag &amp; drop</strong>
+            Native drag-and-drop APIs streamline interactive workflows without external libraries.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>CSS3 Key Features</h2>
+        <ul>
+          <li>
+            <strong>Selectors &amp; pseudo-classes</strong>
+            Attribute selectors, nth-child, :hover, :focus, and :not let teams target UI states precisely.
+          </li>
+          <li>
+            <strong>Responsive design</strong>
+            Media queries adapt layouts to screen size, resolution, and orientation for phones through wide monitors.
+          </li>
+          <li>
+            <strong>Transitions &amp; animations</strong>
+            Declarative motion delivers polished interactions without JavaScript-heavy animation loops.
+          </li>
+          <li>
+            <strong>Flexbox &amp; Grid</strong>
+            Modern layout systems simplify complex, gapless arrangements and support dynamic reflowing content.
+          </li>
+          <li>
+            <strong>Visual styling</strong>
+            Rounded corners, box-shadow, and text-shadow add depth while keeping assets vector-based.
+          </li>
+          <li>
+            <strong>Custom fonts</strong>
+            @font-face unlocks brand typography across browsers with local or hosted font files.
+          </li>
+          <li>
+            <strong>Gradients &amp; layered backgrounds</strong>
+            Linear/radial gradients and multiple background images create rich surfaces without image editors.
+          </li>
+          <li>
+            <strong>Transforms</strong>
+            CSS transforms rotate, scale, and translate elements for 2D/3D effects and micro-interactions.
+          </li>
+          <li>
+            <strong>CSS variables</strong>
+            Custom properties (e.g., --main-color) centralize theming, improve maintainability, and enable live updates.
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
