@@ -10,12 +10,12 @@ import type { z } from "zod";
 
 const DATA_ROOT = path.resolve(process.cwd(), "../..", "data");
 
-type Team = z.infer<typeof TeamSchema>;
-type Player = z.infer<typeof PlayerSchema>;
-type Staff = z.infer<typeof StaffSchema>;
-type Metadata = z.infer<typeof MetadataSchema>;
+export type Team = z.infer<typeof TeamSchema>;
+export type Player = z.infer<typeof PlayerSchema>;
+export type Staff = z.infer<typeof StaffSchema>;
+export type Metadata = z.infer<typeof MetadataSchema>;
 
-type LeagueSnapshot = {
+export type LeagueSnapshot = {
   metadata: Metadata;
   teams: Team[];
   players: Player[];
@@ -75,3 +75,6 @@ export function loadPlayer(league: string, season: string, playerId: string) {
   if (!player) return null;
   return { player, metadata: snapshot.metadata };
 }
+
+export type TeamSnapshot = NonNullable<ReturnType<typeof loadTeam>>;
+export type PlayerSnapshot = NonNullable<ReturnType<typeof loadPlayer>>;
