@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ChartBarIcon, BoltIcon, UserGroupIcon, DocumentTextIcon, ArrowTrendingUpIcon, PlayIcon, HomeIcon, UsersIcon, ClockIcon, CogIcon, FolderIcon, PhoneIcon } from '@heroicons/react/24/outline';
+import { ChartBarIcon, BoltIcon, UserGroupIcon, DocumentTextIcon, ArrowTrendingUpIcon, PlayIcon, HomeIcon, UsersIcon, ClockIcon, CogIcon, FolderIcon, PhoneIcon, CubeIcon } from '@heroicons/react/24/outline';
+import GraphicsEngineDemo from './GraphicsEngineDemo';
 
 interface GameData {
   id: string;
@@ -85,6 +86,7 @@ const BlazeIntelligenceDashboard: React.FC = () => {
 
   const tabs = [
     { id: 'overview', name: 'Home', icon: <HomeIcon className="h-5 w-5" /> },
+    { id: 'graphics', name: 'Graphics Engine', icon: <CubeIcon className="h-5 w-5" /> },
     { id: 'about', name: 'About', icon: <UsersIcon className="h-5 w-5" /> },
     { id: 'timeline', name: 'Timeline', icon: <ClockIcon className="h-5 w-5" /> },
     { id: 'services', name: 'Services', icon: <CogIcon className="h-5 w-5" /> },
@@ -214,6 +216,10 @@ const BlazeIntelligenceDashboard: React.FC = () => {
               </a>
             </div>
           </section>
+        )}
+
+        {selectedTab === 'graphics' && (
+          <GraphicsEngineDemo />
         )}
 
         {selectedTab === 'about' && (
