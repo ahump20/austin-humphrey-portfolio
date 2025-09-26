@@ -41,6 +41,7 @@
     "chart.js": "^4.5.0",
     "discord.js": "^14.21.0",
     "framer-motion": "^12.23.12",
+    "gl-matrix": "^3.4.4",
     "ioredis": "^5.7.0",
     "kafkajs": "^2.2.4",
     "react": "^19.1.1",
