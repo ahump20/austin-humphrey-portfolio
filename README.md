@@ -62,3 +62,13 @@ For questions or collaboration opportunities, please reach out:
 ---
 
 Built with ❤️ and ⚡ by Austin Humphrey
+
+## Repository Structure
+
+The `main` branch now tracks only the files required to build and deploy the BlazeSportsIntel.com frontend so CI/CD pipelines work with a clean React application:
+
+- `src/` – TypeScript React source code for the marketing site and app shell.
+- `public/` – Static assets served by Create React App.
+- `package.json`, `package-lock.json`, `craco.config.js`, `tailwind.config.js`, `postcss.config.js`, `tsconfig.json`, `vercel.json` – Build and deployment configuration.
+
+Operational runbooks, automation scripts, and experimental labs have been relocated to archival branches to keep production deployments lightweight.
