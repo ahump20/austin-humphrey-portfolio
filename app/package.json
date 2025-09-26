@@ -1,0 +1,31 @@
+{
+  "name": "bsi-devmode-app",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.8.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.52.0",
+    "@opentelemetry/sdk-trace-web": "^1.18.0",
+    "next": "14.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "three": "^0.168.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "@types/react": "19.1.13",
+    "@typescript-eslint/eslint-plugin": "^8.8.1",
+    "@typescript-eslint/parser": "^8.8.1",
+    "eslint": "^9.10.0",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.9.0",
+    "typescript": "^5.4.0"
+  }
+}
