@@ -45,14 +45,16 @@
   }
   </script>
 
-  <!-- Fonts — BSI stack (async loading) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+  <!-- Self-hosted fonts — preload hero fonts for instant LCP -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/oswald.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/cormorant-400.woff2" />
 
   <style>
+    /* Self-hosted fonts */
+    @font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/cormorant-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 400; font-display: swap; src: url('/fonts/cormorant-400i.woff2') format('woff2'); }
+    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/fonts/jetbrains-mono.woff2') format('woff2'); }
+    @font-face { font-family: 'Oswald'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/fonts/oswald.woff2') format('woff2'); }
     /* ═══════════════════════════════════════════════════════════════════
        TOKENS — pulled from BSI's design system
        ═══════════════════════════════════════════════════════════════════ */
