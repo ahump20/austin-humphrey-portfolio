@@ -15,8 +15,8 @@
     "validate": "node scripts/validate.mjs",
     "linkcheck": "node scripts/linkcheck.mjs",
     "seed": "node scripts/seed.mjs",
-    "prepare": "sh scripts/install-git-hooks.sh",
-    "hooks:install": "sh scripts/install-git-hooks.sh",
+    "prepare": "bash scripts/install-git-hooks.sh",
+    "hooks:install": "bash scripts/install-git-hooks.sh",
     "secrets:check": "python3 scripts/secret_guard.py --staged"
   },
   "devDependencies": {
