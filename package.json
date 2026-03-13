@@ -20,7 +20,7 @@
     "zod": "^3.21.4",
     "typescript": "^5.0.0",
     "turbo": "^1.6.0",
-    "pnpm": "^9.0.0",
+    "pnpm": "^10.28.2",
     "undici": "^6.0.0",
     "parquetjs-lite": "^0.8.7",
     "node-fetch": "^3.3.1",
