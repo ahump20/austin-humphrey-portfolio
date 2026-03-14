@@ -42,8 +42,8 @@ importers:
         specifier: ^5.0.0
         version: 5.9.2
       undici:
-        specifier: ^6.0.0
-        version: 6.21.3
+        specifier: ^6.24.0
+        version: 6.24.0
       vitepress:
         specifier: ^1.0.0
         version: 1.6.4(@algolia/client-search@5.37.0)(@types/node@20.19.17)(@types/react@18.3.24)(postcss@8.5.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(search-insights@2.17.3)(typescript@5.9.2)
@@ -1452,8 +1452,8 @@ packages:
     resolution: {integrity: sha512-raqeBD6NQK4SkWhQzeYKd1KmIG6dllBOTt55Rmkt4HtI9mwdWtJljnrXjAFUBLTSN67HWrOIZ3EPF4kjUw80Bg==}
     engines: {node: '>=14.0'}
 
-  undici@6.21.3:
-    resolution: {integrity: sha512-gBLkYIlEnSp8pFbT64yFgGE6UIB9tAkhukC23PmMDCe5Nd+cRqKxSjw5y54MK2AZMgZfJWMaNE4nYUHgi1XEOw==}
+  undici@6.24.0:
+    resolution: {integrity: sha512-lVLNosgqo5EkGqh5XUDhGfsMSoO8K0BAN0TyJLvwNRSl4xWGZlCVYsAIpa/OpA3TvmnM01GWcoKmc3ZWo5wKKA==}
     engines: {node: '>=18.17'}
 
   unenv@2.0.0-rc.14:
@@ -2840,7 +2840,7 @@ snapshots:
     dependencies:
       '@fastify/busboy': 2.1.1
 
-  undici@6.21.3: {}
+  undici@6.24.0: {}
 
   unenv@2.0.0-rc.14:
     dependencies:
